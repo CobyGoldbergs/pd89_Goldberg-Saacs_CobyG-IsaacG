@@ -6,12 +6,14 @@ public class Market{
     private LinkedList<Stock> stocks; // will contain all stocks on market
     private double marketStrength; // market strength of whole market
     private QuickSortStocks qs; // quick sort to be used when needed
+    private Stack<News> news;
     
     public Market(){
 	fillMarket(); // method to add stocks to market
 	gsIndexPrice = 0;
 	updateIndexVal(); // method to update the index of the market
 	qs = new QuickSortStocks();
+	createNews();
     }
 
     public void fillMarket(){
@@ -42,6 +44,45 @@ public class Market{
 	}
     }
 
+    // calls news functions for each effected stock
+    public void applyNews(){
+	News item = news.pop();
+	String[] tags = item.getTags();
+	for (int i = 0; i < tags.length; i++){
+	    String searching = tags[i];
+	    for (int j = 0; j < stocks.length; j++){
+		Stock checking = stocks.get(j);
+		String tick = checking.getTicker();
+		if (searching.equals(tick)){
+		    checking.applyNews(item);
+		    break;
+		}
+	    }
+	}
+    }
+
+    public void createNews(){
+	String info1 = "Apple invents new iPhone that does your comp sci project";
+	News n1 = new News(true, info1, new String[]{"AAPL"});
+	news.push(n1);
+			   /*News n1 = new News(
+	News n1 = new News(
+	News n1 = new News(
+	News n1 = new News(
+	News n1 = new News(
+	News n1 = new News(
+	News n1 = new News(
+	News n1 = new News(
+	News n1 = new News(
+	News n1 = new News(
+	News n1 = new News(
+	News n1 = new News(
+	News n1 = new News(
+	News n1 = new News(
+	News n1 = new News(
+	News n1 = new News(*/	
+
+    }
 
     // Methods that sort all market stocks by price or strength
 

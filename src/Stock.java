@@ -63,6 +63,8 @@ public class Stock{
      */
     public double newPurchase(){
 	Random r = new Random();
+	if (marketStrength == 0)
+	    marketStrength += .01
 	double marketEffect = marketStrength * beta; // strength less than one causes decrease in price, beta exaggerates/ mitigate's market's effect
 	double d = r.nextDouble() * volatility * marketEffect; // higher volatility makes new purchase deviate further from current price
 	int marketSentiment = (int)(marketStrength * 50) + 1; // +1 meant to avoid errors on nextInt when strength is zero
@@ -90,7 +92,15 @@ public class Stock{
     
     // outside classes can set a new market strength
     public void setMarketStrength(double ms){
-	marketStrength = ms;
+	marketStrength += ms;
+    }
+
+    public void applyNews(News news){
+	boolean effect = news.getEffect();
+	if (effect)
+	    ms += .1;
+	else
+	    ms -= .1;
     }
 
     public String toString(){
