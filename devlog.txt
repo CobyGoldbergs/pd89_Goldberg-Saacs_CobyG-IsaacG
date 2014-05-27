@@ -1,0 +1,4 @@
+5/26/13 Coby submitted the project idea and repo.
+
+5/27/13 Green light on the project idea. Also, Isaac found the Yahoo finance api and JFreeChart which we will try to implement.
+
