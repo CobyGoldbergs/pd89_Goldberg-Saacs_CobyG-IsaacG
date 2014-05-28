@@ -3,3 +3,4 @@
 5/27/13 Green light on the project idea. Also, Isaac found the Yahoo finance api and JFreeChart.
         Isaac implemented the Yahoo API to retrieve CSV files with wanted data.
 
+5/28/14 Isaac added the base frame to hold the project. Next we must add stuff to the frame container.
