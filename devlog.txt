@@ -6,3 +6,4 @@
 5/28/14 Isaac added the base frame to hold the project. Next we must add stuff to the frame container.
 
 5/28/14 Coby updated running median to function for doubles. This will enable us to store data on past stock quotes.
+        Coby researched the possibility of pulling historical prices through the yahoo finance api, beyond simple opens and closes for the last day.
