@@ -27,7 +27,7 @@ public class Yahoo {
 	}
 
 	public static void main(String[] args) {
-		getData("GOOG");
+		getData("AAPL");
 	}
 
 }
