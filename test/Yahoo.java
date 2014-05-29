@@ -6,7 +6,8 @@ import java.net.URLConnection;
 public class Yahoo {
 
 	private static String baseURL = "http://download.finance.yahoo.com/d/quotes.csv?s="; // base url for the api
-	private static String baseURLend = "&f=ab&e=.csv"; // ab are the codes for ask and bid
+    // http://www.gummy-stuff.org/Yahoo-data.htm list of acronyms for yahoo api
+	private static String baseURLend = "&f=b2b3c6l1&e=.csv"; // b2 b3 are ask and bid real time
 
 	public static void getData(String ticker) {
 		try {
