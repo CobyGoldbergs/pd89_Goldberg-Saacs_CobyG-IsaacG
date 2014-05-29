@@ -7,3 +7,4 @@
 
 5/28/14 Coby updated running median to function for doubles. This will enable us to store data on past stock quotes.
         Coby researched the possibility of pulling historical prices through the yahoo finance api, beyond simple opens and closes for the last day.
+        Coby tested the response speed of the yahoo api to various data calls
