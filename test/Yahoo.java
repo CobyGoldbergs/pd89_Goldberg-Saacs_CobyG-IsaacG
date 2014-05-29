@@ -3,6 +3,7 @@ import java.io.*;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.Proxy;
+import java.net.InetSocketAddress;
 
 public class Yahoo {
 
@@ -13,12 +14,14 @@ public class Yahoo {
 	public static void getData(String ticker) {
 		try {
 			URL interWebs = new URL(baseURL + ticker + baseURLend); // create a URL instance of the API
-			System.out.println("1st");
+			
 
 			Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress("149.89.1.30", 3128));
 			
-			URLConnection interwebConnect = interWebs.openConnection(proxy); // make a URL connection out of the URL
+			URLConnection interwebConnect = interWebs.openConnection(proxy); // make a URL connection out of the URL 
+			//System.out.println("1st"); // prints
 			InputStreamReader isr = new InputStreamReader(interwebConnect.getInputStream()); // Retrieve the csv into a InputStreamReader
+			//System.out.println("1st"); // doesnt print
 			BufferedReader in = new BufferedReader(isr); // For efficiency, thank you oracle API
 			System.out.println( baseURL + ticker + baseURLend );
 
