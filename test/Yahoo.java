@@ -1,10 +1,10 @@
 import java.util.*;
 import java.io.*;
-import java.io.IOException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.Proxy;
 import java.net.InetSocketAddress;
+import java.net.ConnectException;
 
 public class Yahoo {
 
@@ -23,7 +23,7 @@ public class Yahoo {
 			try {
 				System.out.println("here");
 				interwebConnect = interWebs.openConnection(Proxy.NO_PROXY); // make a normal URL connection
-			} catch (Exception e) {
+			} catch (ConnectException e) {
 				System.out.println("2nd");
 				interwebConnect = interWebs.openConnection(proxy); // make a URL connection out of the URL 	
 			}
