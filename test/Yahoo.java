@@ -18,15 +18,10 @@ public class Yahoo {
 			
 
 			Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress("149.89.1.30", 3128)); // the proxy in the Stuy computer lab
-			URLConnection interwebConnect;
 
-			try {
-				System.out.println("here");
-				interwebConnect = interWebs.openConnection(Proxy.NO_PROXY); // make a normal URL connection
-			} catch (ConnectException e) {
-				System.out.println("2nd");
-				interwebConnect = interWebs.openConnection(proxy); // make a URL connection out of the URL 	
-			}
+			// URLConnection interwebConnect = interWebs.openConnection(Proxy.NO_PROXY); // make a normal URL connection
+			URLConnection interwebConnect = interWebs.openConnection(proxy); // make a URL connection out of the URL 	
+			// make way to choose lab settings
 
 			InputStreamReader isr = new InputStreamReader(interwebConnect.getInputStream()); // Retrieve the csv into a InputStreamReader
 			
