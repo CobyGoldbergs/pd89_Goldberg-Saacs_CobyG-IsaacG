@@ -1,39 +1,35 @@
 // screwing around with movement of price
 // bid and ask movement working to some degree
-// market sentiment (right now statically either positive or negative) needs to be able to update itself based on whats going on in the simulator
+// market sentiment needs to be able to update itself based on whats going on in the simulator
 // momentum indicators should be added for mild changes in direction
 
 import java.util.*;
+import java.lang.*;
 
 public class StockTry{
 
-    double price;
-    double volatility; // not currently used
-    boolean marketPos = false; // true -- market trending up
-    RunMed runnerB; // running median to keep track of bid median
-    RunMed runnerA; // running median to keep track of ask median
+    private double price;
+    private double volatility; // creates stronger changes in prices
+    private double beta; // need to think about how to use it to change movement with market
+    private double marketStrength; // measure of market strength on scale of -1 (unhealthiest) to 1 (healthiest)
+    private RunMed runnerB; // running median to keep track of bid median
+    private RunMed runnerA; // running median to keep track of ask median
 
-    public StockTry(double pr, double vol, int bV, int aV){
+    public StockTry(double pr, double vol, double bet, double ms){
 	price = pr;
 	volatility = vol;
+	beta = bet;
+	marketStrength = ms;
 	runnerB = new RunMed();
 	runnerA = new RunMed();
-	populate(bV, aV);
+	populate();
     }
 
-    public void populate(int bV, int aV){
-	for (int i = 0; i < bV; i++){
+    public void populate(){
+	for (int i = 0; i < 100; i++){
 	    double newB = this.newPurch(); // calls method to create a semi-random new values
-	    if (marketPos == false)
-		newB = newB*.98; // poor market sentiment lowers prices
-	    else
-		newB = newB*1.02; // good market sentiment increases prices
-	    runnerB.insert(newB); // update the running median
+	    runnerB.insert(newB); // update the running median for bids
 	    double newA = this.newPurch();
-	    if (marketPos == false)
-		newA = newA*.98;
-	    else
-		newA = newA*1.02;
 	    runnerA.insert(newA);
 	}
 	price = (runnerA.getMedian() + runnerB.getMedian()) / 2; // new price found with the averages of the two running medians
@@ -42,44 +38,37 @@ public class StockTry{
     // updates the price
     // ASSSUMPTIONS: volume of trades on a stock remains constant
     // :volatility of stock remains constant, not changed
-    // :replace .sort with running med
     // :bids and asks stay forever
     // market sentiment never changes
     public void priceUpdate(){
-	System.out.println("" + price);
+	System.out.println("" + price); // for testing purposes
 	double bidMed = runnerB.getMedian();
 	double askMed = runnerA.getMedian();
-	price = (bidMed + askMed) / 2; // new price
+	price = (bidMed + askMed) / 2; // new price is average of the median bid and median ask
 	double newB = this.newPurch();
-	if (marketPos == false)
-	    newB = newB*.98;
-	else
-	    newB = newB*1.02;
 	runnerB.insert(newB);
-	//System.out.println("new Bid: " + newB);
 	double newA = this.newPurch();
-	if (marketPos == false)
-	    newA = newA*.98;
-	else
-	    newA = newA*1.02;
 	runnerA.insert(newA);
-	//System.out.println("new Ask: " + newA);
     }
 
     // creates random new bid/ ask
     public double newPurch(){
 	Random r = new Random();
-	double d = r.nextDouble() * volatility; // higher volatility makes it deviate further form the price
-	if (r.nextInt(2) == 1)
-	    d = 0-d; // half of all requests are lower than price, half are higher
+	double marketEffect = marketStrength * beta; // strength less than one causes decrease in price, beta simply exaggerates or mitigate's market's effect
+	double d = r.nextDouble() * volatility * marketEffect; // higher volatility makes new purchase deviate further from current price
+	int markSent = (int)(marketStrength * 50) + 1; // +1 meant to avoid errors on nextInt when strength is zero
+	markSent = Math.abs(markSent);
+	if (r.nextInt(markSent) == 1)
+	    d = 0-d; // adds degree of fluctuation. A market sentiment closer to zero is more likely to yield a reverse in direction of price 
 	return (price + price*d);
     }
 
 
     //main method for testing
     public static void main ( String[] args ) {
-	StockTry st = new StockTry(30.0, .5, 100, 100);
-	for (int i = 0; i < 100; i++)
+	StockTry st = new StockTry(30.0, .3, .8, -.1); 
+	// start price, volatility, beta, market strength
+	for (int i = 0; i < 300; i++)
 	    st.priceUpdate();
     }
 
