@@ -1,5 +1,6 @@
 import java.util.*;
 import java.io.*;
+import java.io.IOException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.Proxy;
@@ -16,12 +17,19 @@ public class Yahoo {
 			URL interWebs = new URL(baseURL + ticker + baseURLend); // create a URL instance of the API
 			
 
-			Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress("149.89.1.30", 3128));
-			
-			URLConnection interwebConnect = interWebs.openConnection(proxy); // make a URL connection out of the URL 
-			//System.out.println("1st"); // prints
+			Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress("149.89.1.30", 3128)); // the proxy in the Stuy computer lab
+			URLConnection interwebConnect;
+
+			try {
+				System.out.println("here");
+				interwebConnect = interWebs.openConnection(Proxy.NO_PROXY); // make a normal URL connection
+			} catch (Exception e) {
+				System.out.println("2nd");
+				interwebConnect = interWebs.openConnection(proxy); // make a URL connection out of the URL 	
+			}
+
 			InputStreamReader isr = new InputStreamReader(interwebConnect.getInputStream()); // Retrieve the csv into a InputStreamReader
-			//System.out.println("1st"); // doesnt print
+			
 			BufferedReader in = new BufferedReader(isr); // For efficiency, thank you oracle API
 			System.out.println( baseURL + ticker + baseURLend );
 
