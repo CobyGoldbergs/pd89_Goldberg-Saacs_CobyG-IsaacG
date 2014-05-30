@@ -16,7 +16,7 @@ public class Yahoo {
 			URL interWebs = new URL(baseURL + ticker + baseURLend); // create a URL instance of the API
 			
 
-			Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress("149.89.1.30", 3218));
+			Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress("149.89.1.30", 3128));
 			
 			URLConnection interwebConnect = interWebs.openConnection(proxy); // make a URL connection out of the URL 
 			//System.out.println("1st"); // prints
