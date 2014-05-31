@@ -14,3 +14,5 @@
         and so that a positive or negative market sentiment will lead to likely up or down movements for a stock's price. Next is
         to work with betas and or moving averages. Additionally, a template stock class should be made soon.
         Coby added use of beta and market strength between -1 and 1 (instead of boolean) to the price movement
+
+5/30/14 Isaac created the base panels for the Home Screen and the Stock viewing screen. Next we will format and 		fill these panels.
