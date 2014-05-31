@@ -12,16 +12,19 @@ public class MainFrame extends JFrame{
 	
 	setTitle("Goldberg & Saac's"); // create invisible frame with title
 	setDefaultCloseOperation(EXIT_ON_CLOSE); // exits program when exits gui
+	setResizable(false); // no resizing
 	setVisible(true); // make it visible
 
 	Container con = this.getContentPane(); // get the container the frame is in
-	con.setPreferredSize(new Dimension(1000, 750)); // set the size of the container and the frames it contains
+	con.setPreferredSize(new Dimension(850, 500)); // set the size of the container and the frames it contains
 	
 	pane = new JPanel();
 	pane.setLayout(new CardLayout()); // create the main window holder and make it a deck
 	
 	home = new HomeScreen();
 	viewStocks = new ViewStockScreen();
+
+	// put the screens in the deck
 	pane.add(home, "home");
 	pane.add(viewStocks, "view");
 	
