@@ -14,6 +14,8 @@ public class QuickSortStocks {
 	    qsHelpTick( 0, d.size()-1, d );
 	if (comparing == 1) // 1 means compare by price
 	    qsHelpQuant( 0, d.size()-1, d );
+	if (comparing == 2) // 2 means compare by percent change
+	    qsHelpChange( 0, d.size()-1, d );
 	return d;
     }
 
@@ -113,7 +115,54 @@ public class QuickSortStocks {
 	//recurse on lower and upper ranges
 	qsHelpQuant( lo, tmpLo-1, d );
 	qsHelpQuant( tmpLo+1, hi, d );
-}
+    }
+
+    public static void qsHelpChange( int lo, int hi, LinkedList<Stock> d ) {
+	if ( lo >= hi )
+	    return;
+	int tmpLo = lo; 
+	int tmpHi = hi;
+	double pivot = d.get(lo).getPercentChange();
+	Stock pivotStock = d.get(lo);
+
+	while( tmpLo < tmpHi ) {
+	    //first, slide markers in as far as possible without swaps
+	    while( d.get(tmpLo).getPercentChange() < pivot )  tmpLo++;
+	    while( d.get(tmpHi).getPercentChange() > pivot )  tmpHi--;
+
+	    if ( d.get(tmpLo).getPercentChange() != d.get(tmpHi).getPercentChange() )
+		swap( tmpLo, tmpHi, d );
+
+	    //dupe vals found at markers
+	    else if ( tmpLo < tmpHi ) { 
+		//extra chk for Lo<Hi bc of double marker moves below
+
+		double dupe = d.get(tmpHi).getPercentChange();
+
+		//if dupe is pivot val, put in lower range
+		if ( dupe == pivot ) {
+		    swap( ++tmpLo, tmpHi, d );
+		}
+		else if ( dupe > pivot ) {
+		    //slide upper marker inward 1 pos, then swap
+		    swap( tmpLo, --tmpHi, d );
+		    //slide upper marker inward again to get past 2nd dupe val
+		    tmpHi--;
+		}
+		else { //dupe < pivot
+		    swap( ++tmpLo, tmpHi, d );
+		    tmpLo++;
+		}
+	    }
+	}//end big while
+
+	//pivot has been floating around... plant it where it belongs
+	d.set(tmpLo, pivotStock);
+
+	//recurse on lower and upper ranges
+	qsHelpQuant( lo, tmpLo-1, d );
+	qsHelpQuant( tmpLo+1, hi, d );
+    }
 
     //main method for testing
     public static void main( String[] args ) {

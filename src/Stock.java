@@ -10,6 +10,8 @@ public class Stock{
     private double marketStrength; // measure of market as a whole between -1 and 1
     private RunMed bids; // a running median counter of bids
     private RunMed asks; // a running median counter of asks
+    private Queue<Double> pastPrices; // for use in calculating percent change
+    private double percentChange; // queue for use of fifo properties
     /*private Stack<Double> oneDayMVA; // will be created from the day's trading
     private Stack<Double> fiftyDayMVA; // to be downloaded from yahoo finance
     private Stack<Double> twohundredDayMVA;*/
@@ -22,6 +24,7 @@ public class Stock{
 	marketStrength = ms;
 	bids = new RunMed();
 	asks = new RunMed();
+	percentChange = 0.0;
 	// add code to use 50 and 200 day mva
 	initialPurhcases(); // function to create some initial bids and asks
     }
@@ -35,6 +38,7 @@ public class Stock{
 	    asks.insert(newAsk);
 	}
 	price = (bids.getMedian() + asks.getMedian()) / 2; // new price set at the average of the bid average and ask average
+	updatePercent();
     }
 
     public void priceUpdate(){
@@ -46,6 +50,7 @@ public class Stock{
 	bids.insert(newBid);
 	double newAsk = newPurchase();
 	asks.insert(newAsk);
+	updatePercent(); // method that updates percent change
     }
 
     /*
@@ -67,11 +72,20 @@ public class Stock{
 	return (price + price*d);
     }
 
+    public void updatePercent(){
+	pastPrices.add(price);
+	if (pastPrices.size() > 300)
+	    pastPrices.remove(); // remove oldest price if it's too long
+	double oldP = pastPrices.peek(); // oldest value in queue
+	percentChange = ((price - oldP)/price) * 100;
+    }
+
     // accessor methods
     public String getTicker(){return ticker;}
     public double getPrice(){return price;}
     public double getBeta(){return beta;}
     public double getVolatility(){return volatility;}
+    public double getPercentChange(){return percentChange;}
     
     // outside classes can set a new market strength
     public void setMarketStrength(double ms){

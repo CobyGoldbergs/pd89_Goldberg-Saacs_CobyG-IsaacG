@@ -50,4 +50,28 @@ public class Market{
 	return ret;
     }
 
+    // return list of stocks with highest percent changes
+    public LinkedList<Stock> getStrongestStocks(int quantity){
+	stocks = qs.qsort(stocks, 2); // sort by percentChange
+	LinkedList<Stock> ret = new LinkedList<Stock>();
+	if (quantity > stocks.size())
+	    quantity = stocks.size();
+	for (int i = 0; i < quantity; i++){
+	    ret.add(stocks.get(i));
+	}
+	return ret;
+    }
+
+    // return list of stocks with weakest percent changes
+    public LinkedList<Stock> getWeakestStocks(int quantity){
+	stocks = qs.qsort(stocks, 2); // sort by percentChange
+	LinkedList<Stock> ret = new LinkedList<Stock>();
+	if (quantity > stocks.size())
+	    quantity = stocks.size();
+	for (int i = stocks.size()-1; i > quantity; i--){
+	    ret.add(stocks.get(i));
+	}
+	return ret;
+    }
+
 }
