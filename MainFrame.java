@@ -16,7 +16,7 @@ public class MainFrame extends JFrame{
 	setVisible(true); // make it visible
 
 	Container con = this.getContentPane(); // get the container the frame is in
-	con.setPreferredSize(new Dimension(850, 500)); // set the size of the container and the frames it contains
+	con.setPreferredSize(new Dimension(1000, 650)); // set the size of the container and the frames it contains
 	
 	pane = new JPanel();
 	pane.setLayout(new CardLayout()); // create the main window holder and make it a deck
