@@ -16,7 +16,7 @@ Running the Project
 	3. Run with
 		java -cp path/to/project/pd89_Goldberg-Saacs_CobyG-IsaacG/src/gui/jmathplot.jar:. MainFrame
 
-### Using Linux or OSX ###
+###### Using Linux or OSX ######
 
 2. For multiple runs in a terminal session you can temporarily set the CLASSPATH variable
 	1. In a new terminal, go to the directory where you downloaded the project
