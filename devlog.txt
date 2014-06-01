@@ -15,4 +15,9 @@
         to work with betas and or moving averages. Additionally, a template stock class should be made soon.
         Coby added use of beta and market strength between -1 and 1 (instead of boolean) to the price movement
 
-5/30/14 Isaac created the base panels for the Home Screen and the Stock viewing screen. Next we will format and 		fill these panels.
+5/30/14 Isaac created the base panels for the Home Screen and the Stock viewing screen. Next we will format and fill these panels.
+        Coby began work on a User.java class that contains data on a user's portfolio
+
+5/31/14 Coby created worked with User.java to make it add a new ammount of a certain stock types to the portfolio
+        in a sorted manner either based on ticker name or on the quantity of shares owned. The sort is done using a modified
+        version of quick sort.
