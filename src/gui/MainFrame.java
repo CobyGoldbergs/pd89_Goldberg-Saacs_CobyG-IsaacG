@@ -5,7 +5,7 @@ import javax.swing.SwingUtilities;
 public class MainFrame extends JFrame{
     
     private JPanel pane; // Screen Holder
-    private HomeScreen home;
+    // private HomeScreen home;
     private ViewStockScreen viewStocks;
     
     public MainFrame() {
@@ -21,11 +21,11 @@ public class MainFrame extends JFrame{
 	pane = new JPanel();
 	pane.setLayout(new CardLayout()); // create the main window holder and make it a deck
 	
-	home = new HomeScreen();
+	// home = new HomeScreen();
 	viewStocks = new ViewStockScreen();
 
 	// put the screens in the deck
-	pane.add(home, "home");
+	// pane.add(home, "home");
 	pane.add(viewStocks, "view");
 	
 	pane.requestFocus(); // make sure the pane has the focus not anything behind it
