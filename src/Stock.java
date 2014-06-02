@@ -10,7 +10,7 @@ public class Stock{
     private double marketStrength; // measure of market as a whole between -1 and 1
     private RunMed bids; // a running median counter of bids
     private RunMed asks; // a running median counter of asks
-    private Queue<Double> pastPrices; // for use in calculating percent change
+    private LinkedList<Double> pastPrices; // for use in calculating percent change
     private double percentChange; // queue for use of fifo properties
     /*private Stack<Double> oneDayMVA; // will be created from the day's trading
     private Stack<Double> fiftyDayMVA; // to be downloaded from yahoo finance
@@ -24,7 +24,9 @@ public class Stock{
 	marketStrength = ms;
 	bids = new RunMed();
 	asks = new RunMed();
+	price = p;
 	percentChange = 0.0;
+	pastPrices = new LinkedList<Double>();
 	// add code to use 50 and 200 day mva
 	initialPurhcases(); // function to create some initial bids and asks
     }
@@ -42,7 +44,6 @@ public class Stock{
     }
 
     public void priceUpdate(){
-	System.out.println("" + price); // for testing purposes
 	double bidMedian = bids.getMedian();
 	double askMedian = asks.getMedian();
 	price = (bidMedian + askMedian) / 2; // new price is average of their medians
@@ -53,17 +54,16 @@ public class Stock{
 	updatePercent(); // method that updates percent change
     }
 
-    /*
-      Adds new purchase
+    /*Adds new purchase
       PRECONDITIONS: 
       -1 <= marketStrength <= 1 -1 weakest, 1 strongest
       0 < volatility < 1. 1 means huge fluctuations
-      ALGORITHM: random double (less that one) * volatility (degree of fluctuation in price) * marketStrength (-1 means it is really weak and price should decrease, 1 means it is really strong) * beta ( beta > 1 will exaggerate market's strength, 1 > beta > 0 will dampen market effect, beta < 0 will move in oppposite of market) = price change.
+      ALGORITHM: random double (less than one) * volatility (degree of fluctuation in price) * marketStrength (-1 means it is really weak and price should decrease, 1 means it is really strong) * beta ( beta > 1 will exaggerate market's strength, 1 > beta > 0 will dampen market effect, beta < 0 will move in oppposite of market) = price change.
       The closer market strength is to zero, the more likely it is that the stock will move in the opposite direction that market strength and beta would otherwise indicate.
      */
     public double newPurchase(){
 	Random r = new Random();
-	double marketEffect = marketStrength * beta; // strength less than one causes decrease in price, beta simply exaggerates or mitigate's market's effect
+	double marketEffect = marketStrength * beta; // strength less than one causes decrease in price, beta exaggerates/ mitigate's market's effect
 	double d = r.nextDouble() * volatility * marketEffect; // higher volatility makes new purchase deviate further from current price
 	int marketSentiment = (int)(marketStrength * 50) + 1; // +1 meant to avoid errors on nextInt when strength is zero
 	marketSentiment = Math.abs(marketSentiment); // for use in next int
@@ -93,10 +93,13 @@ public class Stock{
     }
 
     public static void main(String[] args){
-	Stock st = new Stock("AAPL", 30.0, 2, .3, -.4); 
+	Stock st = new Stock("AAPL", 30.0, .7, .3, -.4); 
 	// ticker name, start price, beta, volatility,  market strength
-	for (int i = 0; i < 300; i++)
+	for (int i = 0; i < 300; i++){
 	    st.priceUpdate();
+	    System.out.println("Price: " + st.getPrice() + "$");
+	    System.out.println("Percent change: " + st.getPercentChange() + "%");
+	}
     }
 
 
