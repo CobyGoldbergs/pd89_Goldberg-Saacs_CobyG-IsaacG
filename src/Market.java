@@ -34,7 +34,7 @@ public class Market{
 	// recurse through the market
 	for (int i = 0; i < stocks.size(); i++){
 	    st = stocks.get(i);
-	    st.setMarketStrength(marketStrength); // reset each stock's strength var
+	    st.setMarketStrength(marketStrength); // reset each stock's strength variable
 	}
     }
 
@@ -44,9 +44,18 @@ public class Market{
 	LinkedList<Stock> ret = new LinkedList<Stock>();
 	if (quantity > stocks.size())
 	    quantity = stocks.size();
-	for (int i = 0; i < quantity; i++){
+	for (int i = 0; i < quantity; i++)
 	    ret.add(stocks.get(i));
-	}
+	return ret;
+    }
+
+    public LinkedList<Stock> getCheapestStocks(int quantity){
+	stocks = qs.qsort(stocks, 1);
+	LinkedList<Stock> ret = new LinkedList<Stock>();
+	if (quantity > stocks.size())
+	    quantity = stocks.size();
+	for (int i = 0; i < quantity; i++)
+	    ret.add(stocks.get(i));
 	return ret;
     }
 
