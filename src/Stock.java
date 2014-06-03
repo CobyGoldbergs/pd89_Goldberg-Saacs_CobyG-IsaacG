@@ -93,6 +93,10 @@ public class Stock{
 	marketStrength = ms;
     }
 
+    public String toString(){
+	return ticker;
+    }
+
     public static void main(String[] args){
 	Stock st = new Stock("AAPL", 30.0, .7, .3, -.4); 
 	// ticker name, start price, beta, volatility,  market strength
