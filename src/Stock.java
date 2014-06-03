@@ -39,14 +39,14 @@ public class Stock{
 	    double newAsk = newPurchase();
 	    asks.insert(newAsk);
 	}
-	price = (bids.getMedian() + asks.getMedian()) / 2; // new price set at the average of the bid average and ask average
-	updatePercent();
+	priceUpdate(); // new price set at the average of the bid average and ask average
     }
 
     public void priceUpdate(){
 	double bidMedian = bids.getMedian();
 	double askMedian = asks.getMedian();
 	price = (bidMedian + askMedian) / 2; // new price is average of their medians
+	price = (double)(Math.round(price * 100)) / 100; // rounds to 10th
 	double newBid = newPurchase(); // calls helper method to create new purchase
 	bids.insert(newBid);
 	double newAsk = newPurchase();
@@ -78,6 +78,7 @@ public class Stock{
 	    pastPrices.remove(); // remove oldest price if it's too long
 	double oldP = pastPrices.peek(); // oldest value in queue
 	percentChange = ((price - oldP)/price) * 100;
+	percentChange = (double)(Math.round(percentChange * 100)) / 100; // rounds to 10th
     }
 
     // accessor methods
