@@ -24,7 +24,7 @@ public class MainFrame extends JFrame{
 	// home = new HomeScreen(); // instantiate the home screen
 	// stockScreen = new StockScreen(); // instantiate the stocks screen
 	viewStocks = new ViewStockScreen();
-
+	
 	// put the screens in the deck
 	pane.add(home, "home");
 	pane.add(stockScreen, "view");

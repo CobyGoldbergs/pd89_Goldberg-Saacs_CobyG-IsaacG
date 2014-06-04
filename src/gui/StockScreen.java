@@ -11,6 +11,8 @@ public class StockScreen extends JPanel {
     private JLabel stats;
     private JLabel news;
 
+    private String ticker;
+
     public StockScreen() { // eventually should take a ticker argument and display it accordingly
 		setPreferredSize(new Dimension(1000, 650)); // set it to the same size as the container
 		setLayout(null); // it will be a card in the main deck
@@ -31,7 +33,7 @@ public class StockScreen extends JPanel {
 
 		// Set up graph
 		plot = new Plot2DPanel();
-		double[] x = { 1, 2, 3, 4, 5, 6 }; //getX(ticker)
+		double[] x = { 1, 2, 3, 4, 5, 6 }; //getX(ticker) FROM HERE --> TIME
 		double[] y = { 45, 89, 6, 32, 63, 12 }; //getY(ticker)
 		plot.addLinePlot("Test Stock Plot", x, y); // create line plot from jmathplots
 		plot.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLoweredBevelBorder(), "Test Stock Plot"));
@@ -59,6 +61,10 @@ public class StockScreen extends JPanel {
 		add(news); // add and position news panel
 		news.setBounds(10, 450, 980, 190);
 		news.setOpaque(true);
+    }
+
+    public void setTicker(String t) {
+    	ticker = t;
     }
     
 }

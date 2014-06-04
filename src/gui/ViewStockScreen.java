@@ -21,9 +21,9 @@ public class ViewStockScreen extends JPanel {
 		viewStocksLabel.setOpaque(true);
 
 		// Set up button to view stocks page
-		backButton = new JButton("Home");
-		add(backButton);
-		backButton.setBounds(890, 10, 100, 30);
+		homeButton = new JButton("Home");
+		add(homeButton);
+		homeButton.setBounds(890, 10, 100, 30);
     }
     
 }
