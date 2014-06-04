@@ -21,8 +21,8 @@ public class MainFrame extends JFrame{
 	pane = new JPanel();
 	pane.setLayout(new CardLayout()); // create the main window holder and make it a deck
 	
-	// home = new HomeScreen(); // instantiate the home screen
-	// stockScreen = new StockScreen(); // instantiate the stocks screen
+	home = new HomeScreen(); // instantiate the home screen
+	stockScreen = new StockScreen(); // instantiate the stocks screen
 	viewStocks = new ViewStockScreen();
 	
 	// put the screens in the deck

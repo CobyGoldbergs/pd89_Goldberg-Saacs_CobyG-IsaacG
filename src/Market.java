@@ -7,6 +7,7 @@ public class Market{
     private double marketStrength; // market strength of whole market
     private QuickSortStocks qs; // quick sort to be used when needed
     private Stack<News> news;
+    private String ticker;
     
     public Market(){
 	fillMarket(); // method to add stocks to market
