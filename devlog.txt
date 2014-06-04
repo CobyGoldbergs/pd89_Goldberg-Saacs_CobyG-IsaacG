@@ -19,3 +19,5 @@ Isaac set up the outline layout for the pages and researched a swing graphing li
        Coby created Market.java and began adding various ways of sorting all the stocks in the market so lists like "hottest stocks" of a given length could be returned. He also added a percent change variable to stocks that look at the last 300 prices, eliminating the oldest form the queue storing them.
 
 6/2/14 Coby created News.java to store news items, began thinking about how to most efficiently implement tags on the news items reflecting what stocks they effect.
+
+6/4/14 Coby reorganized Market's methods based on what they do, and created a loop for Market that can be run from outside the class, which every 5 seconds updates prices in the market and runs market's necessary functions
