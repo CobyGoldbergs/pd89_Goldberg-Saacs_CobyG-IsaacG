@@ -50,12 +50,18 @@ public class MainFrame extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		JButton source = (JButton) e.getSource();
 		CardLayout card = (CardLayout) pane.getLayout();
+		
+		// From the home screen to the view stocks screen
 		if (source.equals(home.viewStocksButton)){
 			card.show(pane, "stock");
 		}
+
+		// From the view stocks screen to the home screen
 		else if (source.equals(viewStocks.homeButton)){
 			card.show(pane, "home");
 		}
+
+		// The different stocks
 		else if (source.equals(viewStocks.AAPL)){
 			card.show(pane, "view");
 			stockScreen.setStock(0);
@@ -95,7 +101,9 @@ public class MainFrame extends JFrame implements ActionListener{
 		else if (source.equals(viewStocks.ticker10)){
 			card.show(pane, "view");
 			stockScreen.setStock(9);
-		}	
+		}
+
+		// From the stock screens to the view stock screen
 		else if (source.equals(stockScreen.backButton)){
 			card.show(pane, "stock");
 		}
