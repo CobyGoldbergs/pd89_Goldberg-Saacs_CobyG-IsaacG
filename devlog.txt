@@ -16,8 +16,10 @@ Coby began work on a User.java class that contains data on a user's portfolio
 Isaac set up the outline layout for the pages and researched a swing graphing library: jmathplots from micro labs. He is having trouble setting the system classpath to be able to import the seperate library.
 
 6/1/14 Isaac successfully figured out the difficulty with the classpath and will put that in the readme. He also successfully imported the graph to the layout. Next we will need to connect the screens with actionlisteners and have getNews(); and getData(); methods to connect the front and back ends.
-       Coby created Market.java and began adding various ways of sorting all the stocks in the market so lists like "hottest stocks" of a given length could be returned. He also added a percent change variable to stocks that look at the last 300 prices, eliminating the oldest form the queue storing them.
+Coby created Market.java and began adding various ways of sorting all the stocks in the market so lists like "hottest stocks" of a given length could be returned. He also added a percent change variable to stocks that look at the last 300 prices, eliminating the oldest form the queue storing them.
 
 6/2/14 Coby created News.java to store news items, began thinking about how to most efficiently implement tags on the news items reflecting what stocks they effect.
 
 6/4/14 Coby reorganized Market's methods based on what they do, and created a loop for Market that can be run from outside the class, which every 5 seconds updates prices in the market and runs market's necessary functions
+
+6/12/14 After a brief hiatus due to finals and final projects work has began again. Isaac added action listeners to all the buttons and reorganized the file structure to allow integration between the front and back ends. In that vein, Isaac connected the first 3 test stocks to StockScreen and MainFrame to get their buttons, action listeners and display functionality working. Next step is implementing this for all 10 stocks and further connecting the Market with the display.
