@@ -7,7 +7,7 @@ import javax.swing.*;
 import javax.swing.BorderFactory;
 
 public class HomeScreen extends JPanel {
-	private JButton viewStocksButton;
+	protected JButton viewStocksButton; // protected so that it can be accessed in MainFrame's actionlistener
 	private JLabel homeLabel;
 	private JLabel news;
 	private JLabel hotStocks;
@@ -80,6 +80,6 @@ public class HomeScreen extends JPanel {
 
 	}
     public void giveActionListener(ActionListener a) {
-	viewStocksButton.addActionListener(a);
+		viewStocksButton.addActionListener(a);
     }
 }

@@ -1,12 +1,14 @@
 import java.io.*;
 import java.util.*;
 import java.awt.*;
+import java.awt.event.*;
+import java.awt.event.ActionEvent;
 import javax.swing.*;
 import org.math.plot.*;
 
 public class StockScreen extends JPanel {
     private Plot2DPanel plot; // from jmathplots, it extends JPanel
-    private JButton backButton;
+    protected JButton backButton; // protected so that it can be accessed in MainFrame's actionlistener
     private JLabel tickerLabel;
     private JLabel stats;
     private JLabel news;
@@ -65,6 +67,10 @@ public class StockScreen extends JPanel {
 
     public void setTicker(String t) {
     	ticker = t;
+    }
+
+    public void giveActionListener(ActionListener a) {
+		backButton.addActionListener(a);
     }
     
 }
