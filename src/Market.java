@@ -194,4 +194,8 @@ public class Market{
 	
     }
 
+    public LinkedList<Stock> getStocks() {
+    	return stocks;
+    }
+
 }

@@ -7,7 +7,7 @@ import javax.swing.*;
 
 public class ViewStockScreen extends JPanel {
     protected JButton homeButton; // protected so that it can be accessed in MainFrame's actionlistener
-    protected JButton ticker1, ticker2, ticker3, ticker4, ticker5, ticker6, ticker7, ticker8, ticker9, ticker10;
+    protected final JButton AAPL, TSLA, GS, ticker4, ticker5, ticker6, ticker7, ticker8, ticker9, ticker10;
     private JLabel viewStocksLabel;
 
     public ViewStockScreen() { // eventually should take a ticker argument and display it accordingly
@@ -29,49 +29,59 @@ public class ViewStockScreen extends JPanel {
 		homeButton.setBounds(890, 10, 100, 30);
 
 		// Set up tickers
-		ticker1 = new JButton("Ticker1");
-		add(ticker1);
-		ticker1.setBounds(200, 125, 200, 50);
+		AAPL = new JButton("<html><b>Apple Inc.");
+		add(AAPL);
+		AAPL.setBounds(200, 125, 200, 50);
 
-		ticker2 = new JButton("Ticker2");
-		add(ticker2);
-		ticker2.setBounds(200, 225, 200, 50);
+		TSLA = new JButton("<html><b>Tesla Motors");
+		add(TSLA);
+		TSLA.setBounds(200, 225, 200, 50);
 		
-		ticker3 = new JButton("Ticker3");
-		add(ticker3);
-		ticker3.setBounds(200, 325, 200, 50);
+		GS = new JButton("<html><b>Goldman Sachs");
+		add(GS);
+		GS.setBounds(200, 325, 200, 50);
 
-		ticker4 = new JButton("Ticker4");
+		ticker4 = new JButton("<html><b>Ticker4");
 		add(ticker4);
 		ticker4.setBounds(200, 425, 200, 50);
 
-		ticker5 = new JButton("Ticker5");
+		ticker5 = new JButton("<html><b>Ticker5");
 		add(ticker5);
 		ticker5.setBounds(200, 525, 200, 50);
 
-		ticker6 = new JButton("Ticker6");
+		ticker6 = new JButton("<html><b>Ticker6");
 		add(ticker6);
 		ticker6.setBounds(600, 125, 200, 50);
 
-		ticker7 = new JButton("Ticker7");
+		ticker7 = new JButton("<html><b>Ticker7");
 		add(ticker7);
 		ticker7.setBounds(600, 225, 200, 50);
 
-		ticker8 = new JButton("Ticker8");
+		ticker8 = new JButton("<html><b>Ticker8");
 		add(ticker8);
 		ticker8.setBounds(600, 325, 200, 50);
 
-		ticker9 = new JButton("Ticker9");
+		ticker9 = new JButton("<html><b>Ticker9");
 		add(ticker9);
 		ticker9.setBounds(600, 425, 200, 50);
 
-		ticker10 = new JButton("Ticker10");
+		ticker10 = new JButton("<html><b>Ticker10");
 		add(ticker10);
 		ticker10.setBounds(600, 525, 200, 50);
     }
 
     public void giveActionListener(ActionListener a) {
 		homeButton.addActionListener(a);
+		AAPL.addActionListener(a);
+		TSLA.addActionListener(a);
+		GS.addActionListener(a);
+		ticker4.addActionListener(a);
+		ticker5.addActionListener(a);
+		ticker6.addActionListener(a);
+		ticker7.addActionListener(a);
+		ticker8.addActionListener(a);
+		ticker9.addActionListener(a);
+		ticker10.addActionListener(a);
     }
     
 }

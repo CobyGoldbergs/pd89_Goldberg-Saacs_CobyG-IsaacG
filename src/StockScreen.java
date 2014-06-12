@@ -13,15 +13,19 @@ public class StockScreen extends JPanel {
     private JLabel stats;
     private JLabel news;
 
-    private String ticker;
+    private Market market;
+    private Stock stock;
 
     public StockScreen() { // eventually should take a ticker argument and display it accordingly
 		setPreferredSize(new Dimension(1000, 650)); // set it to the same size as the container
 		setLayout(null); // it will be a card in the main deck
 		setBackground(Color.black);
 
+		market = new Market();
+		stock = market.getStocks().get(0);
+
 		// Set up the ticker label
-		tickerLabel = new JLabel("<html> <h1> <i>Ticker</i> </h1> </html>"); // should use ticker
+		tickerLabel = new JLabel("<html> <h1> <i>" + stock.getTicker() + "</i> </h1> </html>"); // should use ticker
 		tickerLabel.setBackground(Color.black);
 		tickerLabel.setForeground(Color.white);
 		add(tickerLabel); // add to panel
@@ -65,12 +69,13 @@ public class StockScreen extends JPanel {
 		news.setOpaque(true);
     }
 
-    public void setTicker(String t) {
-    	ticker = t;
-    }
-
     public void giveActionListener(ActionListener a) {
 		backButton.addActionListener(a);
+    }
+
+    public void setStock(int index) { // Used in mainframe when button is pressed from view stock screen
+    	stock = market.getStocks().get(index);
+    	tickerLabel.setText("<html> <h1> <i>" + stock.getTicker() + "</i> </h1> </html>");
     }
     
 }

@@ -56,6 +56,49 @@ public class MainFrame extends JFrame implements ActionListener{
 		else if (source.equals(viewStocks.homeButton)){
 			card.show(pane, "home");
 		}
+		else if (source.equals(viewStocks.AAPL)){
+			card.show(pane, "view");
+			stockScreen.setStock(0);
+		}
+		else if (source.equals(viewStocks.TSLA)){
+			card.show(pane, "view");
+			stockScreen.setStock(1);
+		}
+		else if (source.equals(viewStocks.GS)){
+			card.show(pane, "view");
+			stockScreen.setStock(2);
+		}
+		else if (source.equals(viewStocks.ticker4)){
+			card.show(pane, "view");
+			stockScreen.setStock(3);
+		}
+		else if (source.equals(viewStocks.ticker5)){
+			card.show(pane, "view");
+			stockScreen.setStock(4);
+		}
+		else if (source.equals(viewStocks.ticker6)){
+			card.show(pane, "view");
+			stockScreen.setStock(5);
+		}
+		else if (source.equals(viewStocks.ticker7)){
+			card.show(pane, "view");
+			stockScreen.setStock(6);
+		}
+		else if (source.equals(viewStocks.ticker8)){
+			card.show(pane, "view");
+			stockScreen.setStock(7);
+		}
+		else if (source.equals(viewStocks.ticker9)){
+			card.show(pane, "view");
+			stockScreen.setStock(8);
+		}
+		else if (source.equals(viewStocks.ticker10)){
+			card.show(pane, "view");
+			stockScreen.setStock(9);
+		}	
+		else if (source.equals(stockScreen.backButton)){
+			card.show(pane, "stock");
+		}
 	}
 	
 	public static void main(String[] args) {
