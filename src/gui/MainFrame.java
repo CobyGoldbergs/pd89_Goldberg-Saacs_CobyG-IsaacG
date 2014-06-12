@@ -1,7 +1,9 @@
 import java.awt.*;
+import java.awt.event.*;
+import java.awt.event.ActionEvent;
 import javax.swing.*;
 import javax.swing.SwingUtilities;
-public class MainFrame extends JFrame{
+public class MainFrame extends JFrame implements ActionListener{
     
     private JPanel pane; // Screen Holder
     private HomeScreen home;
@@ -24,7 +26,10 @@ public class MainFrame extends JFrame{
 	home = new HomeScreen(); // instantiate the home screen
 	stockScreen = new StockScreen(); // instantiate the stocks screen
 	viewStocks = new ViewStockScreen();
-	
+
+	// Give Action Listeners
+	home.giveActionListener(this);	
+
 	// put the screens in the deck
 	pane.add(home, "home");
 	pane.add(stockScreen, "view");
@@ -35,6 +40,11 @@ public class MainFrame extends JFrame{
 	pack(); // pack up the container
 
 	setLocationRelativeTo(null); // center it
+    }
+
+    public void actionPerformed(ActionEvent e) {
+	JButton source = (JButton) e.getSource();
+	CardLayout card = (CardLayout) pane.getLayout();
     }
     
     public static void main(String[] args) {

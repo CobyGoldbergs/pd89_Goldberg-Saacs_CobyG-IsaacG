@@ -1,6 +1,8 @@
 import java.io.*;
 import java.util.*;
 import java.awt.*;
+import java.awt.event.*;
+import java.awt.event.ActionEvent;
 import javax.swing.*;
 import javax.swing.BorderFactory;
 
@@ -77,5 +79,7 @@ public class HomeScreen extends JPanel {
 		myPort.setOpaque(true);
 
 	}
-
+    public void giveActionListener(ActionListener a) {
+	viewStocksButton.addActionListener(a);
+    }
 }
