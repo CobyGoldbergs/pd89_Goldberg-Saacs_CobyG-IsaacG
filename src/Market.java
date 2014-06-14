@@ -40,6 +40,39 @@ public class Market{
 	String info1 = "Apple invents new iPhone that does your comp sci project";
 	News n1 = new News(true, info1, new String[]{"AAPL"});
 	news.push(n1);
+	String info2 = "Federal reserves announces it will contract money supply. Investors be warned";
+	News n2 = new News(false, info2, new String[]{"AAPL", "TSLA", "GS", "JPM"});
+	news.push(n2);
+	String info3 = "Government will begin prosecuting several major financial CEOs for fraud";
+	News n3 = new News(false, info3, new String[]{"GS", "JPM"});
+	news.push(n3);
+	String info4 = "Tesla CEO Elon Musk announces car that runs on love";
+	News n4 = new News(true, info4, new String[]{"TSLA"});
+	news.push(n4);
+	String info5 = "Goldman Sacs opens a goat trading divsion, reaps record profits";
+	News n5 = new News(true, info5, new String[]{"GS"});
+	news.push(n5);
+	String info6 = "Apple sued for having actually stolen every single one of its ideas";
+	News n6 = new News(false, info6, new String[]{"AAPL"});
+	news.push(n6);
+	String info7 = "JP Morgan announces major losses due to bad investments in the Mets, upwards of 20 billion lost.";
+	News n7 = new News(false, info7, new String[]{"JPM"});
+	news.push(n7);
+	String info8 = "University of Michigan announces 87.3 Consumer Confidence Index, up 4 points from previous month.";
+	News n8 = new News(true, info8, new String[]{"GS", "JPM", "TSLA", "AAPL"});
+	news.push(n8);
+	String info9 = "Apple announces new product, iLive, lives life for you. Initial sale in the trillions of pesos.";
+	News n9 = new News(true, info9, new String[]{"AAPL"});
+	news.push(n9);
+	String info10 = "Tesla to open new factory in Central African Republic. Investors very excited about prospects";
+	News n10 = new News(true, info10, new String[]{"TSLA"});
+	news.push(n10);
+	String info11 = "Turns out there is a civil war in Central African Republican. Tesla factory screwed.";
+	News n11 = new News(false, info11, new String[]{"TSLA"});
+	news.push(n11);
+	String info12 = "Government shutodwn potent in thirty days";
+	News n12 = new News(false, info12, new String[]{"JPM", "GS"});
+	news.push(n12);
     }
 
     // MARKET RUNNERS
