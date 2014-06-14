@@ -66,7 +66,7 @@ public class ViewStockScreen extends JPanel {
 		ticker9.setBounds(600, 425, 200, 50);
 
 		RTN = new JButton("<html><b>Raytheon</b></html>");
-		add(ticker10);
+		add(ticker10); 
 		ticker10.setBounds(600, 525, 200, 50);
     }
 

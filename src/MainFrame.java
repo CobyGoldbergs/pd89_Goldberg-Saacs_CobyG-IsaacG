@@ -74,31 +74,31 @@ public class MainFrame extends JFrame implements ActionListener{
 			card.show(pane, "view");
 			stockScreen.setStock(2);
 		}
-		else if (source.equals(viewStocks.ticker4)){
+		else if (source.equals(viewStocks.JPM)){
 			card.show(pane, "view");
 			stockScreen.setStock(3);
 		}
-		else if (source.equals(viewStocks.ticker5)){
+		else if (source.equals(viewStocks.GOOG)){
 			card.show(pane, "view");
 			stockScreen.setStock(4);
 		}
-		else if (source.equals(viewStocks.ticker6)){
+		else if (source.equals(viewStocks.MSFT)){
 			card.show(pane, "view");
 			stockScreen.setStock(5);
 		}
-		else if (source.equals(viewStocks.ticker7)){
+		else if (source.equals(viewStocks.BAC)){
 			card.show(pane, "view");
 			stockScreen.setStock(6);
 		}
-		else if (source.equals(viewStocks.ticker8)){
+		else if (source.equals(viewStocks.TWTR)){
 			card.show(pane, "view");
 			stockScreen.setStock(7);
 		}
-		else if (source.equals(viewStocks.ticker9)){
+		else if (source.equals(viewStocks.FB)){
 			card.show(pane, "view");
 			stockScreen.setStock(8);
 		}
-		else if (source.equals(viewStocks.ticker10)){
+		else if (source.equals(viewStocks.RTN)){
 			card.show(pane, "view");
 			stockScreen.setStock(9);
 		}

@@ -35,18 +35,19 @@ public class Market{
 	stocks.add(stock3);
 	Stock stock4 = new Stock("JPM", 57.04, .07, .1, .3);
 	stocks.add(stock4);
-	Stock stock5 = new Stock("MSFT", 41.23, 1.1, .3, .3);
+	Stock stock5 = new Stock("GOOG", 551.76, .22, .89, .3);
 	stocks.add(stock5);
-	Stock stock6 = new Stock("BAC", 15.44, .19, .82, .3);
+	Stock stock6 = new Stock("MSFT", 41.23, 1.1, .3, .3);
 	stocks.add(stock6);
-	Stock stock7 = new Stock("TWTR", 36.90, -.84, .9, .3);
+	Stock stock7 = new Stock("BAC", 15.44, .19, .82, .3);
 	stocks.add(stock7);
-	Stock stock8 = new Stock("FB", 64.50, .28, .6, .3);
+	Stock stock8 = new Stock("TWTR", 36.90, -.84, .9, .3);
 	stocks.add(stock8);
-	Stock stock9 = new Stock("RTN", 96.59, .32, .61, .3);
+	Stock stock9 = new Stock("FB", 64.50, .28, .6, .3);
 	stocks.add(stock9);
-	Stock stock10 = new Stock("GOOG", 551.76, .22, .89, .3);
+	Stock stock10 = new Stock("RTN", 96.59, .32, .61, .3);
 	stocks.add(stock10);
+
     }
 
 // initializes all news
@@ -158,59 +159,59 @@ public class Market{
     //  METHODS TO RETURN STOCKS SORTED
 
     public LinkedList<Stock> getAlphabetizedStocks(){
-	stocks = qs.qsort(stocks, 0); // sorts by ticker name
-	return stocks;
+	LinkedList<Stock> sorted = qs.qsort(stocks, 0); // sorts by ticker name
+	return sorted;
     }
 
     // returns a list of the most expensive stocks
     public LinkedList<Stock> getExpensiveStocks(int quantity){
-	stocks = qs.qsort(stocks, 1); // sort by price
+	LinkedList<Stock> sorted = qs.qsort(stocks, 1); // sort by price
 	LinkedList<Stock> ret = new LinkedList<Stock>();
 
-	if (quantity > stocks.size())
-	    quantity = stocks.size();
+	if (quantity > sorted.size())
+	    quantity = sorted.size();
 
-	for (int i = stocks.size() - 1; i >= stocks.size() - quantity; i--)
-	    ret.add(stocks.get(i));
+	for (int i = sorted.size() - 1; i >= sorted.size() - quantity; i--)
+	    ret.add(sorted.get(i));
 	return ret;
     }
 
     public LinkedList<Stock> getCheapestStocks(int quantity){
-	stocks = qs.qsort(stocks, 1);
+	LinkedList<Stock> sorted = qs.qsort(stocks, 1);
 	LinkedList<Stock> ret = new LinkedList<Stock>();
 
-	if (quantity > stocks.size())
-	    quantity = stocks.size();
+	if (quantity > sorted.size())
+	    quantity = sorted.size();
 
 	for (int i = 0; i < quantity; i++)
-	    ret.add(stocks.get(i));
+	    ret.add(sorted.get(i));
 	return ret;
     }
 
     // return list of stocks with highest percent changes
     public LinkedList<Stock> getStrongestStocks(int quantity){
-	stocks = qs.qsort(stocks, 2); // sort by percentChange
+	LinkedList<Stock> sorted = qs.qsort(stocks, 2); // sort by percentChange
 	LinkedList<Stock> ret = new LinkedList<Stock>();
 
-	if (quantity > stocks.size())
-	    quantity = stocks.size();
+	if (quantity > sorted.size())
+	    quantity = sorted.size();
 
-	for (int i = stocks.size() - 1; i >= stocks.size() - quantity; i--){
-	    ret.add(stocks.get(i));
+	for (int i = sorted.size() - 1; i >= sorted.size() - quantity; i--){
+	    ret.add(sorted.get(i));
 	}
 	return ret;
     }
 
     // return list of stocks with weakest percent changes
     public LinkedList<Stock> getWeakestStocks(int quantity){
-	stocks = qs.qsort(stocks, 2); // sort by percentChange
+	LinkedList<Stock> sorted = qs.qsort(stocks, 2); // sort by percentChange
 	LinkedList<Stock> ret = new LinkedList<Stock>();
 
-	if (quantity > stocks.size())
-	    quantity = stocks.size();
+	if (quantity > sorted.size())
+	    quantity = sorted.size();
 
 	for (int i = 0; i < quantity; i++){
-	    ret.add(stocks.get(i));
+	    ret.add(sorted.get(i));
 	}
 	return ret;
     }
