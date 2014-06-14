@@ -29,10 +29,25 @@ public class Market{
 	Stock stock1 = new Stock("AAPL", 633.00, .74, .08, .3);
 	// ticker, price, beta, vol, market strength
 	stocks.add(stock1);
-	Stock stock2 = new Stock("TSLA", 133.22, -.74, 1.3, .3);
+	Stock stock2 = new Stock("TSLA", 133.22, .23, 1.3, .3);
 	stocks.add(stock2);
 	Stock stock3 = new Stock("GS", 150.10, .05, .9, .3);
 	stocks.add(stock3);
+	Stock stock4 = new Stock("JPM", 57.04, .07, .1, .3);
+	stocks.add(stock4);
+	Stock stock5 = new Stock("GOOG", 551.76, .22, .89, .3);
+	stocks.add(stock5);
+	Stock stock6 = new Stock("MSFT", 41.23, 1.1, .3, .3);
+	stocks.add(stock6);
+	Stock stock7 = new Stock("BAC", 15.44, .19, .82, .3);
+	stocks.add(stock7);
+	Stock stock8 = new Stock("TWTR", 36.90, -.84, .9, .3);
+	stocks.add(stock8);
+	Stock stock9 = new Stock("FB", 64.50, .28, .6, .3);
+	stocks.add(stock9);
+	Stock stock10 = new Stock("RTN", 96.59, .32, .61, .3);
+	stocks.add(stock10);
+
     }
 
 // initializes all news
@@ -41,10 +56,10 @@ public class Market{
 	News n1 = new News(true, info1, new String[]{"AAPL"});
 	news.push(n1);
 	String info2 = "Federal reserves announces it will contract money supply. Investors be warned";
-	News n2 = new News(false, info2, new String[]{"AAPL", "TSLA", "GS", "JPM"});
+	News n2 = new News(false, info2, new String[]{"AAPL", "TSLA", "GS", "JPM", "GOOG", "MSFT", "BAC", "TWTR", "FB", "RTN"});
 	news.push(n2);
 	String info3 = "Government will begin prosecuting several major financial CEOs for fraud";
-	News n3 = new News(false, info3, new String[]{"GS", "JPM"});
+	News n3 = new News(false, info3, new String[]{"GS", "JPM", "BAC"});
 	news.push(n3);
 	String info4 = "Tesla CEO Elon Musk announces car that runs on love";
 	News n4 = new News(true, info4, new String[]{"TSLA"});
@@ -59,7 +74,7 @@ public class Market{
 	News n7 = new News(false, info7, new String[]{"JPM"});
 	news.push(n7);
 	String info8 = "University of Michigan announces 87.3 Consumer Confidence Index, up 4 points from previous month.";
-	News n8 = new News(true, info8, new String[]{"GS", "JPM", "TSLA", "AAPL"});
+	News n8 = new News(true, info8, new String[]{"AAPL", "TSLA", "GS", "JPM", "GOOG", "MSFT", "BAC", "TWTR", "FB", "RTN"});
 	news.push(n8);
 	String info9 = "Apple announces new product, iLive, lives life for you. Initial sale in the trillions of pesos.";
 	News n9 = new News(true, info9, new String[]{"AAPL"});
@@ -71,8 +86,20 @@ public class Market{
 	News n11 = new News(false, info11, new String[]{"TSLA"});
 	news.push(n11);
 	String info12 = "Government shutodwn potent in thirty days";
-	News n12 = new News(false, info12, new String[]{"JPM", "GS"});
+	News n12 = new News(false, info12, new String[]{"AAPL", "TSLA", "GS", "JPM", "GOOG", "MSFT", "BAC", "TWTR", "FB", "RTN"});
 	news.push(n12);
+	String info13 = "France announced 300 billion dollar suit against Google for evaded taxes.";
+	News n13 = new News(false, info13, new String[]{"GOOG"});
+	news.push(n13);
+	String info14 = "Facebook announces major user growth in Asian markets.";
+	News n14 = new News(true, info14, new String[]{"FB"});
+	news.push(n14);
+	String info15 = "Twitter losing membership fast in North America as tweeter gains popularity";
+	News n15 = new News(false, info15, new String[]{"TWTR"});
+	news.push(n15);
+	String info16 = "Republicans in House will not back down on shutdown, says leadership";
+	News n16 = new News(false, info16, new String[]{"AAPL", "TSLA", "GS", "JPM", "GOOG", "MSFT", "BAC", "TWTR", "FB", "RTN"});
+	news.push(n16);
     }
 
     // MARKET RUNNERS
@@ -132,11 +159,12 @@ public class Market{
     // updates market strength and gives the new one to each market
     public void updateStrength(){
 	// method to change market strength value
+	double changeInStrength = 0.0; // can be neg or pos
 	Stock st;
 	// recurse through the market
 	for (int i = 0; i < stocks.size(); i++){
 	    st = stocks.get(i);
-	    st.setMarketStrength(marketStrength); // reset each stock's strength variable
+	    st.setMarketStrength(changeInStrength); // reset each stock's strength variable
 	}
     }
 
@@ -144,59 +172,59 @@ public class Market{
     //  METHODS TO RETURN STOCKS SORTED
 
     public LinkedList<Stock> getAlphabetizedStocks(){
-	stocks = qs.qsort(stocks, 0); // sorts by ticker name
-	return stocks;
+	LinkedList<Stock> sorted = qs.qsort(stocks, 0); // sorts by ticker name
+	return sorted;
     }
 
     // returns a list of the most expensive stocks
     public LinkedList<Stock> getExpensiveStocks(int quantity){
-	stocks = qs.qsort(stocks, 1); // sort by price
+	LinkedList<Stock> sorted = qs.qsort(stocks, 1); // sort by price
 	LinkedList<Stock> ret = new LinkedList<Stock>();
 
-	if (quantity > stocks.size())
-	    quantity = stocks.size();
+	if (quantity > sorted.size())
+	    quantity = sorted.size();
 
-	for (int i = stocks.size() - 1; i >= stocks.size() - quantity; i--)
-	    ret.add(stocks.get(i));
+	for (int i = sorted.size() - 1; i >= sorted.size() - quantity; i--)
+	    ret.add(sorted.get(i));
 	return ret;
     }
 
     public LinkedList<Stock> getCheapestStocks(int quantity){
-	stocks = qs.qsort(stocks, 1);
+	LinkedList<Stock> sorted = qs.qsort(stocks, 1);
 	LinkedList<Stock> ret = new LinkedList<Stock>();
 
-	if (quantity > stocks.size())
-	    quantity = stocks.size();
+	if (quantity > sorted.size())
+	    quantity = sorted.size();
 
 	for (int i = 0; i < quantity; i++)
-	    ret.add(stocks.get(i));
+	    ret.add(sorted.get(i));
 	return ret;
     }
 
     // return list of stocks with highest percent changes
     public LinkedList<Stock> getStrongestStocks(int quantity){
-	stocks = qs.qsort(stocks, 2); // sort by percentChange
+	LinkedList<Stock> sorted = qs.qsort(stocks, 2); // sort by percentChange
 	LinkedList<Stock> ret = new LinkedList<Stock>();
 
-	if (quantity > stocks.size())
-	    quantity = stocks.size();
+	if (quantity > sorted.size())
+	    quantity = sorted.size();
 
-	for (int i = stocks.size() - 1; i >= stocks.size() - quantity; i--){
-	    ret.add(stocks.get(i));
+	for (int i = sorted.size() - 1; i >= sorted.size() - quantity; i--){
+	    ret.add(sorted.get(i));
 	}
 	return ret;
     }
 
     // return list of stocks with weakest percent changes
     public LinkedList<Stock> getWeakestStocks(int quantity){
-	stocks = qs.qsort(stocks, 2); // sort by percentChange
+	LinkedList<Stock> sorted = qs.qsort(stocks, 2); // sort by percentChange
 	LinkedList<Stock> ret = new LinkedList<Stock>();
 
-	if (quantity > stocks.size())
-	    quantity = stocks.size();
+	if (quantity > sorted.size())
+	    quantity = sorted.size();
 
 	for (int i = 0; i < quantity; i++){
-	    ret.add(stocks.get(i));
+	    ret.add(sorted.get(i));
 	}
 	return ret;
     }

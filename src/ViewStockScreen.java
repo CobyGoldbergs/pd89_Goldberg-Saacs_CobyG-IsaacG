@@ -41,32 +41,32 @@ public class ViewStockScreen extends JPanel {
 		add(GS);
 		GS.setBounds(200, 325, 200, 50);
 
-		ticker4 = new JButton("<html><b>Ticker4</b></html>");
+		JPM = new JButton("<html><b>JP Morgan</b></html>");
 		add(ticker4);
 		ticker4.setBounds(200, 425, 200, 50);
 
-		ticker5 = new JButton("<html><b>Ticker5</b></html>");
+		GOOG = new JButton("<html><b>Google Inc.</b></html>");
 		add(ticker5);
 		ticker5.setBounds(200, 525, 200, 50);
 
-		ticker6 = new JButton("<html><b>Ticker6</b></html>");
+		MSFT = new JButton("<html><b>Microsoft Corp.</b></html>");
 		add(ticker6);
 		ticker6.setBounds(600, 125, 200, 50);
 
-		ticker7 = new JButton("<html><b>Ticker7</b></html>");
+		BAC = new JButton("<html><b>Bank of America</b></html>");
 		add(ticker7);
 		ticker7.setBounds(600, 225, 200, 50);
 
-		ticker8 = new JButton("<html><b>Ticker8</b></html>");
+		TWTR = new JButton("<html><b>Twitter Inc.</b></html>");
 		add(ticker8);
 		ticker8.setBounds(600, 325, 200, 50);
 
-		ticker9 = new JButton("<html><b>Ticker9</b></html>");
+		FB = new JButton("<html><b>Facebook Inc.</b></html>");
 		add(ticker9);
 		ticker9.setBounds(600, 425, 200, 50);
 
-		ticker10 = new JButton("<html><b>Ticker10</b></html>");
-		add(ticker10);
+		RTN = new JButton("<html><b>Raytheon</b></html>");
+		add(ticker10); 
 		ticker10.setBounds(600, 525, 200, 50);
     }
 
