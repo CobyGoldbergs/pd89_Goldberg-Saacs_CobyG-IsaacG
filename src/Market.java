@@ -56,10 +56,10 @@ public class Market{
 	News n1 = new News(true, info1, new String[]{"AAPL"});
 	news.push(n1);
 	String info2 = "Federal reserves announces it will contract money supply. Investors be warned";
-	News n2 = new News(false, info2, new String[]{"AAPL", "TSLA", "GS", "JPM"});
+	News n2 = new News(false, info2, new String[]{"AAPL", "TSLA", "GS", "JPM", "GOOG", "MSFT", "BAC", "TWTR", "FB", "RTN"});
 	news.push(n2);
 	String info3 = "Government will begin prosecuting several major financial CEOs for fraud";
-	News n3 = new News(false, info3, new String[]{"GS", "JPM"});
+	News n3 = new News(false, info3, new String[]{"GS", "JPM", "BAC"});
 	news.push(n3);
 	String info4 = "Tesla CEO Elon Musk announces car that runs on love";
 	News n4 = new News(true, info4, new String[]{"TSLA"});
@@ -74,7 +74,7 @@ public class Market{
 	News n7 = new News(false, info7, new String[]{"JPM"});
 	news.push(n7);
 	String info8 = "University of Michigan announces 87.3 Consumer Confidence Index, up 4 points from previous month.";
-	News n8 = new News(true, info8, new String[]{"GS", "JPM", "TSLA", "AAPL"});
+	News n8 = new News(true, info8, new String[]{"AAPL", "TSLA", "GS", "JPM", "GOOG", "MSFT", "BAC", "TWTR", "FB", "RTN"});
 	news.push(n8);
 	String info9 = "Apple announces new product, iLive, lives life for you. Initial sale in the trillions of pesos.";
 	News n9 = new News(true, info9, new String[]{"AAPL"});
@@ -86,8 +86,20 @@ public class Market{
 	News n11 = new News(false, info11, new String[]{"TSLA"});
 	news.push(n11);
 	String info12 = "Government shutodwn potent in thirty days";
-	News n12 = new News(false, info12, new String[]{"JPM", "GS"});
+	News n12 = new News(false, info12, new String[]{"AAPL", "TSLA", "GS", "JPM", "GOOG", "MSFT", "BAC", "TWTR", "FB", "RTN"});
 	news.push(n12);
+	String info13 = "France announced 300 billion dollar suit against Google for evaded taxes.";
+	News n13 = new News(false, info13, new String[]{"GOOG"});
+	news.push(n13);
+	String info14 = "Facebook announces major user growth in Asian markets.";
+	News n14 = new News(true, info14, new String[]{"FB"});
+	news.push(n14);
+	String info15 = "Twitter losing membership fast in North America as tweeter gains popularity";
+	News n15 = new News(false, info15, new String[]{"TWTR"});
+	news.push(n15);
+	String info16 = "Republicans in House will not back down on shutdown, says leadership";
+	News n16 = new News(false, info16, new String[]{"AAPL", "TSLA", "GS", "JPM", "GOOG", "MSFT", "BAC", "TWTR", "FB", "RTN"});
+	news.push(n16);
     }
 
     // MARKET RUNNERS
@@ -147,11 +159,12 @@ public class Market{
     // updates market strength and gives the new one to each market
     public void updateStrength(){
 	// method to change market strength value
+	double changeInStrength = 0.0; // can be neg or pos
 	Stock st;
 	// recurse through the market
 	for (int i = 0; i < stocks.size(); i++){
 	    st = stocks.get(i);
-	    st.setMarketStrength(marketStrength); // reset each stock's strength variable
+	    st.setMarketStrength(changeInStrength); // reset each stock's strength variable
 	}
     }
 
