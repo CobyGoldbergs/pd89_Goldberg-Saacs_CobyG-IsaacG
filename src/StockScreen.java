@@ -10,8 +10,13 @@ public class StockScreen extends JPanel {
     private Plot2DPanel plot; // from jmathplots, it extends JPanel
     protected JButton backButton; // protected so that it can be accessed in MainFrame's actionlistener
     private JLabel tickerLabel;
-    private JLabel stats;
-    private JLabel news;
+    private JLabel statsLabel;
+    private JLabel newsLabel;
+
+    private JTextField quantity;
+    protected JButton buyButton, sellButton;
+    private JLabel buyLabel;
+    private JLabel quantityLabel;
 
     private Market market;
     private Stock stock;
@@ -51,22 +56,46 @@ public class StockScreen extends JPanel {
 		statsText += "<h3 style='padding:5'>Coby is whack</h3></html>";
 		// statsText += getStats(); --> implement later
 
-		stats = new JLabel(statsText, SwingConstants.CENTER);
-		stats.setBorder(BorderFactory.createLoweredBevelBorder());
-		add(stats);
-		stats.setBounds(10, 50,150, 390);
-		stats.setOpaque(true);
+		statsLabel = new JLabel(statsText, SwingConstants.CENTER);
+		statsLabel.setBorder(BorderFactory.createLoweredBevelBorder());
+		add(statsLabel);
+		statsLabel.setBounds(10, 50,150, 390);
+		statsLabel.setOpaque(true);
 
 		// Set up news label
 		String newsText = "<html><h1 align='center'; style='padding:5';> NEWS </h1>"; // add the text to the news panel
 		newsText += "<h3 style='padding:5'>Coby is whack</h3></html>";
 		// newsText += getNews(); --> implement later
 		
-		news = new JLabel(newsText, SwingConstants.CENTER); // instantiate news panel and give it a border
-		news.setBorder(BorderFactory.createLoweredBevelBorder());
-		add(news); // add and position news panel
-		news.setBounds(10, 450, 980, 190);
-		news.setOpaque(true);
+		newsLabel = new JLabel(newsText, SwingConstants.CENTER); // instantiate news panel and give it a border
+		newsLabel.setBorder(BorderFactory.createLoweredBevelBorder());
+		add(newsLabel); // add and position newsLabel panel
+		newsLabel.setBounds(10, 450, 540, 190);
+		newsLabel.setOpaque(true);
+
+		buyLabel = new JLabel("<html> <h2> <i>Buy/Sell Stock in " + stock.getTicker() +"</i> </h2> </html>");
+		buyLabel.setBounds(700, 450, 220, 50);
+		buyLabel.setBackground(Color.black);
+		buyLabel.setForeground(Color.white);
+		add(buyLabel);
+
+		quantityLabel = new JLabel("<html> <h3> <i>Enter Quantity:");
+		quantityLabel.setBounds(680, 500, 120, 30);
+		quantityLabel.setBackground(Color.black);
+		quantityLabel.setForeground(Color.white);
+		add(quantityLabel);
+
+		quantity = new JTextField();
+		quantity.setBounds(795, 500, 120, 30);
+		add(quantity);
+
+		buyButton = new JButton("Buy");
+		buyButton.setBounds(730, 540, 100, 30);
+		add(buyButton);
+
+		sellButton = new JButton("Buy");
+		sellButton.setBounds(730, 580, 100, 30);
+		add(sellButton);
     }
 
     public void giveActionListener(ActionListener a) {
