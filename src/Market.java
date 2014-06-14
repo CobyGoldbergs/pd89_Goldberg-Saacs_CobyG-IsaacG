@@ -100,6 +100,33 @@ public class Market{
 	String info16 = "Republicans in House will not back down on shutdown, says leadership";
 	News n16 = new News(false, info16, new String[]{"AAPL", "TSLA", "GS", "JPM", "GOOG", "MSFT", "BAC", "TWTR", "FB", "RTN"});
 	news.push(n16);
+	String info17 = "North Korean markets now open to all social media, Kim Jung Ill announces";
+	News n17 = new News(true, info17, new String[]{"FB", "TWTR"});
+	news.push(n17);
+	String info18 = "New 'Cat of Wall Street' makes record gains for JP Morgan";
+	News n18 = new News(true, info18, new String[]{"JPM"});
+	news.push(n18);
+	String info19 = "Obama announces budget deal, funds government for four months";
+	News n19 = new News(true, info19, new String[]{"AAPL", "TSLA", "GS", "JPM", "GOOG", "MSFT", "BAC", "TWTR", "FB", "RTN"});
+	news.push(n19);
+	String info20 = "Raytheon announces deal as 'Official weapons provider of the USA'";
+	News n20 = new News(true, info20, new String[]{"RTN"});
+	news.push(n20);
+	String info21 = "Tesla's 'Love Car' sales through the roof, draws praise from environmental activists";
+	News n21 = new News(true, info21, new String[]{"TSLA"});
+	news.push(n21);
+	String info22 = "Job growth falls 100,000 short of expectations for past month";
+	News n22 = new News(false, info22, new String[]{"AAPL", "TSLA", "GS", "JPM", "GOOG", "MSFT", "BAC", "TWTR", "FB", "RTN"});
+	news.push(n22);
+	String info23 = "Cat of Wall Street under charges for fraud, as is much of JPM";
+	News n23 = new News(false, info23, new String[]{"JPM"});
+	news.push(n23);
+	String info24 = "Ron Paul announces potential candidacy for President again, polling looks good, plans to end the government";
+	News n24 = new News(false, info24, new String[]{"AAPL", "TSLA", "GS", "JPM", "GOOG", "MSFT", "BAC", "TWTR", "FB", "RTN"});
+	news.push(n24);
+	String info25 = "Google settles suit with France for 50 billion pesos, many believe they dodged a bullet";
+	News n25 = new News(true, info25, new String[]{"GOOG"});
+	news.push(n25);
     }
 
     // MARKET RUNNERS
@@ -112,7 +139,7 @@ public class Market{
 
 	    // randomly assign new news
 	    Random r = new Random();
-	    if (r.nextInt(100) == 0)
+	    if (r.nextInt(50) == 0)
 		applyNews();
 	    priceUpdate();
 	    updateIndexVal();
@@ -170,6 +197,10 @@ public class Market{
 
 
     //  METHODS TO RETURN STOCKS SORTED
+
+    public LinkedList<Stock> getStocks() {
+    	return stocks;
+    }
 
     public LinkedList<Stock> getAlphabetizedStocks(){
 	LinkedList<Stock> sorted = qs.qsort(stocks, 0); // sorts by ticker name
@@ -255,8 +286,6 @@ public class Market{
 	
     }
 
-    public LinkedList<Stock> getStocks() {
-    	return stocks;
-    }
+
 
 }

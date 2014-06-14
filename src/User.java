@@ -15,7 +15,7 @@ public class User{
     
     public LinkedList<StockPosition> getPortfolio(){return portfolio;}
 
-    public void buyStock(Stock st, int numShares){
+    public String buyStock(Stock st, int numShares){
 	if (money > numShares * st.getPrice()){ // they have enough money
 	    money = money - st.getPrice() * numShares; // decrement money
 	    portfolio = qs.qsort(portfolio, 0); // 0 sorts by ticker name
@@ -34,17 +34,19 @@ public class User{
 	    if (index == -1){ // stock not currently owned
 		StockPosition sp = new StockPosition(st, numShares);
 		portfolio.add(sp);
+	        return "Purchased your first " + numShares + " shares";
 	    }
 	    else{
 		portfolio.get(index).addShares(numShares); // add the shares to existing position
+		return "Purchased another " + numShares + " shares";
 	    }
 	}
 	else{
-	    System.out.println("Not enough money."); // what should this actually be
+	    return "Insufficient funds.";
 	}
     }
 
-    public void sellStock(Stock st, int numShares){
+    public String sellStock(Stock st, int numShares){
 	portfolio = qs.qsort(portfolio, 0); // 0 sorts by ticker name
 	int index = -1;
 	// check if they already own some shares in that stock
@@ -60,11 +62,14 @@ public class User{
 	}
 	int sharesOwned = portfolio.get(index).getNumShares();
 	if (index == -1)
-	    System.out.println("Stock not owned");
+	    return "Invalid stock";
 	else if (sharesOwned < numShares)
-	    System.out.println("Not enough shares to sell. Try " + sharesOwned + " shares.");
-	else
+	    return "You do not own sufficient shares";
+	else{
 	    portfolio.get(index).sellShares(numShares);
+	    return "Sold " + numShares + " shares";
+	}
+	
     }
 
 }
