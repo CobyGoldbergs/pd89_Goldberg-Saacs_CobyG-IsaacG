@@ -127,24 +127,39 @@ public class Market{
 	String info25 = "Google settles suit with France for 50 billion pesos, many believe they dodged a bullet";
 	News n25 = new News(true, info25, new String[]{"GOOG"});
 	news.push(n25);
+	String info26 = "Apple to start paying its Chinese workers, investors happy";
+	News n26 = new News(true, info26, new String[]{"AAPL"});
+	news.push(n26);
+	String info27 = "China to allow Google services free of censoring, Google to expand Asian operations";
+	News n27 = new News(true, info27, new String[]{"GOOG"});
+	news.push(n27);
+	String info28 = "Sales of Apple's iPhone 8 through the roof";
+	News n28 = new News(true, info28, new String[]{"AAPL"});
+	news.push(n28);
+	String info29 = "Twitter loses a lot of customers";
+	News n29 = new News(false, info29, new String[]{"TWTR"});
+	news.push(n29);
+	String info30 = "Raytheon hires new CEO, great trackrecord";
+	News n30 = new News(true, info30, new String[]{"RTN"});
+	news.push(n30);
     }
 
     // MARKET RUNNERS
 
     // method that updates the market  every 5 seconds
     public void updateMarket(){
-	time1 = System.currentTimeMillis();
+	/*time1 = System.currentTimeMillis();
 	if ((time1 - time) > 5000){
-	    time = System.currentTimeMillis();
+	time = System.currentTimeMillis();*/
 
 	    // randomly assign new news
 	    Random r = new Random();
-	    if (r.nextInt(50) == 0)
+	    if (r.nextInt(50) == 0 && !news.empty())
 		applyNews();
 	    priceUpdate();
 	    updateIndexVal();
 	    updateStrength();
-	}
+	
     }
 
     // tells each effected stock of new news
@@ -264,11 +279,15 @@ public class Market{
     public static void main(String[] args){
 	Market m = new Market();
 	LinkedList<Stock> tp = m.getAlphabetizedStocks();
-	for (int i = 0; i < 40000; i++)
-	    for (Stock a : tp)
-		a.priceUpdate();
+	for (int i = 0; i < 4000; i++){
+	    m.updateMarket();
+	}
 	tp =  m.getStrongestStocks(4);
 	System.out.println("Strongest: ");
+	for (Stock a : tp)
+	    System.out.println(a + " Percent change: " + a.getPercentChange());
+	tp =  m.getWeakestStocks(4);
+	System.out.println("Weakest: ");
 	for (Stock a : tp)
 	    System.out.println(a + " Percent change: " + a.getPercentChange());
 	tp =  m.getExpensiveStocks(4);

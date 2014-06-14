@@ -3,6 +3,7 @@ import java.awt.event.*;
 import java.awt.event.ActionEvent;
 import javax.swing.*;
 import javax.swing.SwingUtilities;
+
 public class MainFrame extends JFrame implements ActionListener{
 
     private JPanel pane; // Screen Holder
@@ -27,7 +28,7 @@ public class MainFrame extends JFrame implements ActionListener{
 	pane.setLayout(new CardLayout()); // create the main window holder and make it a deck
 	market = new Market();
 		
-	home = new HomeScreen(); // instantiate the home screen
+	home = new HomeScreen(market); // instantiate the home screen
 	stockScreen = new StockScreen(market); // instantiate the stocks screen
 	viewStocks = new ViewStockScreen();
 
@@ -36,7 +37,7 @@ public class MainFrame extends JFrame implements ActionListener{
 	// Give Action Listeners
 	home.giveActionListener(this);
 	viewStocks.giveActionListener(this);
-	stockScreen.giveActionListener(this);	
+	stockScreen.giveActionListener(this);
 	
 	// put the screens in the deck
 	pane.add(home, "home");
@@ -51,6 +52,8 @@ public class MainFrame extends JFrame implements ActionListener{
 
 	// Test
 	Market market = new Market();
+	for (int i = 0; i < 1000; i++)
+	    market.updateMarket();
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -124,36 +127,41 @@ public class MainFrame extends JFrame implements ActionListener{
 	    card.show(pane, "stock");
 	}
 
+	// Stock screen's purchase/ sale methods
 	else if (source.equals(stockScreen.buyButton)){
 	    Stock purchasing = market.getStocks().get(curTick);
 	    String quantityStr = stockScreen.quantity.getText();
 	    try {
 		int quant = (int)(Integer.parseInt(quantityStr));
 		String message = user.buyStock(purchasing, quant); // what is the result
-		stockScreen.errorMessage.setText("<html> <h3> <i>" + message);
+		System.out.println(message);
+		stockScreen.errorMessage.setText("<html> <h4> <i>" + message + "</i> </h4> </html>");
 		stockScreen.errorMessage.setForeground(Color.white);
 	    }
 	    catch( Exception f ) {
-		stockScreen.errorMessage.setText("<html> <h3> <i>Invalid entry");
+		stockScreen.errorMessage.setText("<html> <h4> <i>Invalid entry" + "</i> </h4> </html>") ;
 		stockScreen.errorMessage.setForeground(Color.white);
 	    }
 	}
 
 	else if (source.equals(stockScreen.sellButton)){
 	    Stock purchasing = market.getStocks().get(curTick);
+	    System.out.println("Works");
 	    String quantityStr = stockScreen.quantity.getText();
 	    try {
 		int quant = (int)(Integer.parseInt(quantityStr));
 		String message = user.sellStock(purchasing, quant);
-		stockScreen.errorMessage.setText("<html> <h3> <i>" + message);
+		stockScreen.errorMessage.setText("<html> <h4> <i>" + message + "</i> </h4> </html>");
 		stockScreen.errorMessage.setForeground(Color.white);
 	    }
 	    catch( Exception f ) {
-		stockScreen.errorMessage.setText("<html> <h3> <i>Invalid entry");
+		stockScreen.errorMessage.setText("<html> <h4> <i> Invalid entry </i> </h4> </html>");
 		stockScreen.errorMessage.setForeground(Color.white);
 	    }
 	}
     }
+
+    public Market getMarket(){ return market;}
 	
     public static void main(String[] args) {
 	SwingUtilities.invokeLater(new Runnable() {
@@ -161,5 +169,5 @@ public class MainFrame extends JFrame implements ActionListener{
 		    MainFrame f = new MainFrame();
 		}
 	    }); // places frame in swing event queue so it can run smoothly
-    }   
+    }
 }

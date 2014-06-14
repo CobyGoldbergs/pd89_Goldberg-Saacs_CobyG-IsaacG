@@ -54,7 +54,7 @@ public class StockScreen extends JPanel {
 
 	//Set up stats label
 	String statsText = "<html><h1 align='center'; style='padding:5';> STATS </h1>"; // add the text to the stats panel
-	statsText += "<h3 style='padding:5'>Coby is whack</h3></html>";
+	statsText += "<h3 style='padding:5'></h3></html>";
 	// statsText += getStats(); --> implement later
 
 	statsLabel = new JLabel(statsText, SwingConstants.CENTER);
@@ -87,9 +87,9 @@ public class StockScreen extends JPanel {
 	add(quantityLabel);
 
 	errorMessage = new JLabel("<html> <h3> <i>Invalid Entry:");
-	quantityLabel.setBounds(1000, 500, 120, 30);
-	quantityLabel.setBackground(Color.black);
-	quantityLabel.setForeground(Color.white);
+	errorMessage.setBounds(900, 525, 120, 30);
+	errorMessage.setBackground(Color.black);
+	errorMessage.setForeground(Color.white);
 	add(errorMessage);
 
 	quantity = new JTextField();
@@ -114,6 +114,6 @@ public class StockScreen extends JPanel {
     public void setStock(int index) { // Used in mainframe when button is pressed from view stock screen
     	stock = market.getStocks().get(index);
     	tickerLabel.setText("<html> <h1> <i>" + stock.getTicker() + "</i> </h1> </html>");
+	statsLabel.setText("STATS \n" + "Beta: " + stock.getBeta() + "\n Volatility: " + stock.getVolatility() + "\n Change: " + stock.getPercentChange() + "\n Price: " + stock.getPrice());
     }
-    
 }

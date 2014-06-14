@@ -8,6 +8,7 @@ public class Stock{
     private double beta; // degree to which stock mirrors market. b > 1 means exaggerated response to market movement. b < -1 means exaggerated response in opposite direction of market
     private double volatility; // degree to which stock fluctuates
     private double marketStrength; // measure of market as a whole between -1 and 1
+    private double stockStrength; // health of company
     private RunMed bids; // a running median counter of bids
     private RunMed asks; // a running median counter of asks
     private LinkedList<Double> pastPrices; // for use in calculating percent change
@@ -25,6 +26,7 @@ public class Stock{
 	bids = new RunMed();
 	asks = new RunMed();
 	price = p;
+	stockStrength = 0.0;
 	percentChange = 0.0;
 	pastPrices = new LinkedList<Double>();
 	// add code to use 50 and 200 day mva
@@ -65,9 +67,9 @@ public class Stock{
 	Random r = new Random();
 	if (marketStrength == 0)
 	    marketStrength += .01;
-	double marketEffect = marketStrength * beta; // strength less than one causes decrease in price, beta exaggerates/ mitigate's market's effect
+	double marketEffect = marketStrength * beta + stockStrength; // strength less than one causes decrease in price, beta exaggerates/ mitigate's market's effect
 	double d = r.nextDouble() * volatility * marketEffect; // higher volatility makes new purchase deviate further from current price
-	int marketSentiment = (int)(marketStrength * 10) + 1; // +1 meant to avoid errors on nextInt when strength is zero
+	int marketSentiment = Math.abs((int)(marketStrength * 10)) + 1; // +1 meant to avoid errors on nextInt when strength is zero
 	marketSentiment = Math.abs(marketSentiment); // for use in next int
 	if (r.nextInt(marketSentiment) == 1)
 	    d = 0-d; // adds degree of fluctuation. A market sentiment closer to zero is more likely to yield a reverse in direction of price
@@ -98,9 +100,9 @@ public class Stock{
     public void applyNews(News news){
 	boolean effect = news.getEffect();
 	if (effect)
-	    marketStrength += .1;
+	    stockStrength += .1;
 	else
-	    marketStrength -= .1;
+	    stockStrength -= .1;
     }
 
     public String toString(){
