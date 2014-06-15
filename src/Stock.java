@@ -78,7 +78,7 @@ public class Stock{
     public void updatePercent(){
 	pastPrices.add(price);
 	if (pastPrices.size() > 300)
-	    pastPrices.remove(); // remove oldest price if it's too long
+	    pastPrices.remove(); // remove oldest price after 300 passed
 	double oldP = pastPrices.peek(); // oldest value in queue
 	percentChange = ((price - oldP)/price) * 100;
 	percentChange = (double)(Math.round(percentChange * 100)) / 100; // rounds to 10th
@@ -98,12 +98,22 @@ public class Stock{
 	marketStrength += ms;
     }
 
+    // creates a reaction in the market to news
     public void applyNews(News news){
 	boolean effect = news.getEffect();
 	if (effect)
 	    stockStrength += .2;
 	else
 	    stockStrength -= .2;
+    }
+
+    // returns list of the last num prices
+    public LinkedList<Double> getPastPrices(int num){
+	LinkedList<Double> ret = new LinkedList<Double>(); // to be returned
+	int listSize = pastPrices.size(); // to avoid multiple calls
+	for (int i = num; i > 0; i--)
+	    ret.add(pastPrices.get(listSize - i));
+	return ret;
     }
 
     public String toString(){
