@@ -97,11 +97,8 @@ public class Stock{
 
     // creates a reaction in the market to news
     public void applyNews(News news){
-	boolean effect = news.getEffect();
-	if (effect)
-	    stockStrength += .2;
-	else
-	    stockStrength -= .2;
+	double effect = news.getEffect();
+	stockStrength += effect;
     }
 
     // returns list of the last num prices
@@ -110,8 +107,8 @@ public class Stock{
 	int listSize = pastPrices.size(); // to avoid multiple calls
 	for (int i = num; i > 0; i--)
 	    ret[num - i] = pastPrices.get(listSize - i);
-	for (int i = 0; i < ret.length; i++)
-	    System.out.println(ret[i]);
+	/*for (int i = 0; i < ret.length; i++)
+	  System.out.println(ret[i]);*/ // for testing
 	return ret;
     }
 
@@ -119,13 +116,14 @@ public class Stock{
 	return ticker;
     }
 
+    // for testing
     public static void main(String[] args){
 	Stock st = new Stock("AAPL", .2, .7, .3); 
 	// ticker name, start price, beta, volatility,  market strength
 	for (int i = 0; i < 100; i++){
 	    st.priceUpdate();
-	    System.out.println("Price: " + st.getPrice() + "$");
-	    System.out.println("Percent change: " + st.getPercentChange() + "%");
+	    //System.out.println("Price: " + st.getPrice() + "$"); for testing
+	    //System.out.println("Percent change: " + st.getPercentChange() + "%");
 	}
 	System.out.println("Last eight prices: " + st.getPastPrices(8));
 	for (int i = 0; i < 100; i++){
@@ -134,7 +132,7 @@ public class Stock{
 	    System.out.println("Percent change: " + st.getPercentChange() + "%");
 	}
 	System.out.println("Last eight prices: " + st.getPastPrices(8));
-    }
+	}
 
 
 
