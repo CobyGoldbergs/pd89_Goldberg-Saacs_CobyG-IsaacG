@@ -9,8 +9,6 @@ public class Market{
     private Stack<News> news;
     private LinkedList<News> appliedNews; // old news, never to be longer than 4
     private String ticker;
-    private long time;
-    private long time1;
     
     public Market(){
 	fillMarket(); // method to add stocks to market
@@ -20,8 +18,6 @@ public class Market{
 	news = new Stack<News>();
 	createNews(); // creates news items
 	appliedNews = new LinkedList<News>();
-	time = System.currentTimeMillis();
-	time1 = System.currentTimeMillis();
     }
 
     // INITIALIZE HELPERS
@@ -177,7 +173,7 @@ public class Market{
 		Stock checking = stocks.get(j);
 		String tick = checking.getTicker();
 		if (searching.equals(tick)){
-		    checking.applyNews(item);
+		    checking.applyNews(item); // stock's applyNews method
 		    break;
 		}
 	    }
@@ -274,7 +270,7 @@ public class Market{
 
     public LinkedList<News> getOldNews(){
 	while (appliedNews.size() > 4)
-	    appliedNews.removeFirst();
+	    appliedNews.removeLast();
 	return appliedNews;
     }
 
@@ -296,7 +292,9 @@ public class Market{
     public static void main(String[] args){
 	Market m = new Market();
 	LinkedList<Stock> tp = m.getAlphabetizedStocks();
-	for (int i = 0; i < 4000; i++){
+for (Stock a : tp)
+	    System.out.println(a);
+	for (int i = 0; i < 40000; i++){
 	    m.updateMarket();
 	}
 	tp =  m.getStrongestStocks(4);

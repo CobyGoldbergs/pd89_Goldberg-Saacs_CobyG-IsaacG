@@ -114,6 +114,22 @@ public class StockScreen extends JPanel {
     public void setStock(String ticker) { // Used in mainframe when button is pressed from view stock screen
     	stock = market.getStockTicker(ticker);
     	tickerLabel.setText("<html> <h1> <i>" + stock.getTicker() + "</i> </h1> </html>");
-	statsLabel.setText("STATS \n" + "Beta: " + stock.getBeta() + "\n Volatility: " + stock.getVolatility() + "\n Change: " + stock.getPercentChange() + "\n Price: " + stock.getPrice());
+	statsLabel.setText("<html><h1>STATS</h1><h3>" + "Beta: " + stock.getBeta() + "<br> Volatility: " + stock.getVolatility() + "<br> Change: " + stock.getPercentChange() + "<br> Price: " + stock.getPrice() + "</h3></html>");
+
+	// reset what is displayed around buy/ sell options
+	buyLabel.setText("<html> <h2> <i>Buy/Sell Stock in " + stock.getTicker() +"</i> </h2> </html>");
+	errorMessage.setText("");
+	quantity.setText("");
+
+	// reseting news displayed
+	String newsText = "<html><h1 align='center'; style='padding:5';> NEWS </h1><h3 style='padding:5'>"; // add the text to the news panel
+	LinkedList<News> oldNews = market.getOldNews();
+	for (int i = 0; i < oldNews.size(); i++){
+	    int num = i+1;
+	    newsText += num + ") " + oldNews.get(i).getInfo() + "<br>";
+	}
+	newsText += "</h3></html>";
+	newsLabel.setText(newsText);
+
     }
 }

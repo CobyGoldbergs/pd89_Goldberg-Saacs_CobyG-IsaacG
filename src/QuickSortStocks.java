@@ -4,9 +4,11 @@ public class QuickSortStocks {
 
 
     public static void swap( int x, int y, LinkedList<Stock> o ) {
-	Stock tmp = o.get(x);
-	o.set(x, o.get(y));
-	o.set(y, tmp);
+		System.out.println("Swapping " + o.get(x).getTicker() + " and "+  o.get(y).getTicker());	
+		Stock tmp = o.get(x);
+		o.set(x, o.get(y));
+		o.set(y, tmp);
+	System.out.println("Now they are " + o.get(x).getTicker() + " and "+  o.get(y).getTicker());	
     }
 
     public LinkedList<Stock> qsort( LinkedList<Stock> a, int comparing ) { 
@@ -132,8 +134,9 @@ public class QuickSortStocks {
 	    while( d.get(tmpLo).getPercentChange() < pivot )  tmpLo++;
 	    while( d.get(tmpHi).getPercentChange() > pivot )  tmpHi--;
 
-	    if ( d.get(tmpLo).getPercentChange() != d.get(tmpHi).getPercentChange() )
+	    if ( d.get(tmpLo).getPercentChange() != d.get(tmpHi).getPercentChange() ){
 		swap( tmpLo, tmpHi, d );
+	    }
 
 	    //dupe vals found at markers
 	    else if ( tmpLo < tmpHi ) { 
@@ -162,7 +165,7 @@ public class QuickSortStocks {
 	d.set(tmpLo, pivotStock);
 
 	//recurse on lower and upper ranges
-	qsHelpChange( lo, tmpHi-1, d );
+	qsHelpChange( lo, tmpLo-1, d );
 	qsHelpChange( tmpLo+1, hi, d );
     }
 

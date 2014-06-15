@@ -33,24 +33,24 @@ public class HomeScreen extends JPanel {
 	homeLabel.setOpaque(true);
 
 	// Set up hot stocks label
-	String hotText = "<html> <h1 align='center'>Hot Stocks</h1> ";
-	LinkedList<Stock> hotties = market.getStrongestStocks(4);
+	String hotText = "<html> <h1 align='center'>Hot Stocks</h1><h3 style='padding:5'> ";
+	LinkedList<Stock> hotties = market.getStrongestStocks(5);
 	Stock st;
-	for (int i = 0; i < 4; i++){
+	for (int i = 0; i < 5; i++){
 	    st = hotties.get(i);
 	    System.out.println(st.getTicker());
-	    hotText += st.getTicker() + " : " + st.getPercentChange() + "% \n";
+	    hotText += st.getTicker() + " : " + st.getPercentChange() + "% <br>";
 	    }
-	hotText += "</html>";
+	hotText += "</h3></html>";
 	hotStocks = new JLabel(hotText, SwingConstants.CENTER);
 
 
 	// Cold stocks
 	String coldText = "<html> <h1 align='center'>Cold Stocks</h1> <h3 style='padding:5'>";
-	LinkedList<Stock> weakies = market.getWeakestStocks(4);
-	for (int i = 0; i < 4; i++){
+	LinkedList<Stock> weakies = market.getWeakestStocks(5);
+	for (int i = 0; i < 5; i++){
 	    st = weakies.get(i);
-	    coldText += st.getTicker() + " : " + st.getPercentChange() + "% \n";
+	    coldText += st.getTicker() + " : " + st.getPercentChange() + "% <br>";
 	    }
 	coldText += "</h3></html>";
 	coldStocks = new JLabel(coldText, SwingConstants.CENTER);
@@ -79,8 +79,7 @@ public class HomeScreen extends JPanel {
 
 	// Set up news label
 	String newsText = "<html><h1 align='center'; style='padding:5';> NEWS </h1>"; // add the text to the news panel
-	newsText += "<h3 style='padding:5'>Coby is whack</h3></html>";
-	// newsText += getNews(); --> implement later
+	newsText += "<h3 style='padding:5'></h3></html>";
 
 	news = new JLabel(newsText, SwingConstants.CENTER); // instantiate news panel and give it a border
 	news.setBorder(BorderFactory.createLoweredBevelBorder());
@@ -94,7 +93,7 @@ public class HomeScreen extends JPanel {
 	StockPosition s;
 	for (int i = 0; i < portfolio.size(); i++){
 	    s = portfolio.get(i);
-	    portText += s.getTicker() + " : " + s.getNumShares() + "\n";
+	    portText += s.getTicker() + " : " + s.getNumShares() + "<br>";
 	    }
 	portText += "</h3></html>";
 	myPort = new JLabel(portText, SwingConstants.CENTER);
@@ -107,28 +106,38 @@ public class HomeScreen extends JPanel {
 
     public void setText(){
 	// Set up hot stocks label
-	String hotText = "<html> <h1 align='center'>Hot Stocks</h1> ";
-	LinkedList<Stock> hotties = market.getStrongestStocks(4);
+	String hotText = "<html> <h1 align='center'>Hot Stocks</h1><h3 style='padding:5'> ";
+	LinkedList<Stock> hotties = market.getStrongestStocks(5);
 	Stock st;
-	for (int i = 0; i < 4; i++){
+	for (int i = 0; i < 5; i++){
 	    st = hotties.get(i);
 	    System.out.println(st.getTicker());
-	    hotText += st.getTicker() + " : " + st.getPercentChange() + "% \n";
+	    hotText += st.getTicker() + " : " + st.getPercentChange() + "% <br>";
 	    }
-	hotText += "</html>";
+	hotText += "</h3></html>";
 	hotStocks.setText(hotText);
 
 
 	// Cold stocks
 	String coldText = "<html> <h1 align='center'>Cold Stocks</h1> <h3 style='padding:5'>";
-	LinkedList<Stock> weakies = market.getWeakestStocks(4);
-	for (int i = 0; i < 4; i++){
+	LinkedList<Stock> weakies = market.getWeakestStocks(5);
+	for (int i = 0; i < 5; i++){
 	    st = weakies.get(i);
-	    coldText += st.getTicker() + " : " + st.getPercentChange() + "% \n";
+	    coldText += st.getTicker() + " : " + st.getPercentChange() + "% <br>";
 	    }
 	coldText += "</h3></html>";
 	coldStocks.setText(coldText);
 
+
+	// News
+	String newsText = "<html><h1 align='center'; style='padding:5';> NEWS </h1><h3 style='padding:5'>"; // add the text to the news panel
+	LinkedList<News> oldNews = market.getOldNews();
+	for (int i = 0; i < oldNews.size(); i++){
+	    int num = i+1;
+	    newsText += num + ") " + oldNews.get(i).getInfo() + "<br>";
+	}
+	newsText += "</h3></html>";
+	news.setText(newsText);
 
 	// Portfolio
 	String portText = "<html> <h1 align='center'>Portfolio</h1><h3 style='padding:5'>";
@@ -140,7 +149,7 @@ public class HomeScreen extends JPanel {
 	    st = market.getStockTicker(name); // stock itself
 	    int num = s.getNumShares();
 	    double value = num * st.getPrice();
-	    portText += name + " : " + num + " shares worth $" + value + "\n";
+	    portText += name + " : " + num + " shares worth $" + value + "<br>";
 	    }
 	portText += "</h3></html>";
 	myPort.setText(portText);
