@@ -48,8 +48,8 @@ public class StockScreen extends JPanel {
 		plot = new Plot2DPanel();
 		double[] x = {32}; //getX(ticker) FROM HERE --> TIME
 		double[] y = {0}; //getY(ticker)
-		plot.addLinePlot("Test Stock Plot", x, y); // create line plot from jmathplots
-		plot.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLoweredBevelBorder(), "Test Stock Plot"));
+		plot.addLinePlot(stock.getTicker() + " Price vs. Time", x, y); // create line plot from jmathplots
+		plot.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLoweredBevelBorder(), stock.getTicker() + " Price vs. Time"));
 		plot.setBounds(170,50, 820, 390);
 		add(plot); // add to main jpanel
 	
@@ -142,13 +142,17 @@ public class StockScreen extends JPanel {
     }
 
     public void updateGraph(int xval){
+    	// Set up graph
+		plot = new Plot2DPanel();
+		double[] x = { xval-7, xval-6, xval-5, xval-4, xval-3, xval-2, xval-1, xval };
+		double[] y = stock.getPastPrices(8); // y axis points is prices
+		plot.addLinePlot(stock.getTicker() + " Price vs. Time", x, y); // create line plot from jmathplots
+		plot.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLoweredBevelBorder(), stock.getTicker() + " Price vs. Time"));
+		plot.setBounds(170,50, 820, 390);
+		add(plot); // add to main jpanel
+		
+		repaint();
 	
-	double[] x = { xval-7, xval-6, xval-5, xval-4, xval-3, xval-2, xval-1, xval };
-	double[] y = stock.getPastPrices(8); // y axis points is prices
-	
-	plot.addLinePlot("Test Stock Plot", x, y); // create line plot from jmathplots
-	repaint();
-
     }
 
 }
