@@ -46,8 +46,8 @@ public class StockScreen extends JPanel {
 	
 		// Set up graph
 		plot = new Plot2DPanel();
-		double[] x = { 1, 2, 3, 4, 5, 6 }; //getX(ticker) FROM HERE --> TIME
-		double[] y = { 45, 89, 6, 32, 63, 12 }; //getY(ticker)
+		double[] x = {32}; //getX(ticker) FROM HERE --> TIME
+		double[] y = {0}; //getY(ticker)
 		plot.addLinePlot("Test Stock Plot", x, y); // create line plot from jmathplots
 		plot.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLoweredBevelBorder(), "Test Stock Plot"));
 		plot.setBounds(170,50, 820, 390);
@@ -110,7 +110,7 @@ public class StockScreen extends JPanel {
 		sellButton.addActionListener(a);
     }
 
-    public void setStock(String ticker) { // Used in mainframe when button is pressed from view stock screen
+    public void setStock(String ticker, int counter) { // Used in mainframe when button is pressed from view stock screen
     	stock = market.getStockTicker(ticker); // get the right stock show
 
     	tickerLabel.setText("<html> <h1> <i>" + stock.getTicker() + "</i> </h1> </html>");
@@ -137,16 +137,17 @@ public class StockScreen extends JPanel {
 		newsText += "</h3></html>";
 		newsLabel.setText(newsText);
 		
-		this.updateGraph(40);
+		this.updateGraph(counter);
 	
     }
 
     public void updateGraph(int xval){
 	
-	double[] x = { xval-7, xval-6, xval-5, xval-4, xval-3, xval-2, xval-1, xval }; //getX(ticker) FROM HERE --> TIME
-	double[]y = stock.getPastPrices(8); // y axis points is prices
+	double[] x = { xval-7, xval-6, xval-5, xval-4, xval-3, xval-2, xval-1, xval };
+	double[] y = stock.getPastPrices(8); // y axis points is prices
 	
 	plot.addLinePlot("Test Stock Plot", x, y); // create line plot from jmathplots
+	repaint();
 
     }
 

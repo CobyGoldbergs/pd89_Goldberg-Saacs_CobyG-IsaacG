@@ -1,5 +1,6 @@
 import java.util.*;
 import java.io.*;
+import java.io.IOException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.Proxy;
@@ -15,24 +16,35 @@ public class Yahoo {
 	public static void getData(String ticker) {
 		try {
 			URL interWebs = new URL(baseURL + ticker + baseURLend); // create a URL instance of the API
-			
 
 			Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress("149.89.1.30", 3128)); // the proxy in the Stuy computer lab
 
-			// URLConnection interwebConnect = interWebs.openConnection(Proxy.NO_PROXY); // make a normal URL connection
 			URLConnection interwebConnect = interWebs.openConnection(proxy); // make a URL connection out of the URL 	
 			// make way to choose lab settings
 
 			InputStreamReader isr = new InputStreamReader(interwebConnect.getInputStream()); // Retrieve the csv into a InputStreamReader
 			
 			BufferedReader in = new BufferedReader(isr); // For efficiency, thank you oracle API
-			System.out.println( baseURL + ticker + baseURLend );
 
 			System.out.println();
 
 			System.out.println(in.readLine()); // Print the ask and bid about ticker
-		} catch (Exception e) {
-		    System.out.println(e); // this should be more verbose
+		} catch (IOException e) {
+			try {
+				URL interWebs = new URL(baseURL + ticker + baseURLend); // create a URL instance of the API
+	
+			    URLConnection interwebConnect = interWebs.openConnection();
+	
+			    InputStreamReader isr = new InputStreamReader(interwebConnect.getInputStream()); // Retrieve the csv into a InputStreamReader
+				
+				BufferedReader in = new BufferedReader(isr); // For efficiency, thank you oracle API
+	
+				System.out.println();
+	
+				System.out.println(in.readLine()); // Print the ask and bid about ticker
+			} catch (Exception excep) {
+				System.out.println(excep);
+			}
 		}
 
 

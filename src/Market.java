@@ -24,8 +24,8 @@ public class Market{
 
     public void fillMarket(){
 	stocks = new LinkedList<Stock>();
-	Stock stock1 = new Stock("AAPL", 633.00, .74, .08, .3);
-	// ticker, price, beta, vol, market strength
+	// The ten stocks to choose from
+	Stock stock1 = new Stock("AAPL", 633.00, .74, .08, .3); // ticker, price, beta, vol, market strength
 	stocks.add(stock1);
 	Stock stock2 = new Stock("TSLA", 133.22, .23, 1.3, .3);
 	stocks.add(stock2);

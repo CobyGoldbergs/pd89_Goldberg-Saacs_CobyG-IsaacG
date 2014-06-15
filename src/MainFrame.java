@@ -15,6 +15,7 @@ public class MainFrame extends JFrame implements ActionListener, Runnable{
     private Market market;
     private String curTick;
 
+    // Thread info
     private Thread userThread;
     private int counter = 40; // acts as time of graphs
  
@@ -84,52 +85,52 @@ public class MainFrame extends JFrame implements ActionListener, Runnable{
 		// The different stocks
 		else if (source.equals(viewStocks.AAPL)){
 		    card.show(pane, "view");
-		    stockScreen.setStock("AAPL");
+		    stockScreen.setStock("AAPL", counter);
 		    curTick = "AAPL";
 		}
 		else if (source.equals(viewStocks.TSLA)){
 		    card.show(pane, "view");
-		    stockScreen.setStock("TSLA");
+		    stockScreen.setStock("TSLA", counter);
 		    curTick = "TSLA";
 		}
 		else if (source.equals(viewStocks.GS)){
 		    card.show(pane, "view");
-		    stockScreen.setStock("GS");
+		    stockScreen.setStock("GS", counter);
 		    curTick = "GS";
 		}
 		else if (source.equals(viewStocks.JPM)){
 		    card.show(pane, "view");
-		    stockScreen.setStock("JPM");
+		    stockScreen.setStock("JPM", counter);
 		    curTick = "JPM";
 		}
 		else if (source.equals(viewStocks.GOOG)){
 		    card.show(pane, "view");
-		    stockScreen.setStock("GOOG");
+		    stockScreen.setStock("GOOG", counter);
 		    curTick = "GOOG";
 		}
 		else if (source.equals(viewStocks.MSFT)){
 		    card.show(pane, "view");
-		    stockScreen.setStock("MSFT");
+		    stockScreen.setStock("MSFT", counter);
 		    curTick = "MSFT";
 		}
 		else if (source.equals(viewStocks.BAC)){
 		    card.show(pane, "view");
-		    stockScreen.setStock("BAC");
+		    stockScreen.setStock("BAC", counter);
 		    curTick = "BAC";
 		}
 		else if (source.equals(viewStocks.TWTR)){
 		    card.show(pane, "view");
-		    stockScreen.setStock("TWTR");
+		    stockScreen.setStock("TWTR", counter);
 		    curTick = "TWTR";
 		}
 		else if (source.equals(viewStocks.FB)){
 		    card.show(pane, "view");
-		    stockScreen.setStock("FB");
+		    stockScreen.setStock("FB", counter);
 		    curTick = "FB";
 		}
 		else if (source.equals(viewStocks.RTN)){
 		    card.show(pane, "view");
-		    stockScreen.setStock("RTN");
+		    stockScreen.setStock("RTN", counter);
 		    curTick = "RTN";
 		}
 	
@@ -175,7 +176,7 @@ public class MainFrame extends JFrame implements ActionListener, Runnable{
     // Thread control
     public void delay(){
 		try{
-           	Thread.sleep(1000);
+           	Thread.sleep(10000);
        	}catch (InterruptedException e){
        	   	System.out.println("Interrupted");
         }
@@ -184,8 +185,8 @@ public class MainFrame extends JFrame implements ActionListener, Runnable{
     public void run() {
     	while (true) {
     		market.updateMarket();
-		counter++;
-		stockScreen.updateGraph(counter);
+			counter++;
+			stockScreen.updateGraph(counter);
     		delay();
     	}
     }
