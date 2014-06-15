@@ -176,7 +176,7 @@ public class MainFrame extends JFrame implements ActionListener, Runnable{
     // Thread control
     public void delay(){
 		try{
-           	Thread.sleep(10000);
+           	Thread.sleep(1000);
        	}catch (InterruptedException e){
        	   	System.out.println("Interrupted");
         }

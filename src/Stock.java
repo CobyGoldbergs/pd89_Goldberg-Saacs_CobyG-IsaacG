@@ -17,15 +17,15 @@ public class Stock{
     private Stack<Double> fiftyDayMVA; // to be downloaded from yahoo finance
     private Stack<Double> twohundredDayMVA;*/
 
-    public Stock(String t, double p, double b, double v, double ms){
+    public Stock(String t, double b, double v, double ms){
+	YahooApi yahooApi = new YahooApi();
 	ticker = t;
-	price = p;
+	price = yahooApi.getData(t); // returns last close price from live api
 	beta = b;
 	volatility = v;
 	marketStrength = ms;
 	bids = new RunMed();
 	asks = new RunMed();
-	price = p;
 	stockStrength = 0.0;
 	pastPrices = new LinkedList<Double>();
 	// add code to use 50 and 200 day mva
@@ -113,6 +113,8 @@ public class Stock{
 	int listSize = pastPrices.size(); // to avoid multiple calls
 	for (int i = num; i > 0; i--)
 	    ret[num - i] = pastPrices.get(listSize - i);
+	for (int i = 0; i < ret.length; i++)
+	    System.out.println(ret[i]);
 	return ret;
     }
 
@@ -121,13 +123,20 @@ public class Stock{
     }
 
     public static void main(String[] args){
-	Stock st = new Stock("AAPL", 30.0, .2, .7, .3); 
+	Stock st = new Stock("AAPL", .2, .7, .3); 
 	// ticker name, start price, beta, volatility,  market strength
-	for (int i = 0; i < 300; i++){
+	for (int i = 0; i < 100; i++){
 	    st.priceUpdate();
 	    System.out.println("Price: " + st.getPrice() + "$");
 	    System.out.println("Percent change: " + st.getPercentChange() + "%");
 	}
+	System.out.println("Last eight prices: " + st.getPastPrices(8));
+	for (int i = 0; i < 100; i++){
+	    st.priceUpdate();
+	    System.out.println("Price: " + st.getPrice() + "$");
+	    System.out.println("Percent change: " + st.getPercentChange() + "%");
+	}
+	System.out.println("Last eight prices: " + st.getPastPrices(8));
     }
 
 
