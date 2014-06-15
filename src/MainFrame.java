@@ -146,11 +146,9 @@ public class MainFrame extends JFrame implements ActionListener, Runnable{
 				String message = user.buyStock(purchasing, quant); // what is the result
 				System.out.println(message);
 				stockScreen.errorMessage.setText("<html> <h4> <i>" + message + "</i> </h4> </html>");
-				stockScreen.errorMessage.setForeground(Color.white);
 		    }
 		    catch( Exception f ) {
-				stockScreen.errorMessage.setText("<html> <h4> <i>Invalid entry" + "</i> </h4> </html>") ;
-				stockScreen.errorMessage.setForeground(Color.white);
+				stockScreen.errorMessage.setText("<html> <h4> <i>Invalid entry</i> </h4> </html>") ;
 		   	}
 		}
 
@@ -162,11 +160,9 @@ public class MainFrame extends JFrame implements ActionListener, Runnable{
 				int quant = (int)(Integer.parseInt(quantityStr));
 				String message = user.sellStock(purchasing, quant);
 				stockScreen.errorMessage.setText("<html> <h4> <i>" + message + "</i> </h4> </html>");
-				stockScreen.errorMessage.setForeground(Color.white);
 		   	}
 		   	catch( Exception f ) {
 				stockScreen.errorMessage.setText("<html> <h4> <i> Invalid entry </i> </h4> </html>");
-				stockScreen.errorMessage.setForeground(Color.white);
 		   	}
 		}
     }
