@@ -79,28 +79,28 @@ public class StockScreen extends JPanel {
 		buyLabel.setForeground(Color.white);
 		add(buyLabel);
 
-		errorMessage = new JLabel("<html> <h3 align:'center'> <i>Invalid Entry:</i> </h3> </html>");
-		errorMessage.setBounds(745, 490, 200, 30);
+		errorMessage = new JLabel("<html> <h3 align:'center'> <i>Invalid Entry:</i> </h3> </html>", SwingConstants.CENTER);
+		errorMessage.setBounds(700, 485, 200, 30);
 		errorMessage.setBackground(Color.black);
 		errorMessage.setForeground(Color.red);
 		add(errorMessage);
 	
 		quantityLabel = new JLabel("<html> <h3> <i>Enter Quantity:</i> </h3> </html>");
-		quantityLabel.setBounds(685, 520, 120, 30);
+		quantityLabel.setBounds(685, 510, 120, 30);
 		quantityLabel.setBackground(Color.black);
 		quantityLabel.setForeground(Color.white);
 		add(quantityLabel);
 	
 		quantity = new JTextField();
-		quantity.setBounds(800, 520, 120, 30);
+		quantity.setBounds(800, 510, 120, 30);
 		add(quantity);
 	
 		buyButton = new JButton("Buy");
-		buyButton.setBounds(730, 555, 100, 30);
+		buyButton.setBounds(730, 545, 100, 30);
 		add(buyButton);
 	
 		sellButton = new JButton("Sell");
-		sellButton.setBounds(730, 595, 100, 30);
+		sellButton.setBounds(730, 585, 100, 30);
 		add(sellButton);
     }
 
