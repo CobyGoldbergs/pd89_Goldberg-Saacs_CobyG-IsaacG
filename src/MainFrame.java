@@ -12,8 +12,8 @@ public class MainFrame extends JFrame implements ActionListener{
     private ViewStockScreen viewStocks;
     private User user;
     private Market market;
-    private int curTick;
-    
+    private String curTick;
+ 
     public MainFrame() {
 
 	setTitle("Goldberg & Saac's"); // create invisible frame with title
@@ -26,13 +26,17 @@ public class MainFrame extends JFrame implements ActionListener{
 		
 	pane = new JPanel();
 	pane.setLayout(new CardLayout()); // create the main window holder and make it a deck
+
 	market = new Market();
-		
-	home = new HomeScreen(market); // instantiate the home screen
+	for (int i = 0; i < 4000; i++)
+	    market.updateMarket(); // create initial history for the market
+	
+	user = new User(10000);
+	
+	home = new HomeScreen(market, user); // instantiate the home screen
 	stockScreen = new StockScreen(market); // instantiate the stocks screen
 	viewStocks = new ViewStockScreen();
 
-	user = new User(10000);
 	
 	// Give Action Listeners
 	home.giveActionListener(this);
@@ -51,7 +55,6 @@ public class MainFrame extends JFrame implements ActionListener{
 	setLocationRelativeTo(null); // center it
 
 	// Test
-	Market market = new Market();
 	for (int i = 0; i < 1000; i++)
 	    market.updateMarket();
     }
@@ -68,58 +71,59 @@ public class MainFrame extends JFrame implements ActionListener{
 	// From the view stocks screen to the home screen
 	else if (source.equals(viewStocks.homeButton)){
 	    card.show(pane, "home");
+	    home.setText();
 	}
 
 	// The different stocks
 	else if (source.equals(viewStocks.AAPL)){
 	    card.show(pane, "view");
-	    stockScreen.setStock(0);
-	    curTick = 0;
+	    stockScreen.setStock("AAPL");
+	    curTick = "AAPL";
 	}
 	else if (source.equals(viewStocks.TSLA)){
 	    card.show(pane, "view");
-	    stockScreen.setStock(1);
-	    curTick = 1;
+	    stockScreen.setStock("TSLA");
+	    curTick = "TSLA";
 	}
 	else if (source.equals(viewStocks.GS)){
 	    card.show(pane, "view");
-	    stockScreen.setStock(2);
-	    curTick = 2;
+	    stockScreen.setStock("GS");
+	    curTick = "GS";
 	}
 	else if (source.equals(viewStocks.JPM)){
 	    card.show(pane, "view");
-	    stockScreen.setStock(3);
-	    curTick = 3;
+	    stockScreen.setStock("JPM");
+	    curTick = "JPM";
 	}
 	else if (source.equals(viewStocks.GOOG)){
 	    card.show(pane, "view");
-	    stockScreen.setStock(4);
-	    curTick = 4;
+	    stockScreen.setStock("GOOG");
+	    curTick = "GOOG";
 	}
 	else if (source.equals(viewStocks.MSFT)){
 	    card.show(pane, "view");
-	    stockScreen.setStock(5);
-	    curTick = 5;
+	    stockScreen.setStock("MSFT");
+	    curTick = "MSFT";
 	}
 	else if (source.equals(viewStocks.BAC)){
 	    card.show(pane, "view");
-	    stockScreen.setStock(6);
-	    curTick = 6;
+	    stockScreen.setStock("BAC");
+	    curTick = "BAC";
 	}
 	else if (source.equals(viewStocks.TWTR)){
 	    card.show(pane, "view");
-	    stockScreen.setStock(7);
-	    curTick = 7;
+	    stockScreen.setStock("TWTR");
+	    curTick = "TWTR";
 	}
 	else if (source.equals(viewStocks.FB)){
 	    card.show(pane, "view");
-	    stockScreen.setStock(8);
-	    curTick = 8;
+	    stockScreen.setStock("FB");
+	    curTick = "FB";
 	}
 	else if (source.equals(viewStocks.RTN)){
 	    card.show(pane, "view");
-	    stockScreen.setStock(9);
-	    curTick = 9;
+	    stockScreen.setStock("RTN");
+	    curTick = "RTN";
 	}
 
 	// From the stock screens to the view stock screen
@@ -129,7 +133,7 @@ public class MainFrame extends JFrame implements ActionListener{
 
 	// Stock screen's purchase/ sale methods
 	else if (source.equals(stockScreen.buyButton)){
-	    Stock purchasing = market.getStocks().get(curTick);
+	    Stock purchasing = market.getStockTicker(curTick);
 	    String quantityStr = stockScreen.quantity.getText();
 	    try {
 		int quant = (int)(Integer.parseInt(quantityStr));
@@ -145,7 +149,7 @@ public class MainFrame extends JFrame implements ActionListener{
 	}
 
 	else if (source.equals(stockScreen.sellButton)){
-	    Stock purchasing = market.getStocks().get(curTick);
+	    Stock purchasing = market.getStockTicker(curTick);
 	    System.out.println("Works");
 	    String quantityStr = stockScreen.quantity.getText();
 	    try {
@@ -162,12 +166,13 @@ public class MainFrame extends JFrame implements ActionListener{
     }
 
     public Market getMarket(){ return market;}
+
 	
     public static void main(String[] args) {
 	SwingUtilities.invokeLater(new Runnable() {
 		public void run(){
 		    MainFrame f = new MainFrame();
 		}
-	    }); // places frame in swing event queue so it can run smoothly
+	    }); // places frame in swing even queue so it can run smoothly
     }
 }

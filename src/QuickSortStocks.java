@@ -9,7 +9,8 @@ public class QuickSortStocks {
 	o.set(y, tmp);
     }
 
-    public LinkedList<Stock> qsort( LinkedList<Stock> d, int comparing ) { 
+    public LinkedList<Stock> qsort( LinkedList<Stock> a, int comparing ) { 
+	LinkedList<Stock> d = a;
 	if (comparing == 0) // 0 means you are sorting by ticker name
 	    qsHelpTick( 0, d.size()-1, d );
 	if (comparing == 1) // 1 means compare by price
@@ -120,6 +121,7 @@ public class QuickSortStocks {
     public static void qsHelpChange( int lo, int hi, LinkedList<Stock> d ) {
 	if ( lo >= hi )
 	    return;
+
 	int tmpLo = lo; 
 	int tmpHi = hi;
 	double pivot = d.get(lo).getPercentChange();
@@ -160,8 +162,8 @@ public class QuickSortStocks {
 	d.set(tmpLo, pivotStock);
 
 	//recurse on lower and upper ranges
-	qsHelpQuant( lo, tmpLo-1, d );
-	qsHelpQuant( tmpLo+1, hi, d );
+	qsHelpChange( lo, tmpHi-1, d );
+	qsHelpChange( tmpLo+1, hi, d );
     }
 
     //main method for testing

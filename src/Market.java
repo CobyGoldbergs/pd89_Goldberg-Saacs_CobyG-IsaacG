@@ -7,6 +7,7 @@ public class Market{
     private double marketStrength; // market strength of whole market
     private QuickSortStocks qs; // quick sort to be used when needed
     private Stack<News> news;
+    private LinkedList<News> appliedNews; // old news, never to be longer than 4
     private String ticker;
     private long time;
     private long time1;
@@ -18,6 +19,7 @@ public class Market{
 	qs = new QuickSortStocks();
 	news = new Stack<News>();
 	createNews(); // creates news items
+	appliedNews = new LinkedList<News>();
 	time = System.currentTimeMillis();
 	time1 = System.currentTimeMillis();
     }
@@ -137,9 +139,9 @@ public class Market{
 	News n28 = new News(true, info28, new String[]{"AAPL"});
 	news.push(n28);
 	String info29 = "Twitter loses a lot of customers";
-	News n29 = new News(false, info29, new String[]{"TWTR"});
+	News n29 = new News(true, info29, new String[]{"TWTR"});
 	news.push(n29);
-	String info30 = "Raytheon hires new CEO, great trackrecord";
+	String info30 = "Raytheon hires new CEO, great track record for being great";
 	News n30 = new News(true, info30, new String[]{"RTN"});
 	news.push(n30);
     }
@@ -165,6 +167,7 @@ public class Market{
     // tells each effected stock of new news
     public void applyNews(){
 	News item = news.pop();
+	appliedNews.add(item);
 	String[] tags = item.getTags();
 
 	for (int i = 0; i < tags.length; i++){
@@ -261,6 +264,20 @@ public class Market{
 	return ret;
     }
 
+    public Stock getStockTicker(String tick){
+	for (int i = 0; i < stocks.size(); i++){
+	    if (stocks.get(i).getTicker().equals(tick))
+		return stocks.get(i);
+	}
+	return null;
+    }
+
+    public LinkedList<News> getOldNews(){
+	while (appliedNews.size() > 4)
+	    appliedNews.removeFirst();
+	return appliedNews;
+    }
+
     // return list of stocks with weakest percent changes
     public LinkedList<Stock> getWeakestStocks(int quantity){
 	LinkedList<Stock> sorted = qs.qsort(stocks, 2); // sort by percentChange
@@ -286,6 +303,9 @@ public class Market{
 	System.out.println("Strongest: ");
 	for (Stock a : tp)
 	    System.out.println(a + " Percent change: " + a.getPercentChange());
+	tp = m.getStocks();
+	for (Stock a : tp)
+	    System.out.println( "Stocks original order: " + a);
 	tp =  m.getWeakestStocks(4);
 	System.out.println("Weakest: ");
 	for (Stock a : tp)

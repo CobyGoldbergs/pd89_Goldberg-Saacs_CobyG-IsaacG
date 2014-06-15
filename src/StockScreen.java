@@ -111,8 +111,8 @@ public class StockScreen extends JPanel {
 	sellButton.addActionListener(a);
     }
 
-    public void setStock(int index) { // Used in mainframe when button is pressed from view stock screen
-    	stock = market.getStocks().get(index);
+    public void setStock(String ticker) { // Used in mainframe when button is pressed from view stock screen
+    	stock = market.getStockTicker(ticker);
     	tickerLabel.setText("<html> <h1> <i>" + stock.getTicker() + "</i> </h1> </html>");
 	statsLabel.setText("STATS \n" + "Beta: " + stock.getBeta() + "\n Volatility: " + stock.getVolatility() + "\n Change: " + stock.getPercentChange() + "\n Price: " + stock.getPrice());
     }

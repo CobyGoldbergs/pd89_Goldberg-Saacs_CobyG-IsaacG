@@ -27,7 +27,6 @@ public class Stock{
 	asks = new RunMed();
 	price = p;
 	stockStrength = 0.0;
-	percentChange = 0.0;
 	pastPrices = new LinkedList<Double>();
 	// add code to use 50 and 200 day mva
 	initialPurhcases(); // function to create some initial bids and asks
