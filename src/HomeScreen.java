@@ -6,7 +6,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.*;
 import javax.swing.BorderFactory;
 
-public class HomeScreen extends JPanel {
+public class HomeScreen extends JPanel{
     protected JButton viewStocksButton; // protected so that it can be accessed in MainFrame's actionlistener
     private JLabel homeLabel;
     private JLabel news;
@@ -15,6 +15,8 @@ public class HomeScreen extends JPanel {
     private JLabel myPort;
     private Market market;
     private User user;
+
+
 
     public HomeScreen(Market m, User u) {
 	setPreferredSize(new Dimension(1000, 650)); // set it to the same size as the container
