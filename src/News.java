@@ -12,7 +12,7 @@ public class News{
 	tags = t;
     }
 
-    public double getEffect(){return goodNews;}
+    public double getEffect(){return newsEffect;}
     public String getInfo(){return information;}
     public String[] getTags(){return tags;}
 

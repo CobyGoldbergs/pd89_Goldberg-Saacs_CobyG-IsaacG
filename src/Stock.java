@@ -122,8 +122,8 @@ public class Stock{
 	// ticker name, start price, beta, volatility,  market strength
 	for (int i = 0; i < 100; i++){
 	    st.priceUpdate();
-	    //System.out.println("Price: " + st.getPrice() + "$"); for testing
-	    //System.out.println("Percent change: " + st.getPercentChange() + "%");
+	    System.out.println("Price: " + st.getPrice() + "$");
+	    System.out.println("Percent change: " + st.getPercentChange() + "%");
 	}
 	System.out.println("Last eight prices: " + st.getPastPrices(8));
 	for (int i = 0; i < 100; i++){

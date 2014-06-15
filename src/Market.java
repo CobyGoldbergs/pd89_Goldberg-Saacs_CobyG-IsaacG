@@ -25,13 +25,13 @@ public class Market{
     public void fillMarket(){
 	stocks = new LinkedList<Stock>();
 	// The ten stocks to choose from
-	Stock stock1 = new Stock("AAPL", .74, .08, .3); // ticker, beta, vol, market strength
+	Stock stock1 = new Stock("AAPL", .74, .4, .3); // ticker, beta, vol, market strength
 	stocks.add(stock1);
 	Stock stock2 = new Stock("TSLA", .23, 1.3, .3);
 	stocks.add(stock2);
-	Stock stock3 = new Stock("GS", .05, .9, .3);
+	Stock stock3 = new Stock("GS", -.13, .9, .3);
 	stocks.add(stock3);
-	Stock stock4 = new Stock("JPM", .07, .1, .3);
+	Stock stock4 = new Stock("JPM", .07, .4, .3);
 	stocks.add(stock4);
 	Stock stock5 = new Stock("GOOG", .22, .89, .3);
 	stocks.add(stock5);
@@ -150,12 +150,15 @@ public class Market{
 	String info34 = "Turns out Greece was lying again. Their once again in a ton of debt";
 	News n34 = new News(-.5, info34, new String[]{"AAPL", "TSLA", "GS", "JPM", "GOOG", "MSFT", "BAC", "TWTR", "FB", "RTN"});
 	newsSelect.push(n34);
-	String info34 = "U.S. wins World Cup. USA USA USA USA";
-	News n34 = new News(.4, info34, new String[]{"AAPL", "TSLA", "GS", "JPM", "GOOG", "MSFT", "BAC", "TWTR", "FB", "RTN"});
-	newsSelect.push(n34);
-	String info34 = "Goldman Sacs is actually just run by voldamort. Investors angry.";
-	News n34 = new News(-.7, info34, new String[]{"GS"});
-	newsSelect.push(n34);
+	String info35 = "U.S. wins World Cup. USA USA USA USA";
+	News n35 = new News(.4, info35, new String[]{"AAPL", "TSLA", "GS", "JPM", "GOOG", "MSFT", "BAC", "TWTR", "FB", "RTN"});
+	newsSelect.push(n35);
+	String info36 = "Goldman Sacs is actually just run by voldamort. Investors angry.";
+	News n36 = new News(-.7, info36, new String[]{"GS"});
+	newsSelect.push(n36);
+	String info37 = "Isaac leads Stuy Soccer to Gold. Gooooooooooooo pegelegs!";
+	News n37 = new News(.6, info37, new String[]{"AAPL", "TSLA", "GS", "JPM", "GOOG", "MSFT", "BAC", "TWTR", "FB", "RTN"});
+	newsSelect.push(n37);
 
 
 	// put news items randomly into actual news stack
@@ -169,10 +172,10 @@ public class Market{
     // MARKET RUNNERS
 
     // method that updates the market  every 5 seconds
-    public void updateMarket(){
+    public void updateMarket(boolean init){
 	    // randomly assign new news
 	    Random r = new Random();
-	    if (r.nextInt(50) == 0 && !news.empty())
+	    if (r.nextInt(10) == 1 && !news.empty() && init)
 		applyNews();
 	    priceUpdate();
 	    updateIndexVal();
@@ -315,7 +318,7 @@ public class Market{
 for (Stock a : tp)
 	    System.out.println(a);
 	for (int i = 0; i < 40000; i++){
-	    m.updateMarket();
+	    m.updateMarket(true);
 	}
 	tp =  m.getStrongestStocks(4);
 	System.out.println("Strongest: ");

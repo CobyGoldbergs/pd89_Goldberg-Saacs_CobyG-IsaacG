@@ -34,7 +34,7 @@ public class MainFrame extends JFrame implements ActionListener, Runnable{
 	
 		market = new Market();
 		for (int i = 0; i < 400; i++)
-		    market.updateMarket(); // create initial history for the market
+		    market.updateMarket(false); // create initial history for the market, false prevents news
 		
 		user = new User(10000);
 		
@@ -61,7 +61,7 @@ public class MainFrame extends JFrame implements ActionListener, Runnable{
 	
 		// Test
 		for (int i = 0; i < 1000; i++)
-		    market.updateMarket();
+		    market.updateMarket(false);
 
 		userThread = new Thread(this);
 		userThread.start();
@@ -185,7 +185,7 @@ public class MainFrame extends JFrame implements ActionListener, Runnable{
     public void run() {
     	while (true) {
     		counter++;
-    		market.updateMarket();
+    		market.updateMarket(true);
 			stockScreen.updateGraph(counter);
 			home.updateText();
     		delay();
