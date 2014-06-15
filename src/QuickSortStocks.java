@@ -4,11 +4,11 @@ public class QuickSortStocks {
 
 
     public static void swap( int x, int y, LinkedList<Stock> o ) {
-		System.out.println("Swapping " + o.get(x).getTicker() + " and "+  o.get(y).getTicker());	
+		// System.out.println("Swapping " + o.get(x).getTicker() + " and "+  o.get(y).getTicker());	FOR TESTING
 		Stock tmp = o.get(x);
 		o.set(x, o.get(y));
 		o.set(y, tmp);
-	System.out.println("Now they are " + o.get(x).getTicker() + " and "+  o.get(y).getTicker());	
+		// System.out.println("Now they are " + o.get(x).getTicker() + " and "+  o.get(y).getTicker());	FOR TESTING
     }
 
     public LinkedList<Stock> qsort( LinkedList<Stock> a, int comparing ) { 

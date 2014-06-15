@@ -108,54 +108,58 @@ public class HomeScreen extends JPanel{
 
     public void updateText(){
 	// Set up hot stocks label
-	String hotText = "<html> <h1 align='center'>Hot Stocks</h1><h3 style='padding:5'> ";
-	LinkedList<Stock> hotties = market.getStrongestStocks(5);
-	Stock st;
-	for (int i = 0; i < 5; i++){
-	    st = hotties.get(i);
-	    System.out.println(st.getTicker());
-	    hotText += st.getTicker() + " : " + st.getPercentChange() + "% <br>";
-	    }
-	hotText += "</h3></html>";
-	hotStocks.setText(hotText);
-
-
-	// Cold stocks
-	String coldText = "<html> <h1 align='center'>Cold Stocks</h1> <h3 style='padding:5'>";
-	LinkedList<Stock> weakies = market.getWeakestStocks(5);
-	for (int i = 0; i < 5; i++){
-	    st = weakies.get(i);
-	    coldText += st.getTicker() + " : " + st.getPercentChange() + "% <br>";
-	    }
-	coldText += "</h3></html>";
-	coldStocks.setText(coldText);
-
-
-	// News
-	String newsText = "<html><h1 align='center'; style='padding:5';> NEWS </h1><h3 style='padding:5'>"; // add the text to the news panel
-	LinkedList<News> oldNews = market.getOldNews();
-	for (int i = 0; i < oldNews.size(); i++){
-	    int num = i+1;
-	    newsText += num + ") " + oldNews.get(i).getInfo() + "<br>";
-	}
-	newsText += "</h3></html>";
-	news.setText(newsText);
-
-	// Portfolio
-	String portText = "<html> <h1 align='center'>Portfolio</h1><h3 style='padding:5'>";
-	LinkedList<StockPosition> portfolio = user.getPortfolio();
-	StockPosition s;
-	for (int i = 0; i < portfolio.size(); i++){
-	    s = portfolio.get(i);
-	    String name = s.getTicker();
-	    st = market.getStockTicker(name); // stock itself
-	    int num = s.getNumShares();
-	    double value = num * st.getPrice();
-	    value =  (double)(Math.round(value * 100)) / 100;
-	    portText += name + " : " + num + " shares worth $" + value + "<br>";
-	    }
-	portText += "$" + user.getMoney() + " available</h3></html>";
-	myPort.setText(portText);
+    	String color;
+		String hotText = "<html> <h1 align='center'>Hot Stocks</h1>";
+		LinkedList<Stock> hotties = market.getStrongestStocks(5);
+		Stock st;
+		for (int i = 0; i < 5; i++){
+		    st = hotties.get(i);
+		    if (st.getPercentChange() < 0)
+    			color = "red";
+    		else
+    			color = "green";
+		    hotText += "<h3 style='color:" + color + "'>" + st.getTicker() + " : " + st.getPercentChange() + "% </h3>";
+		}
+		hotText += "</html>";
+		hotStocks.setText(hotText);
+	
+	
+		// Cold stocks
+		String coldText = "<html> <h1 align='center'>Cold Stocks</h1> <h3>";
+		LinkedList<Stock> weakies = market.getWeakestStocks(5);
+		for (int i = 0; i < 5; i++){
+		    st = weakies.get(i);
+		    coldText += st.getTicker() + " : " + st.getPercentChange() + "% <br>";
+		    }
+		coldText += "</h3></html>";
+		coldStocks.setText(coldText);
+	
+	
+		// News
+		String newsText = "<html><h1 align='center';> NEWS </h1><h3>"; // add the text to the news panel
+		LinkedList<News> oldNews = market.getOldNews();
+		for (int i = 0; i < oldNews.size(); i++){
+		    int num = i+1;
+		    newsText += num + ") " + oldNews.get(i).getInfo() + "<br>";
+		}
+		newsText += "</h3></html>";
+		news.setText(newsText);
+	
+		// Portfolio
+		String portText = "<html> <h1 align='center'>Portfolio</h1><h3>";
+		LinkedList<StockPosition> portfolio = user.getPortfolio();
+		StockPosition s;
+		for (int i = 0; i < portfolio.size(); i++){
+		    s = portfolio.get(i);
+		    String name = s.getTicker();
+		    st = market.getStockTicker(name); // stock itself
+		    int num = s.getNumShares();
+		    double value = num * st.getPrice();
+		    value =  (double)(Math.round(value * 100)) / 100;
+		    portText += name + " : " + num + " shares worth $" + value + "<br>";
+		    }
+		portText += "$" + user.getMoney() + " available</h3></html>";
+		myPort.setText(portText);
     }
 
     public void giveActionListener(ActionListener a) {
