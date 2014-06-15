@@ -16,6 +16,7 @@ public class MainFrame extends JFrame implements ActionListener, Runnable{
     private String curTick;
 
     private Thread userThread;
+    private int counter = 40; // acts as time of graphs
  
     public MainFrame() {
 
@@ -183,7 +184,8 @@ public class MainFrame extends JFrame implements ActionListener, Runnable{
     public void run() {
     	while (true) {
     		market.updateMarket();
-
+		counter++;
+		stockScreen.updateGraph(counter);
     		delay();
     	}
     }

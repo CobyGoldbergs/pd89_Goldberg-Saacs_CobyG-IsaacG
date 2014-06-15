@@ -108,11 +108,11 @@ public class Stock{
     }
 
     // returns list of the last num prices
-    public LinkedList<Double> getPastPrices(int num){
-	LinkedList<Double> ret = new LinkedList<Double>(); // to be returned
+    public double[] getPastPrices(int num){
+	double[] ret = new double[num]; // to be returned
 	int listSize = pastPrices.size(); // to avoid multiple calls
 	for (int i = num; i > 0; i--)
-	    ret.add(pastPrices.get(listSize - i));
+	    ret[num - i] = pastPrices.get(listSize - i);
 	return ret;
     }
 

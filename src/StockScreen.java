@@ -136,5 +136,18 @@ public class StockScreen extends JPanel {
 		}
 		newsText += "</h3></html>";
 		newsLabel.setText(newsText);
+		
+		this.updateGraph(40);
+	
     }
+
+    public void updateGraph(int xval){
+	
+	double[] x = { xval-7, xval-6, xval-5, xval-4, xval-3, xval-2, xval-1, xval }; //getX(ticker) FROM HERE --> TIME
+	double[]y = stock.getPastPrices(8); // y axis points is prices
+	
+	plot.addLinePlot("Test Stock Plot", x, y); // create line plot from jmathplots
+
+    }
+
 }
