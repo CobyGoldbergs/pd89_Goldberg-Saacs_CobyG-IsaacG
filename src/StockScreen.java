@@ -147,11 +147,12 @@ public class StockScreen extends JPanel {
 		double[] x = { xval-7, xval-6, xval-5, xval-4, xval-3, xval-2, xval-1, xval };
 		double[] y = stock.getPastPrices(8); // y axis points is prices
 		plot.addLinePlot(stock.getTicker() + " Price vs. Time", x, y); // create line plot from jmathplots
+		//plot.setFixedBounds(1, stock.getPrice() - 1, stock.getPrice() + 1);
 		plot.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLoweredBevelBorder(), stock.getTicker() + " Price vs. Time"));
 		plot.setBounds(170,50, 820, 390);
 		add(plot); // add to main jpanel
 		
-		repaint();
+		revalidate();
 	
     }
 

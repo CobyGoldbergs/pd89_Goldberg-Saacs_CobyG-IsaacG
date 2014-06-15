@@ -13,9 +13,6 @@ public class Stock{
     private RunMed asks; // a running median counter of asks
     private LinkedList<Double> pastPrices; // for use in calculating percent change
     private double percentChange; // queue for use of fifo properties
-    /*private Stack<Double> oneDayMVA; // will be created from the day's trading
-    private Stack<Double> fiftyDayMVA; // to be downloaded from yahoo finance
-    private Stack<Double> twohundredDayMVA;*/
 
     public Stock(String t, double b, double v, double ms){
 	YahooApi yahooApi = new YahooApi();

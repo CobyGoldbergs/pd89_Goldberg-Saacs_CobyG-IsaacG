@@ -151,10 +151,6 @@ public class Market{
 
     // method that updates the market  every 5 seconds
     public void updateMarket(){
-	/*time1 = System.currentTimeMillis();
-	if ((time1 - time) > 5000){
-	time = System.currentTimeMillis();*/
-
 	    // randomly assign new news
 	    Random r = new Random();
 	    if (r.nextInt(50) == 0 && !news.empty())
