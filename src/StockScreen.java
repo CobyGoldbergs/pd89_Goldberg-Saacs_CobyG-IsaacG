@@ -130,6 +130,5 @@ public class StockScreen extends JPanel {
 	}
 	newsText += "</h3></html>";
 	newsLabel.setText(newsText);
-
     }
 }
