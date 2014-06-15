@@ -95,7 +95,7 @@ public class HomeScreen extends JPanel {
 	    s = portfolio.get(i);
 	    portText += s.getTicker() + " : " + s.getNumShares() + "<br>";
 	    }
-	portText += "</h3></html>";
+	portText += "$" + user.getMoney() +  "</h3></html>";
 	myPort = new JLabel(portText, SwingConstants.CENTER);
 	myPort.setBorder(BorderFactory.createLoweredBevelBorder());
 	add(myPort);
@@ -151,7 +151,7 @@ public class HomeScreen extends JPanel {
 	    double value = num * st.getPrice();
 	    portText += name + " : " + num + " shares worth $" + value + "<br>";
 	    }
-	portText += "</h3></html>";
+	portText += "$" + user.getMoney() + " available</h3></html>";
 	myPort.setText(portText);
     }
 

@@ -101,9 +101,9 @@ public class Stock{
     public void applyNews(News news){
 	boolean effect = news.getEffect();
 	if (effect)
-	    stockStrength += .1;
+	    stockStrength += .2;
 	else
-	    stockStrength -= .1;
+	    stockStrength -= .2;
     }
 
     public String toString(){
