@@ -14,7 +14,7 @@ public class User{
     }
     
     public LinkedList<StockPosition> getPortfolio(){return portfolio;}
-    public double getMoney(){return money;}
+    public double getMoney(){return  (double)(Math.round(money * 100)) / 100;}
 
     public String buyStock(Stock st, int numShares){
 	if (money > numShares * st.getPrice()){ // they have enough money
