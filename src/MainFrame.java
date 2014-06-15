@@ -8,7 +8,7 @@ import javax.swing.SwingUtilities;
 public class MainFrame extends JFrame implements ActionListener, Runnable{
 
     private JPanel pane; // Screen Holder
-    private HomeScreen home;
+    private HomeScreen home; // All the screens, they extend JPanel
     private StockScreen stockScreen;
     private ViewStockScreen viewStocks;
     private User user;
@@ -79,7 +79,7 @@ public class MainFrame extends JFrame implements ActionListener, Runnable{
 		// From the view stocks screen to the home screen
 		else if (source.equals(viewStocks.homeButton)){
 		    card.show(pane, "home");
-		    home.setText();
+		    //home.setText();
 		}
 	
 		// The different stocks
@@ -184,9 +184,10 @@ public class MainFrame extends JFrame implements ActionListener, Runnable{
 
     public void run() {
     	while (true) {
+    		counter++;
     		market.updateMarket();
-			counter++;
 			stockScreen.updateGraph(counter);
+			home.updateText();
     		delay();
     	}
     }

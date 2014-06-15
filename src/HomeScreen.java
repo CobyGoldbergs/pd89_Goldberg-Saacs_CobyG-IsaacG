@@ -106,7 +106,7 @@ public class HomeScreen extends JPanel{
 
     }
 
-    public void setText(){
+    public void updateText(){
 	// Set up hot stocks label
 	String hotText = "<html> <h1 align='center'>Hot Stocks</h1><h3 style='padding:5'> ";
 	LinkedList<Stock> hotties = market.getStrongestStocks(5);
