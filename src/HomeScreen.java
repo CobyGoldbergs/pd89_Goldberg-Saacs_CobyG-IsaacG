@@ -151,6 +151,7 @@ public class HomeScreen extends JPanel{
 	    st = market.getStockTicker(name); // stock itself
 	    int num = s.getNumShares();
 	    double value = num * st.getPrice();
+	    value =  (double)(Math.round(value * 100)) / 100;
 	    portText += name + " : " + num + " shares worth $" + value + "<br>";
 	    }
 	portText += "$" + user.getMoney() + " available</h3></html>";
