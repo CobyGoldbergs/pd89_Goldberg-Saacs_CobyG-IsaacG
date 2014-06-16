@@ -160,7 +160,7 @@ public class HomeScreen extends JPanel{
 		news.setText(newsText);
 	
 		// Portfolio
-		String portText = "<html> <h1 align='center'>Portfolio</h1><h3 align='center'>";
+		String portText = "<html> <h1 align='center'>Portfolio</h1>";
 		LinkedList<StockPosition> portfolio = user.getPortfolio();
 		StockPosition s;
 		for (int i = 0; i < portfolio.size(); i++){
@@ -168,7 +168,9 @@ public class HomeScreen extends JPanel{
 		    String name = s.getTicker();
 		    st = market.getStockTicker(name); // stock itself
 		    int num = s.getNumShares();
-		    value = (double)(Math.round(value * 100)) / 100; portText += "<h3 align='center'>" + name + ": " + num + " shares worth $" + value + "</h3>"; } 
+		    double value = num * st.getPrice();
+		     value = (double)(Math.round(value * 100)) / 100; 
+		    portText += "<h3 align='center'>" + name + ": " + num + " shares worth $" + value + "</h3>"; } 
 
 		portText += "<br><br><h4 align='center'>$" + user.getMoney() + " available</h3>"; 
 		portText += "<h4 align='center'> You had $" + user.getOriginalMoney() + " originally </html>";
