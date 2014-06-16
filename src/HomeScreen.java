@@ -15,7 +15,7 @@ public class HomeScreen extends JPanel{
     private JLabel cheapStocks;
     private JLabel myPort;
     private JLabel gsIndex;
-    private Market market;
+    private Market market; // Market and User taken from MainFrame
     private User user;
 
 
@@ -25,6 +25,7 @@ public class HomeScreen extends JPanel{
 	setLayout(null); // it will be a card in the main deck
 	setBackground(Color.black);
 
+	// From MainFrame
 	market = m;
 	user = u;
 
@@ -36,13 +37,13 @@ public class HomeScreen extends JPanel{
 	homeLabel.setBounds(10, 15, 100, 20);
 	homeLabel.setOpaque(true);
 
-	// Set up hot stocks label
+	// Set up Expensive Stocks Label
 	String expensiveText = "<html> <h1 align='center'>Expensive Stocks</h1><h3 align='center'> ";
 	LinkedList<Stock> hotties = market.getExpensiveStocks(5);
 	Stock st;
 	for (int i = 0; i < 5; i++){
 	    st = hotties.get(i);
-	    System.out.println(st.getTicker());
+	    // System.out.println(st.getTicker()); FOR TESTING
 	    expensiveText += st.getTicker() + " : " + st.getPrice() + "$ <br>";
 	    }
 	expensiveText += "</h3></html>";
@@ -54,7 +55,7 @@ public class HomeScreen extends JPanel{
 	expensiveStocks.setOpaque(true);
 
 
-	// Cold stocks
+	// Set up Cheap Stocks Label
 	String cheapText = "<html> <h1 align='center'>Cheap Stocks</h1> <h3 align='center'>";
 	LinkedList<Stock> weakies = market.getCheapestStocks(5);
 	for (int i = 0; i < 5; i++){

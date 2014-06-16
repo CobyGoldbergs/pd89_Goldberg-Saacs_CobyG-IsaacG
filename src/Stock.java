@@ -129,7 +129,7 @@ public class Stock{
 	for (int i = num; i > 0; i--)
 	    ret[num - i] = pastPrices.get(listSize - i);
 	/*for (int i = 0; i < ret.length; i++)
-	  System.out.println(ret[i]);*/ // for testing
+	  System.out.println(ret[i]);*/ // FOR TESTING
 	return ret;
     }
 
