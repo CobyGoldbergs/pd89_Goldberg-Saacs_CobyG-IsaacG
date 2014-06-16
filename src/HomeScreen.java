@@ -13,6 +13,7 @@ public class HomeScreen extends JPanel{
     private JLabel hotStocks;
     private JLabel coldStocks;
     private JLabel myPort;
+    private JLabel gsIndex;
     private Market market;
     private User user;
 
@@ -35,7 +36,7 @@ public class HomeScreen extends JPanel{
 	homeLabel.setOpaque(true);
 
 	// Set up hot stocks label
-	String hotText = "<html> <h1 align='center'>Hot Stocks</h1><h3 style='padding:5'> ";
+	String hotText = "<html> <h1 align='center'>Hot Stocks</h1><h3 align='center'> ";
 	LinkedList<Stock> hotties = market.getStrongestStocks(5);
 	Stock st;
 	for (int i = 0; i < 5; i++){
@@ -46,9 +47,14 @@ public class HomeScreen extends JPanel{
 	hotText += "</h3></html>";
 	hotStocks = new JLabel(hotText, SwingConstants.CENTER);
 
+	hotStocks.setBorder(BorderFactory.createLoweredBevelBorder());
+	add(hotStocks);
+	hotStocks.setBounds(10, 50, 320, 290);
+	hotStocks.setOpaque(true);
+
 
 	// Cold stocks
-	String coldText = "<html> <h1 align='center'>Cold Stocks</h1> <h3 style='padding:5'>";
+	String coldText = "<html> <h1 align='center'>Cold Stocks</h1> <h3 align='center'>";
 	LinkedList<Stock> weakies = market.getWeakestStocks(5);
 	for (int i = 0; i < 5; i++){
 	    st = weakies.get(i);
@@ -57,16 +63,6 @@ public class HomeScreen extends JPanel{
 	coldText += "</h3></html>";
 	coldStocks = new JLabel(coldText, SwingConstants.CENTER);
 
-
-	
-	
-	// set up rest of hot stocks label
-	hotStocks.setBorder(BorderFactory.createLoweredBevelBorder());
-	add(hotStocks);
-	hotStocks.setBounds(10, 50, 320, 290);
-	hotStocks.setOpaque(true);
-
-	// Set up rest cold stocks label
 	coldStocks.setBorder(BorderFactory.createLoweredBevelBorder());
 	add(coldStocks);
 	coldStocks.setBounds(340, 50, 320, 290);
@@ -80,8 +76,7 @@ public class HomeScreen extends JPanel{
 
 
 	// Set up news label
-	String newsText = "<html><h1 align='center'; style='padding:5';> NEWS </h1>"; // add the text to the news panel
-	newsText += "<h3 style='padding:5'></h3></html>";
+	String newsText = "<html><h1 align='center'> NEWS </h1></html>"; // add the text to the news panel
 
 	news = new JLabel(newsText, SwingConstants.CENTER); // instantiate news panel and give it a border
 	news.setBorder(BorderFactory.createLoweredBevelBorder());
@@ -89,8 +84,8 @@ public class HomeScreen extends JPanel{
 	news.setBounds(10, 350, 650, 290);
 	news.setOpaque(true);
 
-	// Portfolio
-	String portText = "<html> <h1 align='center'>Portfolio</h1> </html><h3 style='padding:5'>";
+	// Set up Portfolio label
+	String portText = "<html> <h1 align='center'>Portfolio</h1> </html><h3 align='center'>";
 	LinkedList<StockPosition> portfolio = user.getPortfolio();
 	StockPosition s;
 	for (int i = 0; i < portfolio.size(); i++){
@@ -101,8 +96,17 @@ public class HomeScreen extends JPanel{
 	myPort = new JLabel(portText, SwingConstants.CENTER);
 	myPort.setBorder(BorderFactory.createLoweredBevelBorder());
 	add(myPort);
-	myPort.setBounds(670, 50, 320, 590);
+	myPort.setBounds(670, 50, 320, 500);
 	myPort.setOpaque(true);
+
+	// Set up Goldberg Saacs Index label
+	String gsText = "<html> <h1 align='center'>Goldberg Saacs Index</h1> <h3 align='center'>" + 
+	market.getIndexVal() + "</h3></html>";
+	gsIndex = new JLabel(gsText, SwingConstants.CENTER);
+	gsIndex.setBorder(BorderFactory.createLoweredBevelBorder());
+	add(gsIndex);
+	gsIndex.setBounds(670, 560, 320, 80);
+	gsIndex.setOpaque(true);
 
     }
 
@@ -118,25 +122,29 @@ public class HomeScreen extends JPanel{
     			color = "red";
     		else
     			color = "green";
-		    hotText += "<h3 style='color:" + color + "'>" + st.getTicker() + " : " + st.getPercentChange() + "% </h3>";
+		    hotText += "<h3 align='center'; style='color:" + color + "'>" + st.getTicker() + " : " + st.getPercentChange() + "% </h3>";
 		}
 		hotText += "</html>";
 		hotStocks.setText(hotText);
 	
 	
 		// Cold stocks
-		String coldText = "<html> <h1 align='center'>Cold Stocks</h1> <h3>";
+		String coldText = "<html> <h1 align='center'>Cold Stocks</h1>";
 		LinkedList<Stock> weakies = market.getWeakestStocks(5);
 		for (int i = 0; i < 5; i++){
 		    st = weakies.get(i);
-		    coldText += st.getTicker() + " : " + st.getPercentChange() + "% <br>";
+		    if (st.getPercentChange() < 0)
+    			color = "red";
+    		else
+    			color = "green";
+		    coldText += "<h3 align='center'; style='color:" + color + "'>" + st.getTicker() + " : " + st.getPercentChange() + "% <br>";
 		    }
 		coldText += "</h3></html>";
 		coldStocks.setText(coldText);
 	
 	
 		// News
-		String newsText = "<html><h1 align='center';> NEWS </h1><h3>"; // add the text to the news panel
+		String newsText = "<html><h1 align='center';> NEWS </h1><h3 align='center'>"; // add the text to the news panel
 		LinkedList<News> oldNews = market.getOldNews();
 		for (int i = 0; i < oldNews.size(); i++){
 		    int num = i+1;
@@ -146,7 +154,7 @@ public class HomeScreen extends JPanel{
 		news.setText(newsText);
 	
 		// Portfolio
-		String portText = "<html> <h1 align='center'>Portfolio</h1><h3>";
+		String portText = "<html> <h1 align='center'>Portfolio</h1><h3 align='center'>";
 		LinkedList<StockPosition> portfolio = user.getPortfolio();
 		StockPosition s;
 		for (int i = 0; i < portfolio.size(); i++){
