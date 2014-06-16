@@ -35,6 +35,6 @@ Goldberg Saacs Stock-Simulator
 	3. Compile and Run MainFrame per usual
 
 ##### FOR THOSE LOOKING FOR A MORE "REALISTIC" INVESTING EXPERIENCE:
-	1. Lower the "market strength" in Market to a value closer to 0.
-	2. Lower the stock's volatilities.
-	3. This will create much more realistic price movement and uglier graphs
+1. Lower the "market strength" in Market to a value closer to 0.
+2. Lower the stock's volatilities.
+3. This will create much more realistic price movement and uglier graphs
