@@ -25,25 +25,25 @@ public class Market{
     public void fillMarket(){
 	stocks = new LinkedList<Stock>();
 	// The ten stocks to choose from
-	Stock stock1 = new Stock("AAPL", .74, .4, .3); // ticker, beta, vol, market strength
+	Stock stock1 = new Stock("AAPL", .74, .4, .8); // ticker, beta, vol, market strength
 	stocks.add(stock1);
-	Stock stock2 = new Stock("TSLA", .23, 1.3, .3);
+	Stock stock2 = new Stock("TSLA", .23, 1.3, .8);
 	stocks.add(stock2);
-	Stock stock3 = new Stock("GS", -.13, .9, .3);
+	Stock stock3 = new Stock("GS", -.13, .9, .8);
 	stocks.add(stock3);
-	Stock stock4 = new Stock("JPM", .07, .4, .3);
+	Stock stock4 = new Stock("JPM", .07, .4, .8);
 	stocks.add(stock4);
-	Stock stock5 = new Stock("GOOG", .22, .89, .3);
+	Stock stock5 = new Stock("GOOG", .22, .89, .8);
 	stocks.add(stock5);
-	Stock stock6 = new Stock("MSFT", 1.1, .3, .3);
+	Stock stock6 = new Stock("MSFT", 1.1, .8, .8);
 	stocks.add(stock6);
-	Stock stock7 = new Stock("BAC", .19, .82, .3);
+	Stock stock7 = new Stock("BAC", .19, .82, .8);
 	stocks.add(stock7);
-	Stock stock8 = new Stock("TWTR", -.84, .9, .3);
+	Stock stock8 = new Stock("TWTR", -.84, .9, .8);
 	stocks.add(stock8);
-	Stock stock9 = new Stock("FB", .28, .6, .3);
+	Stock stock9 = new Stock("FB", .28, .6, .8);
 	stocks.add(stock9);
-	Stock stock10 = new Stock("RTN", .32, .61, .3);
+	Stock stock10 = new Stock("RTN", .32, .61, .8);
 	stocks.add(stock10);
 
     }
@@ -181,7 +181,7 @@ public class Market{
 	      applyNews();
 	    priceUpdate();
 	    updateIndexVal();
-	    //updateStrength();
+	    updateStrength();
 	
     }
 
@@ -224,7 +224,7 @@ public class Market{
 
 
     // updates market strength and gives the new one to each market
-    /*public void updateStrength(){
+    public void updateStrength(){
 	// method to change market strength value
 	double changeInStrength = 0.0; // can be neg or pos
 	Stock st;
@@ -233,7 +233,7 @@ public class Market{
 	    st = stocks.get(i);
 	    st.setMarketStrength(changeInStrength); // reset each stock's strength variable
 	}
-	}*/ // perhaps to be implemented
+	} // perhaps to be implemented
 
 
     //  METHODS TO RETURN STOCKS SORTED

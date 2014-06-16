@@ -98,7 +98,10 @@ public class Stock{
     // creates a reaction in the market to news
     public void applyNews(News news){
 	double effect = news.getEffect();
-	stockStrength += effect;
+	if (effect < 0)
+	    stockStrength -= .2;
+	else
+	    stockStrength += .2;
     }
 
     // returns list of the last num prices

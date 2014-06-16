@@ -5,7 +5,7 @@ public class QuickSortStocks {
 
     public static void swap( int x, int y, LinkedList<Stock> o ) {
 	//System.out.println("Swapping " + o.get(x).getTicker() + " and "+  o.get(y).getTicker());	//FOR TESTING
-		Collections.swap(o, x, y);
+	Collections.swap(o, x, y);
 		//System.out.println("Now they are " + o.get(x).getTicker() + " and "+  o.get(y).getTicker());	//FOR TESTING
 		//for (Stock a : o)
 		//System.out.println(a);
@@ -150,25 +150,27 @@ public class QuickSortStocks {
 
 		//if dupe is pivot val, put in lower range
 		if ( dupe == pivot ) {
-		    
+     
 		    swap( ++tmpLo, tmpHi, d );
 		    
 		}
 		else if ( dupe > pivot ) {
-		    System.out.println("BEFORE");
-		    for (Stock a : d)
-			System.out.println(a);
+		    
 		    //slide upper marker inward 1 pos, then swap
 		    swap( tmpLo, --tmpHi, d );
-		    System.out.println("AFTER");
-		    for (Stock a : d)
-			System.out.println(a);
+		    
 		    //slide upper marker inward again to get past 2nd dupe val
 		    tmpHi--;
 		}
 		else { //dupe < pivot
+		    /*System.out.println("BEFORE");
+		    for (Stock a : d)
+		    System.out.println(a);*/
 		    swap( ++tmpLo, tmpHi, d );
-		    tmpLo++;
+		    /*tmpLo++;
+		    System.out.println("AFTER");
+		    for (Stock a : d)
+		    System.out.println(a);*/
 		}
 	    }
 	}//end big while
