@@ -183,7 +183,7 @@ public class Market{
 	    //for (int j = 0; j < stocks.size(); j++) // FOR TESTING
 	// System.out.println(stocks.get(j).getTicker());
 	    Random r = new Random();
-	    if (r.nextInt(10) == 1 && !news.empty() && init)
+	    if (r.nextInt(5) == 1 && !news.empty() && init)
 	      applyNews();
 	    priceUpdate();
 	    updateIndexVal();
