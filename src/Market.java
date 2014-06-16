@@ -1,5 +1,5 @@
 import java.util.*;
-
+// Market class stores all stocks and calls upon them to update prices at regular intervals. Also controls the creation of news
 public class Market{
 
     private double gsIndexPrice; // total value of goldberg and saacs index = sum of all prices

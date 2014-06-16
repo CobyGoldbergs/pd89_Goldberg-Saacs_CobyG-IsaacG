@@ -1,5 +1,5 @@
 import java.util.*;
-
+// Used to sort the stocks of the market, such as when they're printed on various parts of the home screen
 public class QuickSortStocks {
 
 

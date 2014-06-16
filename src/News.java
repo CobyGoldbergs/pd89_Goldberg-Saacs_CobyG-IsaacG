@@ -1,5 +1,6 @@
 import java.util.*;
 
+// Underlying class for storage of news items
 public class News{
 
     private double newsEffect;

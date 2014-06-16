@@ -1,5 +1,5 @@
 import java.util.*;
-
+// Used to sort a portfolio. Can be sorted by quantity, though we ended up using it by Ticker for the portfolio printing
 public class QuickSort {
 
 

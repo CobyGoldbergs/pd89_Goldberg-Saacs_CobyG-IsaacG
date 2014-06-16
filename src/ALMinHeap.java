@@ -1,6 +1,7 @@
 /*****************************************************
  * class ALHeap
  * Implements a min heap using an ArrayList as underlying container
+ * Used in Running Median (which is used in stock pricing)
  *****************************************************/
 
 import java.util.ArrayList;

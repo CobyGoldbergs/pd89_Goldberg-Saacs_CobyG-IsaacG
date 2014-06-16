@@ -1,6 +1,7 @@
 import java.util.*;
 import java.lang.*;
 
+// Each individual stock's statistics and price changes controlled in Stock class
 public class Stock{
 
     private String ticker; // name of stock

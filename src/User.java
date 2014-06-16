@@ -1,5 +1,6 @@
 import java.util.*;
 
+// Class of a specific user. Used to manage portfolio and asset valuation.
 public class User{
     // needs system for user to know how much they have of each (if not using ll)
 
