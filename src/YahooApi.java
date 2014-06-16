@@ -45,8 +45,6 @@ public class YahooApi {
 				
 		BufferedReader in = new BufferedReader(isr); // For efficiency, thank you oracle API
 	
-		System.out.println();
-	
 		String data = in.readLine(); // retrieve the data
 		int cuttingPoint = data.indexOf(','); // this will be the price
 		String ret = data.substring(0, cuttingPoint);

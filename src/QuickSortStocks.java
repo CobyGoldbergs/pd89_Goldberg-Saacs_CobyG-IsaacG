@@ -163,7 +163,7 @@ public class QuickSortStocks {
 		    tmpHi--;
 		}
 		else { //dupe < pivot
-		    /*System.out.println("BEFORE");
+		    /*System.out.println("BEFORE"); // FOR TESTING
 		    for (Stock a : d)
 		    System.out.println(a);*/
 		    swap( ++tmpLo, tmpHi, d );

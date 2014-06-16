@@ -82,8 +82,8 @@ public class RunMed {
 
     //main method for testing
     public static void main( String[] args ) {
-
-        RunMed med = new RunMed();
+        // FOR TESTING
+        /*RunMed med = new RunMed();
 
         med.insert(1);
 	System.out.println( med.getMedian() ); //1.0
@@ -94,7 +94,7 @@ public class RunMed {
         med.insert(7);
 	System.out.println( med.getMedian() ); //4.0
         med.insert(9);
-	System.out.println( med.getMedian() ); //5.0
+	System.out.println( med.getMedian() ); //5.0*/
 
     }//end main()
 

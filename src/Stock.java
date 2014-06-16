@@ -137,10 +137,10 @@ public class Stock{
 	return ticker;
     }
 
-    // for testing
+    // FOR TESTING
     public static void main(String[] args){
 	Stock st = new Stock("AAPL", .2, .7, .3); 
-	// ticker name, start price, beta, volatility,  market strength
+	/*// ticker name, start price, beta, volatility,  market strength
 	for (int i = 0; i < 100; i++){
 	    st.priceUpdate();
 	    System.out.println("Price: " + st.getPrice() + "$");
@@ -152,7 +152,7 @@ public class Stock{
 	    System.out.println("Price: " + st.getPrice() + "$");
 	    System.out.println("Percent change: " + st.getPercentChange() + "%");
 	}
-	System.out.println("Last eight prices: " + st.getPastPrices(8));
+	System.out.println("Last eight prices: " + st.getPastPrices(8));*/
 	}
 
 
