@@ -10,8 +10,8 @@ public class HomeScreen extends JPanel{
     protected JButton viewStocksButton; // protected so that it can be accessed in MainFrame's actionlistener
     private JLabel homeLabel;
     private JLabel news;
-    // private JLabel hotStocks;
-    // private JLabel coldStocks;
+    private JLabel expensiveStocks;
+    private JLabel cheapStocks;
     private JLabel myPort;
     private JLabel gsIndex;
     private Market market;
@@ -35,38 +35,38 @@ public class HomeScreen extends JPanel{
 	homeLabel.setBounds(10, 15, 100, 20);
 	homeLabel.setOpaque(true);
 
-	/*// Set up hot stocks label
-	String hotText = "<html> <h1 align='center'>Hot Stocks</h1><h3 align='center'> ";
-	LinkedList<Stock> hotties = market.getStrongestStocks(5);
+	// Set up hot stocks label
+	String expensiveText = "<html> <h1 align='center'>Expensive Stocks</h1><h3 align='center'> ";
+	LinkedList<Stock> hotties = market.getExpensiveStocks(5);
 	Stock st;
 	for (int i = 0; i < 5; i++){
 	    st = hotties.get(i);
 	    System.out.println(st.getTicker());
-	    hotText += st.getTicker() + " : " + st.getPercentChange() + "% <br>";
+	    expensiveText += st.getTicker() + " : " + st.getPrice() + "$ <br>";
 	    }
-	hotText += "</h3></html>";
-	hotStocks = new JLabel(hotText, SwingConstants.CENTER);
+	expensiveText += "</h3></html>";
+	expensiveStocks = new JLabel(expensiveText, SwingConstants.CENTER);
 
-	hotStocks.setBorder(BorderFactory.createLoweredBevelBorder());
-	add(hotStocks);
-	hotStocks.setBounds(10, 50, 320, 290);
-	hotStocks.setOpaque(true);
+	expensiveStocks.setBorder(BorderFactory.createLoweredBevelBorder());
+	add(expensiveStocks);
+	expensiveStocks.setBounds(10, 50, 320, 290);
+	expensiveStocks.setOpaque(true);
 
 
 	// Cold stocks
-	String coldText = "<html> <h1 align='center'>Cold Stocks</h1> <h3 align='center'>";
-	LinkedList<Stock> weakies = market.getWeakestStocks(5);
+	String cheapText = "<html> <h1 align='center'>Cheap Stocks</h1> <h3 align='center'>";
+	LinkedList<Stock> weakies = market.getCheapestStocks(5);
 	for (int i = 0; i < 5; i++){
 	    st = weakies.get(i);
-	    coldText += st.getTicker() + " : " + st.getPercentChange() + "% <br>";
+	    cheapText += st.getTicker() + " : " + st.getPrice() + "$ <br>";
 	    }
-	coldText += "</h3></html>";
-	coldStocks = new JLabel(coldText, SwingConstants.CENTER);
+	cheapText += "</h3></html>";
+	cheapStocks = new JLabel(cheapText, SwingConstants.CENTER);
 
-	coldStocks.setBorder(BorderFactory.createLoweredBevelBorder());
-	add(coldStocks);
-	coldStocks.setBounds(340, 50, 320, 290);
-	coldStocks.setOpaque(true);*/
+	cheapStocks.setBorder(BorderFactory.createLoweredBevelBorder());
+	add(cheapStocks);
+	cheapStocks.setBounds(340, 50, 320, 290);
+	cheapStocks.setOpaque(true);
 
 
 	// Set up button to view stocks page
@@ -111,37 +111,28 @@ public class HomeScreen extends JPanel{
     }
 
     public void updateText(){
-    	Stock st;
-	/*// Set up hot stocks label
+	// Set up hot stocks label
     	String color;
-		String hotText = "<html> <h1 align='center'>Hot Stocks</h1>";
-		LinkedList<Stock> hotties = market.getStrongestStocks(5);
+		String expensiveText = "<html> <h1 align='center'>Expensive Stocks</h1>";
+		LinkedList<Stock> hotties = market.getExpensiveStocks(5);
 		Stock st;
 		for (int i = 0; i < 5; i++){
 		    st = hotties.get(i);
-		    if (st.getPercentChange() < 0)
-    			color = "red";
-    		else
-    			color = "green";
-		    hotText += "<h3 align='center'; style='color:" + color + "'>" + st.getTicker() + " : " + st.getPercentChange() + "% </h3>";
+		    expensiveText += "<h3 align='center'>" + st.getTicker() + " : " + st.getPrice() + "$ </h3>";
 		}
-		hotText += "</html>";
-		hotStocks.setText(hotText);
+		expensiveText += "</html>";
+		expensiveStocks.setText(expensiveText);
 	
 	
 		// Cold stocks
-		String coldText = "<html> <h1 align='center'>Cold Stocks</h1>";
-		LinkedList<Stock> weakies = market.getWeakestStocks(5);
+		String cheapText = "<html> <h1 align='center'>Cheap Stocks</h1>";
+		LinkedList<Stock> weakies = market.getCheapestStocks(5);
 		for (int i = 0; i < 5; i++){
 		    st = weakies.get(i);
-		    if (st.getPercentChange() < 0)
-    			color = "red";
-    		else
-    			color = "green";
-		    coldText += "<h3 align='center'; style='color:" + color + "'>" + st.getTicker() + " : " + st.getPercentChange() + "% <br>";
+		    cheapText += "<h3 align='center'>" + st.getTicker() + " : " + st.getPrice() + "$ <br>";
 		    }
-		coldText += "</h3></html>";
-		coldStocks.setText(coldText);*/
+		cheapText += "</h3></html>";
+		cheapStocks.setText(cheapText);
 	
 	
 		// News
