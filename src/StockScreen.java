@@ -114,13 +114,8 @@ public class StockScreen extends JPanel {
     	stock = market.getStockTicker(ticker); // get the right stock show
 
     	tickerLabel.setText("<html> <h1> <i>" + stock.getTicker() + "</i> </h1> </html>");
-
-    	String updateStatText = "<html><h1>STATS</h1><h3>" + "Beta: " +
-    	 stock.getBeta() + "<br> Volatility: " + stock.getVolatility() + 
-    	 "<br> Change: " + stock.getPercentChange() + "<br> Price: " + 
-    	 stock.getPrice() + "</h3></html>";
 		
-		statsLabel.setText(updateStatText);
+	updateStatsLabel();// method to update text of statsLabel
 
 		// reset what is displayed around buy/ sell options
 		buyLabel.setText("<html> <h2> <i>Buy/Sell Stock in " + stock.getTicker() +"</i> </h2> </html>");
@@ -139,6 +134,19 @@ public class StockScreen extends JPanel {
 		
 		this.updateGraph(counter);
 	
+    }
+
+    public void updateStatsLabel(){
+	String color;
+	if (stock.getPercentChange() > 0)
+	     color = "green";
+	else
+	     color = "red";
+    	String updateStatText = "<html><h1>STATS</h1><h3>" + "Beta: " +
+	    stock.getBeta() + "</h3><h3> Volatility: " + stock.getVolatility() + 
+	    "</h3> <h3 style='color:" + color + "'> Change: " + stock.getPercentChange() + "% </h3><h3> Price: " + 
+	    stock.getPrice() + "$ </h3> </html>";
+	statsLabel.setText(updateStatText);
     }
 
     public void updateGraph(int xval){

@@ -99,9 +99,13 @@ public class Stock{
     public void applyNews(News news){
 	double effect = news.getEffect();
 	if (effect < 0)
-	    stockStrength -= .2;
+	    stockStrength += effect;
 	else
-	    stockStrength += .2;
+	    stockStrength += effect;
+	if (effect < -.4)
+	    price -= .2;
+	if (effect > .4)
+	    price += .2;
     }
 
     // returns list of the last num prices

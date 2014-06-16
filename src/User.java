@@ -48,7 +48,7 @@ public class User{
     }
 
     public String sellStock(Stock st, int numShares){
-	portfolio = qs.qsort(portfolio, 0); // 0 sorts by ticker name
+	portfolio = qs.qsort(portfolio, 0); // 0 sorts by ticker name, handy when  printing
 	int index = -1;
 	// check if they already own some shares in that stock
 	String searchedTicker = st.getTicker();
@@ -61,17 +61,28 @@ public class User{
 		break;
 	    }
 	}
-	int sharesOwned = portfolio.get(index).getNumShares();
 	if (index == -1)
 	    return "Invalid stock";
-	else if (sharesOwned < numShares)
+	else if (portfolio.get(index).getNumShares() < numShares)
 	    return "You do not own sufficient shares";
 	else{
 	    portfolio.get(index).sellShares(numShares);
 	    money += st.getPrice() * numShares;
+	    if (portfolio.get(index).getNumShares() <= 0)
+		portfolio.remove(index);
 	    return "Sold " + numShares + " shares";
 	}
 	
+    }
+
+    // method to empty portfolio
+    public void sellAll(){
+	StockPosition removing;
+	for (int i =  portfolio.size() - 1; i >= 0; i--){
+	    removing = portfolio.get(i);
+	    money += removing.getStock().getPrice() * removing.getNumShares();
+	    portfolio.remove(i);
+	}
     }
 
 }

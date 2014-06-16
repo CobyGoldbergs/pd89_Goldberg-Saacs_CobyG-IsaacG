@@ -23,27 +23,33 @@ public class Market{
     // INITIALIZE HELPERS
 
     public void fillMarket(){
+	Random r = new Random();
+	double ms;
+	if (r.nextInt(2) == 0)
+	    ms = -.5;
+	else
+	    ms = .5;
 	stocks = new LinkedList<Stock>();
 	// The ten stocks to choose from
-	Stock stock1 = new Stock("AAPL", .74, .4, .8); // ticker, beta, vol, market strength
+	Stock stock1 = new Stock("AAPL", .74, .4, ms); // ticker, beta, vol, market strength
 	stocks.add(stock1);
-	Stock stock2 = new Stock("TSLA", .23, 1.3, .8);
+	Stock stock2 = new Stock("TSLA", .23, 1.3, ms);
 	stocks.add(stock2);
-	Stock stock3 = new Stock("GS", -.13, .9, .8);
+	Stock stock3 = new Stock("GS", -.13, .9, ms);
 	stocks.add(stock3);
-	Stock stock4 = new Stock("JPM", .07, .4, .8);
+	Stock stock4 = new Stock("JPM", .07, .4, ms);
 	stocks.add(stock4);
-	Stock stock5 = new Stock("GOOG", .22, .89, .8);
+	Stock stock5 = new Stock("GOOG", .22, .89, ms);
 	stocks.add(stock5);
-	Stock stock6 = new Stock("MSFT", 1.1, .8, .8);
+	Stock stock6 = new Stock("MSFT", 1.1, .8, ms);
 	stocks.add(stock6);
-	Stock stock7 = new Stock("BAC", .19, .82, .8);
+	Stock stock7 = new Stock("BAC", .19, .82, ms);
 	stocks.add(stock7);
-	Stock stock8 = new Stock("TWTR", -.84, .9, .8);
+	Stock stock8 = new Stock("TWTR", -.84, .9, ms);
 	stocks.add(stock8);
-	Stock stock9 = new Stock("FB", .28, .6, .8);
+	Stock stock9 = new Stock("FB", .28, .6, ms);
 	stocks.add(stock9);
-	Stock stock10 = new Stock("RTN", .32, .61, .8);
+	Stock stock10 = new Stock("RTN", .32, .61, ms);
 	stocks.add(stock10);
 
     }
@@ -58,46 +64,46 @@ public class Market{
 	News n2 = new News(-.3, info2, new String[]{"AAPL", "TSLA", "GS", "JPM", "GOOG", "MSFT", "BAC", "TWTR", "FB", "RTN"});
 	newsSelect.push(n2);
 	String info3 = "Government will begin prosecuting several major financial CEOs for fraud";
-	News n3 = new News(-.1, info3, new String[]{"GS", "JPM", "BAC"});
+	News n3 = new News(-.4, info3, new String[]{"GS", "JPM", "BAC"});
 	newsSelect.push(n3);
 	String info4 = "Tesla CEO Elon Musk announces car that runs on love";
-	News n4 = new News(.3, info4, new String[]{"TSLA"});
+	News n4 = new News(.8, info4, new String[]{"TSLA"});
 	newsSelect.push(n4);
 	String info5 = "Goldman Sacs opens a goat trading divsion, reaps record profits";
-	News n5 = new News(.2, info5, new String[]{"GS"});
+	News n5 = new News(.6, info5, new String[]{"GS"});
 	newsSelect.push(n5);
 	String info6 = "Apple sued for having actually stolen every single one of its ideas";
-	News n6 = new News(-.2, info6, new String[]{"AAPL"});
+	News n6 = new News(-.5, info6, new String[]{"AAPL"});
 	newsSelect.push(n6);
 	String info7 = "JP Morgan announces major losses due to bad investments in the Mets, upwards of 20 billion lost.";
-	News n7 = new News(-.4, info7, new String[]{"JPM"});
+	News n7 = new News(-.8, info7, new String[]{"JPM"});
 	newsSelect.push(n7);
 	String info8 = "University of Michigan announces 87.3 Consumer Confidence Index, up 4 points from previous month.";
-	News n8 = new News(.2, info8, new String[]{"AAPL", "TSLA", "GS", "JPM", "GOOG", "MSFT", "BAC", "TWTR", "FB", "RTN"});
+	News n8 = new News(.4, info8, new String[]{"AAPL", "TSLA", "GS", "JPM", "GOOG", "MSFT", "BAC", "TWTR", "FB", "RTN"});
 	newsSelect.push(n8);
 	String info9 = "Apple announces new product, iLive, lives life for you. Initial sale in the trillions of pesos.";
-	News n9 = new News(.3, info9, new String[]{"AAPL"});
+	News n9 = new News(.5, info9, new String[]{"AAPL"});
 	newsSelect.push(n9);
 	String info10 = "Tesla to open new factory in Central African Republic. Investors very excited about prospects";
-	News n10 = new News(.1, info10, new String[]{"TSLA"});
+	News n10 = new News(.7, info10, new String[]{"TSLA"});
 	newsSelect.push(n10);
 	String info12 = "Government shutodwn potent in thirty days";
-	News n12 = new News(-.2, info12, new String[]{"AAPL", "TSLA", "GS", "JPM", "GOOG", "MSFT", "BAC", "TWTR", "FB", "RTN"});
+	News n12 = new News(-.3, info12, new String[]{"AAPL", "TSLA", "GS", "JPM", "GOOG", "MSFT", "BAC", "TWTR", "FB", "RTN"});
 	newsSelect.push(n12);
 	String info13 = "France announced 300 billion dollar suit against Google for evaded taxes.";
-	News n13 = new News(-.3, info13, new String[]{"GOOG"});
+	News n13 = new News(-.9, info13, new String[]{"GOOG"});
 	newsSelect.push(n13);
 	String info14 = "Facebook announces major user growth in Asian markets.";
-	News n14 = new News(.2, info14, new String[]{"FB"});
+	News n14 = new News(.4, info14, new String[]{"FB"});
 	newsSelect.push(n14);
 	String info15 = "Twitter losing membership fast in North America as tweeter gains popularity";
-	News n15 = new News(-.3, info15, new String[]{"TWTR"});
+	News n15 = new News(-.7, info15, new String[]{"TWTR"});
 	newsSelect.push(n15);
 	String info16 = "Republicans in House will not back down on shutdown, says leadership";
-	News n16 = new News(-.5, info16, new String[]{"AAPL", "TSLA", "GS", "JPM", "GOOG", "MSFT", "BAC", "TWTR", "FB", "RTN"});
+	News n16 = new News(-.3, info16, new String[]{"AAPL", "TSLA", "GS", "JPM", "GOOG", "MSFT", "BAC", "TWTR", "FB", "RTN"});
 	newsSelect.push(n16);
 	String info17 = "North Korean markets now open to all social media, Kim Jung Ill announces";
-	News n17 = new News(.2, info17, new String[]{"FB", "TWTR"});
+	News n17 = new News(.5, info17, new String[]{"FB", "TWTR"});
 	newsSelect.push(n17);
 	String info18 = "New 'Cat of Wall Street' makes record gains for JP Morgan";
 	News n18 = new News(.4, info18, new String[]{"JPM"});
@@ -115,25 +121,25 @@ public class Market{
 	News n22 = new News(-.2, info22, new String[]{"AAPL", "TSLA", "GS", "JPM", "GOOG", "MSFT", "BAC", "TWTR", "FB", "RTN"});
 	newsSelect.push(n22);
 	String info23 = "Cat of Wall Street under charges for fraud, as is much of JPM";
-	News n23 = new News(-.3, info23, new String[]{"JPM"});
+	News n23 = new News(-.7, info23, new String[]{"JPM"});
 	newsSelect.push(n23);
 	String info24 = "Ron Paul announces potential candidacy for President again, polling looks good, plans to end the government";
-	News n24 = new News(-.6, info24, new String[]{"AAPL", "TSLA", "GS", "JPM", "GOOG", "MSFT", "BAC", "TWTR", "FB", "RTN"});
+	News n24 = new News(-.9, info24, new String[]{"AAPL", "TSLA", "GS", "JPM", "GOOG", "MSFT", "BAC", "TWTR", "FB", "RTN"});
 	newsSelect.push(n24);
 	String info25 = "Google settles suit with France for 50 billion pesos, many believe they dodged a bullet";
-	News n25 = new News(.1, info25, new String[]{"GOOG"});
+	News n25 = new News(.6, info25, new String[]{"GOOG"});
 	newsSelect.push(n25);
 	String info26 = "Apple to start paying its Chinese workers, investors happy";
-	News n26 = new News(.1, info26, new String[]{"AAPL"});
+	News n26 = new News(.3, info26, new String[]{"AAPL"});
 	newsSelect.push(n26);
 	String info27 = "China to allow Google services free of censoring, Google to expand Asian operations";
-	News n27 = new News(.3, info27, new String[]{"GOOG"});
+	News n27 = new News(.6, info27, new String[]{"GOOG"});
 	newsSelect.push(n27);
 	String info28 = "Sales of Apple's iPhone 8 through the roof";
-	News n28 = new News(.3, info28, new String[]{"AAPL"});
+	News n28 = new News(.5, info28, new String[]{"AAPL"});
 	newsSelect.push(n28);
 	String info29 = "Twitter loses a lot of customers";
-	News n29 = new News(-.2, info29, new String[]{"TWTR"});
+	News n29 = new News(-.8, info29, new String[]{"TWTR"});
 	newsSelect.push(n29);
 	String info30 = "Raytheon hires new CEO, great track record for being great";
 	News n30 = new News(.3, info30, new String[]{"RTN"});
@@ -145,13 +151,13 @@ public class Market{
 	News n32 = new News(-.9, info32, new String[]{"AAPL", "TSLA", "GS", "JPM", "GOOG", "MSFT", "BAC", "TWTR", "FB", "RTN"});
 	newsSelect.push(n32);
 	String info33 = "Tesla builds bullet train in U.S. Reaps billions in profits";
-	News n33 = new News(.2, info33, new String[]{"TSLA"});
+	News n33 = new News(.4, info33, new String[]{"TSLA"});
 	newsSelect.push(n33);
-	String info34 = "Turns out Greece was lying again. Their once again in a ton of debt";
-	News n34 = new News(-.5, info34, new String[]{"AAPL", "TSLA", "GS", "JPM", "GOOG", "MSFT", "BAC", "TWTR", "FB", "RTN"});
+	String info34 = "Turns out Greece was lying again. They're once again in a ton of debt";
+	News n34 = new News(-.8, info34, new String[]{"AAPL", "TSLA", "GS", "JPM", "GOOG", "MSFT", "BAC", "TWTR", "FB", "RTN"});
 	newsSelect.push(n34);
 	String info35 = "U.S. wins World Cup. USA USA USA USA";
-	News n35 = new News(.4, info35, new String[]{"AAPL", "TSLA", "GS", "JPM", "GOOG", "MSFT", "BAC", "TWTR", "FB", "RTN"});
+	News n35 = new News(.8, info35, new String[]{"AAPL", "TSLA", "GS", "JPM", "GOOG", "MSFT", "BAC", "TWTR", "FB", "RTN"});
 	newsSelect.push(n35);
 	String info36 = "Goldman Sacs is actually just run by voldamort. Investors angry.";
 	News n36 = new News(-.7, info36, new String[]{"GS"});
@@ -312,7 +318,7 @@ public class Market{
 
     public LinkedList<News> getOldNews(){
 	while (appliedNews.size() > 4)
-	    appliedNews.removeLast();
+	    appliedNews.remove();
 	return appliedNews;
     }
 

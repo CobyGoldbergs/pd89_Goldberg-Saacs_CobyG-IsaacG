@@ -33,7 +33,7 @@ public class MainFrame extends JFrame implements ActionListener, Runnable{
 		pane.setLayout(new CardLayout()); // create the main window holder and make it a deck
 	
 		market = new Market();
-		for (int i = 0; i < 40000; i++)
+		for (int i = 0; i < 400; i++)
 		    market.updateMarket(false); // create initial history for the market, false prevents news
 		
 		user = new User(2000);
@@ -74,6 +74,10 @@ public class MainFrame extends JFrame implements ActionListener, Runnable{
 		// From the home screen to the view stocks screen
 		if (source.equals(home.viewStocksButton)){
 		    card.show(pane, "stock");
+		}
+
+		if (source.equals(home.sellAll)){
+		    user.sellAll();
 		}
 	
 		// From the view stocks screen to the home screen
@@ -146,7 +150,7 @@ public class MainFrame extends JFrame implements ActionListener, Runnable{
 		    try {
 				int quant = (int)(Integer.parseInt(quantityStr));
 				String message = user.buyStock(purchasing, quant); // what is the result
-				System.out.println(message);
+				//System.out.println(message); FOR TESTING
 				stockScreen.errorMessage.setText("<html> <h4> <i>" + message + "</i> </h4> </html>");
 		    }
 		    catch( Exception f ) {
@@ -156,7 +160,7 @@ public class MainFrame extends JFrame implements ActionListener, Runnable{
 
 		else if (source.equals(stockScreen.sellButton)){
 		   	Stock purchasing = market.getStockTicker(curTick);
-		   	System.out.println("Works");
+		   	//System.out.println("Works"); FOR TESTING
 		   	String quantityStr = stockScreen.quantity.getText();
 		   	try {
 				int quant = (int)(Integer.parseInt(quantityStr));
@@ -186,8 +190,9 @@ public class MainFrame extends JFrame implements ActionListener, Runnable{
     	while (true) {
     		counter++;
     		market.updateMarket(true);
-			stockScreen.updateGraph(counter);
-			home.updateText();
+		stockScreen.updateGraph(counter);
+		home.updateText();
+		stockScreen.updateStatsLabel();
     		delay();
     	}
     }

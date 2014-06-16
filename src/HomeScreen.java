@@ -8,6 +8,7 @@ import javax.swing.BorderFactory;
 
 public class HomeScreen extends JPanel{
     protected JButton viewStocksButton; // protected so that it can be accessed in MainFrame's actionlistener
+    protected JButton sellAll;
     private JLabel homeLabel;
     private JLabel news;
     private JLabel expensiveStocks;
@@ -74,6 +75,10 @@ public class HomeScreen extends JPanel{
 	add(viewStocksButton);
 	viewStocksButton.setBounds(890, 10, 100, 30);
 
+	// Set up button to sell all held stocks
+	sellAll = new JButton("Sell All Stocks");
+	add(sellAll);
+	sellAll.setBounds(860, 10, 100, 30);
 
 	// Set up news label
 	String newsText = "<html><h1 align='center'> NEWS </h1></html>"; // add the text to the news panel
@@ -96,7 +101,7 @@ public class HomeScreen extends JPanel{
 	myPort = new JLabel(portText, SwingConstants.CENTER);
 	myPort.setBorder(BorderFactory.createLoweredBevelBorder());
 	add(myPort);
-	myPort.setBounds(670, 50, 320, 500);
+	myPort.setBounds(670, 50, 320, 450);
 	myPort.setOpaque(true);
 
 	// Set up Goldberg Saacs Index label
@@ -118,7 +123,11 @@ public class HomeScreen extends JPanel{
 		Stock st;
 		for (int i = 0; i < 5; i++){
 		    st = hotties.get(i);
-		    expensiveText += "<h3 align='center'>" + st.getTicker() + " : " + st.getPrice() + "$ </h3>";
+		    if (st.getPercentChange() > 0)
+			color = "green";
+		    else
+			color = "red";
+		    expensiveText += "<h3 align='center' style='color:" + color + "'>" + st.getTicker() + " : " + st.getPrice() + "$ </h3>";
 		}
 		expensiveText += "</html>";
 		expensiveStocks.setText(expensiveText);
@@ -129,7 +138,11 @@ public class HomeScreen extends JPanel{
 		LinkedList<Stock> weakies = market.getCheapestStocks(5);
 		for (int i = 0; i < 5; i++){
 		    st = weakies.get(i);
-		    cheapText += "<h3 align='center'>" + st.getTicker() + " : " + st.getPrice() + "$ <br>";
+		    if (st.getPercentChange() > 0)
+			color = "green";
+		    else
+			color = "red";
+		    cheapText += "<h3 align='center' style='color:" + color + "'>" + st.getTicker() + " : " + st.getPrice() + "$ </h3>";
 		    }
 		cheapText += "</h3></html>";
 		cheapStocks.setText(cheapText);
@@ -164,5 +177,6 @@ public class HomeScreen extends JPanel{
 
     public void giveActionListener(ActionListener a) {
 	viewStocksButton.addActionListener(a);
+	sellAll.addActionListener(a);
     }
 }
