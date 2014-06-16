@@ -65,7 +65,7 @@ public class Stock{
 	    marketStrength += .01;
 	double marketEffect = marketStrength * beta + stockStrength; // strength less than one causes decrease in price, beta exaggerates/ mitigate's market's effect
 	double d = r.nextDouble() * volatility * marketEffect; // higher volatility makes new purchase deviate further from current price
-	int marketSentiment = Math.abs((int)(marketStrength * 10)) + 1; // +1 meant to avoid errors on nextInt when strength is zero
+	int marketSentiment = Math.abs((int)(marketEffect * 10)) + 1; // +1 meant to avoid errors on nextInt when strength is zero
 	marketSentiment = Math.abs(marketSentiment); // for use in next int
 	if (r.nextInt(marketSentiment) == 1)
 	    d = 0-d; // adds degree of fluctuation. A market sentiment closer to zero is more likely to yield a reverse in direction of price
