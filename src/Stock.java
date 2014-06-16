@@ -5,6 +5,8 @@ public class Stock{
 
     private String ticker; // name of stock
     private double price; // price
+    private double high; // high since app's run
+    private double low; // low since app's run
     private double beta; // degree to which stock mirrors market. b > 1 means exaggerated response to market movement. b < -1 means exaggerated response in opposite direction of market
     private double volatility; // degree to which stock fluctuates
     private double marketStrength; // measure of market as a whole between -1 and 1
@@ -18,15 +20,21 @@ public class Stock{
 	YahooApi yahooApi = new YahooApi();
 	ticker = t;
 	price = yahooApi.getData(t); // returns last close price from live api
+	high = 0.0;
+	low = 0.0;
 	beta = b;
 	volatility = v;
 	marketStrength = ms;
+	stockStrength = 0.0;
+
 	bids = new RunMed();
 	asks = new RunMed();
-	stockStrength = 0.0;
-	pastPrices = new LinkedList<Double>();
-	// add code to use 50 and 200 day mva
+	pastPrices = new LinkedList<Double>(); // init data lists
+
 	initialPurhcases(); // function to create some initial bids and asks
+	
+	low = price;
+	high = price; // neither should have vals user didn't see
     }
 
     // populates bid and ask lists with values and sets price
@@ -50,6 +58,10 @@ public class Stock{
 	double newAsk = newPurchase();
 	asks.insert(newAsk);
 	updatePercent(); // method that updates percent change
+	if (price > high)
+	    high = price;
+	if (price < low)
+	    low = price;
     }
 
     /*Adds new purchase
@@ -89,6 +101,8 @@ public class Stock{
     public double getBeta(){return beta;}
     public double getVolatility(){return volatility;}
     public double getPercentChange(){return percentChange;}
+    public double getHigh(){return high;}
+    public double getLow(){return low;}
     
     // outside classes can set a new market strength
     public void setMarketStrength(double ms){

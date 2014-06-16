@@ -139,13 +139,13 @@ public class StockScreen extends JPanel {
     public void updateStatsLabel(){
 	String color;
 	if (stock.getPercentChange() > 0)
-	     color = "green";
+	    color = "green";
 	else
-	     color = "red";
+	    color = "red";
     	String updateStatText = "<html><h1>STATS</h1><h3>" + "Beta: " +
 	    stock.getBeta() + "</h3><h3> Volatility: " + stock.getVolatility() + 
-	    "</h3> <h3 style='color:" + color + "'> Change: " + stock.getPercentChange() + "% </h3><h3> Price: " + 
-	    stock.getPrice() + "$ </h3> </html>";
+	    "</h3> <h3 style='color:" + color + "'> Change: " + stock.getPercentChange() + "% </h3><h3> Price: " + stock.getPrice() + "$ </h3> <h3> High: " + stock.getHigh() + 
+	    "$ </h3><h3>Low: " + stock.getLow() + "$ </h3> </html>";
 	statsLabel.setText(updateStatText);
     }
 

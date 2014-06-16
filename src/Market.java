@@ -49,7 +49,7 @@ public class Market{
 	stocks.add(stock8);
 	Stock stock9 = new Stock("FB", .28, .6, ms);
 	stocks.add(stock9);
-	Stock stock10 = new Stock("RTN", .32, .61, ms);
+	Stock stock10 = new Stock("RTN", .32, .21, ms);
 	stocks.add(stock10);
 
     }
@@ -226,6 +226,7 @@ public class Market{
 	    st = stocks.get(i);
 	    gsIndexPrice += st.getPrice(); // add each stock's price to index total
 	}
+	gsIndexPrice = (double)(Math.round(gsIndexPrice * 100)) / 100;
     }
 
 

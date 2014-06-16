@@ -78,7 +78,7 @@ public class HomeScreen extends JPanel{
 	// Set up button to sell all held stocks
 	sellAll = new JButton("Sell All Stocks");
 	add(sellAll);
-	sellAll.setBounds(860, 10, 100, 30);
+	sellAll.setBounds(665, 460, 330, 30);
 
 	// Set up news label
 	String newsText = "<html><h1 align='center'> NEWS </h1></html>"; // add the text to the news panel
@@ -101,7 +101,7 @@ public class HomeScreen extends JPanel{
 	myPort = new JLabel(portText, SwingConstants.CENTER);
 	myPort.setBorder(BorderFactory.createLoweredBevelBorder());
 	add(myPort);
-	myPort.setBounds(670, 50, 320, 450);
+	myPort.setBounds(670, 50, 320, 410);
 	myPort.setOpaque(true);
 
 	// Set up Goldberg Saacs Index label
@@ -110,7 +110,7 @@ public class HomeScreen extends JPanel{
 	gsIndex = new JLabel(gsText, SwingConstants.CENTER);
 	gsIndex.setBorder(BorderFactory.createLoweredBevelBorder());
 	add(gsIndex);
-	gsIndex.setBounds(670, 560, 320, 80);
+	gsIndex.setBounds(670, 490, 320, 150);
 	gsIndex.setOpaque(true);
 
     }
@@ -153,7 +153,7 @@ public class HomeScreen extends JPanel{
 		LinkedList<News> oldNews = market.getOldNews();
 		for (int i = 0; i < oldNews.size(); i++){
 		    int num = i+1;
-		    newsText += num + ") " + oldNews.get(i).getInfo() + "<br>";
+		    newsText += num + ") " + oldNews.get(i).getInfo() + "</h3><h3>";
 		}
 		newsText += "</h3></html>";
 		news.setText(newsText);
@@ -173,6 +173,11 @@ public class HomeScreen extends JPanel{
 		    }
 		portText += "$" + user.getMoney() + " available</h3></html>";
 		myPort.setText(portText);
+
+		// Goldberg and Sacs Index update
+		String gsText = "<html> <h1 align='center'>Goldberg Saacs Index</h1> <h3 align='center'>$" + 
+		    market.getIndexVal() + "</h3><h5 align='center'> Aggregate value of the Goldberg Saac's market </h5></html>";
+		gsIndex.setText(gsText);
     }
 
     public void giveActionListener(ActionListener a) {
