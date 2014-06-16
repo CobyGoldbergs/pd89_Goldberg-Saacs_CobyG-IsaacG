@@ -150,17 +150,19 @@ public class QuickSortStocks {
 
 		//if dupe is pivot val, put in lower range
 		if ( dupe == pivot ) {
+		    
+		    swap( ++tmpLo, tmpHi, d );
+		    
+		}
+		else if ( dupe > pivot ) {
 		    System.out.println("BEFORE");
 		    for (Stock a : d)
 			System.out.println(a);
-		    swap( ++tmpLo, tmpHi, d );
+		    //slide upper marker inward 1 pos, then swap
+		    swap( tmpLo, --tmpHi, d );
 		    System.out.println("AFTER");
 		    for (Stock a : d)
 			System.out.println(a);
-		}
-		else if ( dupe > pivot ) {
-		    //slide upper marker inward 1 pos, then swap
-		    swap( tmpLo, --tmpHi, d );
 		    //slide upper marker inward again to get past 2nd dupe val
 		    tmpHi--;
 		}
