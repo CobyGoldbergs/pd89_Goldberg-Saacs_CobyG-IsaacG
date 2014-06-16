@@ -215,6 +215,7 @@ public class Market{
     public void updateIndexVal(){
 	Stock st;
 	// recurse through the market
+	gsIndexPrice = 0.0;
 	for (int i = 0; i < stocks.size(); i++){
 	    st = stocks.get(i);
 	    gsIndexPrice += st.getPrice(); // add each stock's price to index total
@@ -325,12 +326,12 @@ public class Market{
 	LinkedList<Stock> tp = m.getAlphabetizedStocks();
 	for (Stock a : tp)
 	    System.out.println(a);
-	System.out.println(m.getIndexVal());
+	//System.out.println(m.getIndexVal());
 	for (int i = 0; i < 100000; i++){
 	    m.updateMarket(false);
 	    
 	}
-	System.out.println(m.getIndexVal());
+	//System.out.println(m.getIndexVal());
 	tp = m.getStocks();
 	for (Stock a : tp)
 	    System.out.println(a + " Percent change: " + a.getPercentChange());
