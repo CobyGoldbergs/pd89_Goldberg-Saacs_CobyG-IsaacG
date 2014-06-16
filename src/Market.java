@@ -180,7 +180,7 @@ public class Market{
     // method that updates the market  every 5 seconds
     public void updateMarket(boolean init){
 	    // randomly assign new news
-	    //for (int j = 0; j < stocks.size(); j++) //for testing
+	    //for (int j = 0; j < stocks.size(); j++) // FOR TESTING
 	// System.out.println(stocks.get(j).getTicker());
 	    Random r = new Random();
 	    if (r.nextInt(10) == 1 && !news.empty() && init)
@@ -327,14 +327,14 @@ public class Market{
 	return gsIndexPrice;
     }
     
-    // for testing
+    // FOR TESTING
     public static void main(String[] args){
-	Market m = new Market();
+	/*Market m = new Market();
 	LinkedList<Stock> tp = m.getAlphabetizedStocks();
 	for (Stock a : tp)
 	    System.out.println(a + "Price: " + a.getPrice());
 	//System.out.println(m.getIndexVal());
-	/*for (int i = 0; i < 100; i++){
+	for (int i = 0; i < 100; i++){
 	    m.updateMarket(false);
 	    
 	}
@@ -348,8 +348,8 @@ public class Market{
 	    System.out.println(a + " Percent change: " + a.getPercentChange());
 	tp = m.getStocks();
 	for (Stock a : tp)
-	System.out.println(a + "Are they still here: " + a.getPercentChange());*/
-	/*tp = m.getStocks();
+	System.out.println(a + "Are they still here: " + a.getPercentChange());
+	tp = m.getStocks();
 	for (Stock a : tp)
 	    System.out.println( "Stocks original order: " + a);
 	tp =  m.getWeakestStocks(4);
