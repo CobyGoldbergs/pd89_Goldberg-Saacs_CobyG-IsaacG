@@ -144,16 +144,19 @@ public class QuickSortStocks {
 
 	    //dupe vals found at markers
 	    else if ( tmpLo < tmpHi ) { 
-		System.out.println("BEFORE");
-		for (Stock a : d)
-		    System.out.println(a);
 		//extra chk for Lo<Hi bc of double marker moves below
 
 		double dupe = d.get(tmpHi).getPercentChange();
 
 		//if dupe is pivot val, put in lower range
 		if ( dupe == pivot ) {
+		    System.out.println("BEFORE");
+		    for (Stock a : d)
+			System.out.println(a);
 		    swap( ++tmpLo, tmpHi, d );
+		    System.out.println("AFTER");
+		    for (Stock a : d)
+			System.out.println(a);
 		}
 		else if ( dupe > pivot ) {
 		    //slide upper marker inward 1 pos, then swap
@@ -165,9 +168,6 @@ public class QuickSortStocks {
 		    swap( ++tmpLo, tmpHi, d );
 		    tmpLo++;
 		}
-		System.out.println("AFTER");
-		for (Stock a : d)
-		    System.out.println(a);
 	    }
 	}//end big while
 
