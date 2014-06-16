@@ -174,12 +174,14 @@ public class Market{
     // method that updates the market  every 5 seconds
     public void updateMarket(boolean init){
 	    // randomly assign new news
+	    //for (int j = 0; j < stocks.size(); j++) //for testing
+	//	System.out.println(stocks.get(j).getTicker());
 	    Random r = new Random();
 	    if (r.nextInt(10) == 1 && !news.empty() && init)
-		applyNews();
+	      applyNews();
 	    priceUpdate();
 	    updateIndexVal();
-	    updateStrength();
+	    //updateStrength();
 	
     }
 
@@ -201,7 +203,7 @@ public class Market{
 		}
 	    }
 	}
-    }
+	}
 
     // updates price of each stock
     public void priceUpdate(){
@@ -221,7 +223,7 @@ public class Market{
 
 
     // updates market strength and gives the new one to each market
-    public void updateStrength(){
+    /*public void updateStrength(){
 	// method to change market strength value
 	double changeInStrength = 0.0; // can be neg or pos
 	Stock st;
@@ -230,7 +232,7 @@ public class Market{
 	    st = stocks.get(i);
 	    st.setMarketStrength(changeInStrength); // reset each stock's strength variable
 	}
-    }
+	}*/ // perhaps to be implemented
 
 
     //  METHODS TO RETURN STOCKS SORTED
@@ -283,19 +285,6 @@ public class Market{
 	return ret;
     }
 
-    public Stock getStockTicker(String tick){
-	for (int i = 0; i < stocks.size(); i++){
-	    if (stocks.get(i).getTicker().equals(tick))
-		return stocks.get(i);
-	}
-	return null;
-    }
-
-    public LinkedList<News> getOldNews(){
-	while (appliedNews.size() > 4)
-	    appliedNews.removeLast();
-	return appliedNews;
-    }
 
     // return list of stocks with weakest percent changes
     public LinkedList<Stock> getWeakestStocks(int quantity){
@@ -310,21 +299,42 @@ public class Market{
 	}
 	return ret;
     }
+
+
+    public Stock getStockTicker(String tick){
+	for (int i = 0; i < stocks.size(); i++){
+	    if (stocks.get(i).getTicker().equals(tick))
+		return stocks.get(i);
+	}
+	return null;
+    }
+
+    public LinkedList<News> getOldNews(){
+	while (appliedNews.size() > 4)
+	    appliedNews.removeLast();
+	return appliedNews;
+    }
     
     // for testing
     public static void main(String[] args){
 	Market m = new Market();
 	LinkedList<Stock> tp = m.getAlphabetizedStocks();
-for (Stock a : tp)
+	for (Stock a : tp)
 	    System.out.println(a);
-	for (int i = 0; i < 40000; i++){
-	    m.updateMarket(true);
+	for (int i = 0; i < 100000; i++){
+	    m.updateMarket(false);
 	}
-	tp =  m.getStrongestStocks(4);
-	System.out.println("Strongest: ");
+	tp = m.getStocks();
+	for (Stock a : tp)
+	    System.out.println(a + " Percent change: " + a.getPercentChange());
+	tp =  m.getWeakestStocks(4);
+	System.out.println("Cheapest: ");
 	for (Stock a : tp)
 	    System.out.println(a + " Percent change: " + a.getPercentChange());
 	tp = m.getStocks();
+	for (Stock a : tp)
+	    System.out.println(a + "Are they still here: " + a.getPercentChange());
+	/*tp = m.getStocks();
 	for (Stock a : tp)
 	    System.out.println( "Stocks original order: " + a);
 	tp =  m.getWeakestStocks(4);
@@ -342,7 +352,7 @@ for (Stock a : tp)
 	tp =  m.getAlphabetizedStocks();
 	System.out.println("By name: ");
 	for (Stock a : tp)
-	    System.out.println(a );
+	System.out.println(a );*/
 	
     }
 

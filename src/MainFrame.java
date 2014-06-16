@@ -33,7 +33,7 @@ public class MainFrame extends JFrame implements ActionListener, Runnable{
 		pane.setLayout(new CardLayout()); // create the main window holder and make it a deck
 	
 		market = new Market();
-		for (int i = 0; i < 400; i++)
+		for (int i = 0; i < 40000; i++)
 		    market.updateMarket(false); // create initial history for the market, false prevents news
 		
 		user = new User(10000);
@@ -60,8 +60,8 @@ public class MainFrame extends JFrame implements ActionListener, Runnable{
 		setLocationRelativeTo(null); // center it
 	
 		// Test
-		for (int i = 0; i < 1000; i++)
-		    market.updateMarket(false);
+		//for (int i = 0; i < 1000; i++)
+		//market.updateMarket(false);
 
 		userThread = new Thread(this);
 		userThread.start();
