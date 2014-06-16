@@ -4,9 +4,11 @@ public class QuickSortStocks {
 
 
     public static void swap( int x, int y, LinkedList<Stock> o ) {
-		// System.out.println("Swapping " + o.get(x).getTicker() + " and "+  o.get(y).getTicker());	FOR TESTING
+	//System.out.println("Swapping " + o.get(x).getTicker() + " and "+  o.get(y).getTicker());	//FOR TESTING
 		Collections.swap(o, x, y);
-		// System.out.println("Now they are " + o.get(x).getTicker() + " and "+  o.get(y).getTicker());	FOR TESTING
+		//System.out.println("Now they are " + o.get(x).getTicker() + " and "+  o.get(y).getTicker());	//FOR TESTING
+		//for (Stock a : o)
+		//System.out.println(a);
     }
 
     public LinkedList<Stock> qsort( LinkedList<Stock> a, int comparing ) { 
@@ -84,11 +86,13 @@ public class QuickSortStocks {
 	    while( d.get(tmpLo).getPrice() < pivot )  tmpLo++;
 	    while( d.get(tmpHi).getPrice() > pivot )  tmpHi--;
 
-	    if ( d.get(tmpLo).getPrice() != d.get(tmpHi).getPrice() )
+	    if ( d.get(tmpLo).getPrice() != d.get(tmpHi).getPrice() ){
 		swap( tmpLo, tmpHi, d );
+	    }
 
 	    //dupe vals found at markers
 	    else if ( tmpLo < tmpHi ) { 
+	
 		//extra chk for Lo<Hi bc of double marker moves below
 
 		double dupe = d.get(tmpHi).getPrice();
@@ -132,12 +136,17 @@ public class QuickSortStocks {
 	    while( d.get(tmpLo).getPercentChange() < pivot )  tmpLo++;
 	    while( d.get(tmpHi).getPercentChange() > pivot )  tmpHi--;
 
-	    if ( d.get(tmpLo).getPercentChange() != d.get(tmpHi).getPercentChange() ){
+	    if ( d.get(tmpLo).getPercentChange() != d.get(tmpHi).getPercentChange() ){	
+		
 		swap( tmpLo, tmpHi, d );
+
 	    }
 
 	    //dupe vals found at markers
 	    else if ( tmpLo < tmpHi ) { 
+		System.out.println("BEFORE");
+		for (Stock a : d)
+		    System.out.println(a);
 		//extra chk for Lo<Hi bc of double marker moves below
 
 		double dupe = d.get(tmpHi).getPercentChange();
@@ -156,6 +165,9 @@ public class QuickSortStocks {
 		    swap( ++tmpLo, tmpHi, d );
 		    tmpLo++;
 		}
+		System.out.println("AFTER");
+		for (Stock a : d)
+		    System.out.println(a);
 	    }
 	}//end big while
 

@@ -12,7 +12,7 @@ public class Market{
     
     public Market(){
 	fillMarket(); // method to add stocks to market
-	gsIndexPrice = 0;
+	gsIndexPrice = 0.0;
 	updateIndexVal(); // method to update the value of the market
 	qs = new QuickSortStocks();
 	news = new Stack<News>();
@@ -175,7 +175,7 @@ public class Market{
     public void updateMarket(boolean init){
 	    // randomly assign new news
 	    //for (int j = 0; j < stocks.size(); j++) //for testing
-	//	System.out.println(stocks.get(j).getTicker());
+	// System.out.println(stocks.get(j).getTicker());
 	    Random r = new Random();
 	    if (r.nextInt(10) == 1 && !news.empty() && init)
 	      applyNews();
@@ -314,6 +314,10 @@ public class Market{
 	    appliedNews.removeLast();
 	return appliedNews;
     }
+
+    public double getIndexVal(){
+	return gsIndexPrice;
+    }
     
     // for testing
     public static void main(String[] args){
@@ -321,9 +325,12 @@ public class Market{
 	LinkedList<Stock> tp = m.getAlphabetizedStocks();
 	for (Stock a : tp)
 	    System.out.println(a);
+	System.out.println(m.getIndexVal());
 	for (int i = 0; i < 100000; i++){
 	    m.updateMarket(false);
+	    
 	}
+	System.out.println(m.getIndexVal());
 	tp = m.getStocks();
 	for (Stock a : tp)
 	    System.out.println(a + " Percent change: " + a.getPercentChange());
