@@ -100,7 +100,7 @@ public class HomeScreen extends JPanel{
 	myPort.setOpaque(true);
 
 	// Set up Goldberg Saacs Index label
-	String gsText = "<html> <h1 align='center'>Goldberg Saacs Index</h1> <h3 align='center'>" + 
+	String gsText = "<html> <h1 align='center'>Goldberg Saacs Index</h1> <h3 align='center'>$" + 
 	market.getIndexVal() + "</h3></html>";
 	gsIndex = new JLabel(gsText, SwingConstants.CENTER);
 	gsIndex.setBorder(BorderFactory.createLoweredBevelBorder());

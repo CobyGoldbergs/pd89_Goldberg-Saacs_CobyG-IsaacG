@@ -36,7 +36,7 @@ public class MainFrame extends JFrame implements ActionListener, Runnable{
 		for (int i = 0; i < 40000; i++)
 		    market.updateMarket(false); // create initial history for the market, false prevents news
 		
-		user = new User(10000);
+		user = new User(2000);
 		
 		home = new HomeScreen(market, user); // instantiate the home screen
 		stockScreen = new StockScreen(market); // instantiate the stocks screen

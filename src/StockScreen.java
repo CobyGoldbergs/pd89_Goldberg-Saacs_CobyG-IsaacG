@@ -144,8 +144,8 @@ public class StockScreen extends JPanel {
     public void updateGraph(int xval){
     	// Set up graph
 		plot = new Plot2DPanel();
-		double[] x = {  xval-19, xval-18, xval-17, xval-16, xval-15, xval-14, xval-13, xval-12, xval-11, xval-10, xval-9, xval-8, xval-7, xval-6, xval-5, xval-4, xval-3, xval-2, xval-1, xval };
-		double[] y = stock.getPastPrices(20); // y axis points is prices
+		double[] x = {   xval-9, xval-8, xval-7, xval-6, xval-5, xval-4, xval-3, xval-2, xval-1, xval };
+		double[] y = stock.getPastPrices(10); // y axis points is prices
 		plot.addLinePlot(stock.getTicker() + " Price vs. Time", x, y); // create line plot from jmathplots
 		//plot.setFixedBounds(1, stock.getPrice() - 1, stock.getPrice() + 1);
 		plot.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLoweredBevelBorder(), stock.getTicker() + " Price vs. Time"));

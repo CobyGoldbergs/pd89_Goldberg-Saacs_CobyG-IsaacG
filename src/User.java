@@ -68,6 +68,7 @@ public class User{
 	    return "You do not own sufficient shares";
 	else{
 	    portfolio.get(index).sellShares(numShares);
+	    money += st.getPrice() * numShares;
 	    return "Sold " + numShares + " shares";
 	}
 	
