@@ -5,21 +5,19 @@ public class QuickSortStocks {
 
     public static void swap( int x, int y, LinkedList<Stock> o ) {
 		// System.out.println("Swapping " + o.get(x).getTicker() + " and "+  o.get(y).getTicker());	FOR TESTING
-		Stock tmp = o.get(x);
-		o.set(x, o.get(y));
-		o.set(y, tmp);
+		Collections.swap(o, x, y);
 		// System.out.println("Now they are " + o.get(x).getTicker() + " and "+  o.get(y).getTicker());	FOR TESTING
     }
 
     public LinkedList<Stock> qsort( LinkedList<Stock> a, int comparing ) { 
-	LinkedList<Stock> d = a;
-	if (comparing == 0) // 0 means you are sorting by ticker name
-	    qsHelpTick( 0, d.size()-1, d );
-	if (comparing == 1) // 1 means compare by price
-	    qsHelpQuant( 0, d.size()-1, d );
-	if (comparing == 2) // 2 means compare by percent change
-	    qsHelpChange( 0, d.size()-1, d );
-	return d;
+		LinkedList<Stock> d = a;
+		if (comparing == 0) // 0 means you are sorting by ticker name
+		    qsHelpTick( 0, d.size()-1, d );
+		if (comparing == 1) // 1 means compare by price
+		    qsHelpQuant( 0, d.size()-1, d );
+		if (comparing == 2) // 2 means compare by percent change
+		    qsHelpChange( 0, d.size()-1, d );
+		return d;
     }
 
     public static void qsHelpTick( int lo, int hi, LinkedList<Stock> d ) { 

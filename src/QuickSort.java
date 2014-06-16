@@ -4,9 +4,7 @@ public class QuickSort {
 
 
     public static void swap( int x, int y, LinkedList<StockPosition> o ) {
-	StockPosition tmp = o.get(x);
-	o.set(x, o.get(y));
-	o.set(y, tmp);
+		Collections.swap(o, x, y);
     }
 
     public LinkedList<StockPosition> qsort( LinkedList<StockPosition> d, int comparing ) { 
