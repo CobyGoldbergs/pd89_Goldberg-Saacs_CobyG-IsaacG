@@ -23,3 +23,7 @@ Coby created Market.java and began adding various ways of sorting all the stocks
 6/4/14 Coby reorganized Market's methods based on what they do, and created a loop for Market that can be run from outside the class, which every 5 seconds updates prices in the market and runs market's necessary functions
 
 6/12/14 After a brief hiatus due to finals and final projects work has began again. Isaac added action listeners to all the buttons and reorganized the file structure to allow integration between the front and back ends. In that vein, Isaac connected the first 3 test stocks to StockScreen and MainFrame to get their buttons, action listeners and display functionality working. Next step is implementing this for all 10 stocks and further connecting the Market with the display.
+
+6/14/14 Coby continued integration of the StockScreen and later of the HomeScreen with the rest of the stocks, and also connected buying and selling of stocks to a user's profile.
+
+6/15 Together, Coby and Isaac integrated the GUI fully with the stock movements, making printing of stats and of graphs work. They tested for flaws in the movement of stocks, used the API for initial prices. They added more News items and modified the way the News effect would be accounted for, replacing a simple "good vs. bad" with more dynamic double values. They added certain features to the GUI, like sell all stocks and the printing of the Goldberg Saac's Index. And then they went to sleep content :)
