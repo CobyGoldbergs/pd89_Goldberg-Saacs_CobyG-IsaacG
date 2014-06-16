@@ -334,7 +334,7 @@ public class Market{
 	for (Stock a : tp)
 	    System.out.println(a);
 	//System.out.println(m.getIndexVal());
-	for (int i = 0; i < 100000; i++){
+	for (int i = 0; i < 100; i++){
 	    m.updateMarket(false);
 	    
 	}
