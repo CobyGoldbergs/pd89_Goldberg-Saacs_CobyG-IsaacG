@@ -169,10 +169,15 @@ public class HomeScreen extends JPanel{
 		    st = market.getStockTicker(name); // stock itself
 		    int num = s.getNumShares();
 		    double value = num * st.getPrice();
-		     value = (double)(Math.round(value * 100)) / 100; 
+		    value = (double)(Math.round(value * 100)) / 100; 
 		    portText += "<h3 align='center'>" + name + ": " + num + " shares worth $" + value + "</h3>"; } 
 
-		portText += "<br><br><h4 align='center'>$" + user.getMoney() + " available</h3>"; 
+		if (user.getReturns() >= 0)
+		    color = "green";
+		else
+		    color = "red";
+
+		portText += "<br><br><h4 align='center' style='color:" + color + "'>$" + user.getMoney() + " available</h3>"; 
 		portText += "<h4 align='center'> You had $" + user.getOriginalMoney() + " originally </html>";
 		
 		myPort.setText(portText);
