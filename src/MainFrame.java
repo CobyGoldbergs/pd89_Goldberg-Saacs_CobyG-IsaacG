@@ -58,11 +58,8 @@ public class MainFrame extends JFrame implements ActionListener, Runnable{
 		pack(); // pack up the container
 		
 		setLocationRelativeTo(null); // center it
-	
-		// Test
-		//for (int i = 0; i < 1000; i++)
-		//market.updateMarket(false);
 
+		// Start thread to move graph and update user info panels
 		userThread = new Thread(this);
 		userThread.start();
     }
