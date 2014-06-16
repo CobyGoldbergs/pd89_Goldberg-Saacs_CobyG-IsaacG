@@ -10,8 +10,8 @@ public class HomeScreen extends JPanel{
     protected JButton viewStocksButton; // protected so that it can be accessed in MainFrame's actionlistener
     private JLabel homeLabel;
     private JLabel news;
-    private JLabel hotStocks;
-    private JLabel coldStocks;
+    // private JLabel hotStocks;
+    // private JLabel coldStocks;
     private JLabel myPort;
     private JLabel gsIndex;
     private Market market;
@@ -35,7 +35,7 @@ public class HomeScreen extends JPanel{
 	homeLabel.setBounds(10, 15, 100, 20);
 	homeLabel.setOpaque(true);
 
-	// Set up hot stocks label
+	/*// Set up hot stocks label
 	String hotText = "<html> <h1 align='center'>Hot Stocks</h1><h3 align='center'> ";
 	LinkedList<Stock> hotties = market.getStrongestStocks(5);
 	Stock st;
@@ -66,7 +66,7 @@ public class HomeScreen extends JPanel{
 	coldStocks.setBorder(BorderFactory.createLoweredBevelBorder());
 	add(coldStocks);
 	coldStocks.setBounds(340, 50, 320, 290);
-	coldStocks.setOpaque(true);
+	coldStocks.setOpaque(true);*/
 
 
 	// Set up button to view stocks page
@@ -111,7 +111,8 @@ public class HomeScreen extends JPanel{
     }
 
     public void updateText(){
-	// Set up hot stocks label
+    	Stock st;
+	/*// Set up hot stocks label
     	String color;
 		String hotText = "<html> <h1 align='center'>Hot Stocks</h1>";
 		LinkedList<Stock> hotties = market.getStrongestStocks(5);
@@ -140,7 +141,7 @@ public class HomeScreen extends JPanel{
 		    coldText += "<h3 align='center'; style='color:" + color + "'>" + st.getTicker() + " : " + st.getPercentChange() + "% <br>";
 		    }
 		coldText += "</h3></html>";
-		coldStocks.setText(coldText);
+		coldStocks.setText(coldText);*/
 	
 	
 		// News
