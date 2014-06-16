@@ -33,3 +33,6 @@ Goldberg Saacs Stock-Simulator
 	2. Type: 
 		export CLASSPATH=path/to/project/pd89_Goldberg-Saacs_CobyG-IsaacG/lib/jmathplot.jar:.
 	3. Compile and Run MainFrame per usual
+
+######## FOR THOSE LOOKING FOR A MORE "REALISTIC" INVESTING EXPERIENCE:
+	Lower the "market strength" in Market to a value closer to 0. This will create much more realistic price movement and uglier graphs
