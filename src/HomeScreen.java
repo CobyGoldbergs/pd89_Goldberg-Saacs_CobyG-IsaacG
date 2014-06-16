@@ -127,7 +127,7 @@ public class HomeScreen extends JPanel{
 			color = "green";
 		    else
 			color = "red";
-		    expensiveText += "<h3 align='center' style='color:" + color + "'>" + st.getTicker() + " : " + st.getPrice() + "$ </h3>";
+		    expensiveText += "<h3 align='center' style='color:" + color + "'>" + st.getTicker() + " : " + st.getPrice() + "$ " + st.getPercentChange() +"% </h3>";
 		}
 		expensiveText += "</html>";
 		expensiveStocks.setText(expensiveText);
@@ -142,7 +142,7 @@ public class HomeScreen extends JPanel{
 			color = "green";
 		    else
 			color = "red";
-		    cheapText += "<h3 align='center' style='color:" + color + "'>" + st.getTicker() + " : " + st.getPrice() + "$ </h3>";
+		    cheapText += "<h3 align='center' style='color:" + color + "'>" + st.getTicker() + " : " + st.getPrice() + "$ " + st.getPercentChange() + "%  </h3>";
 		    }
 		cheapText += "</h3></html>";
 		cheapStocks.setText(cheapText);

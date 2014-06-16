@@ -9,6 +9,7 @@ import org.math.plot.*;
 public class StockScreen extends JPanel {
     private Plot2DPanel plot; // from jmathplots, it extends JPanel
     protected JButton backButton; // protected so that it can be accessed in MainFrame's actionlistener
+    protected JButton homeButton;
     private JLabel tickerLabel;
     private JLabel statsLabel;
     private JLabel newsLabel;
@@ -43,6 +44,10 @@ public class StockScreen extends JPanel {
 		backButton = new JButton("Back");
 		add(backButton);
 		backButton.setBounds(890, 10, 100, 30);
+
+		homeButton = new JButton("Home");
+		add(homeButton);
+		homeButton.setBounds(780, 10, 100, 30);
 	
 		// Set up graph
 		plot = new Plot2DPanel();
@@ -106,6 +111,7 @@ public class StockScreen extends JPanel {
 
     public void giveActionListener(ActionListener a) {
 		backButton.addActionListener(a);
+		homeButton.addActionListener(a);
 		buyButton.addActionListener(a);
 		sellButton.addActionListener(a);
     }

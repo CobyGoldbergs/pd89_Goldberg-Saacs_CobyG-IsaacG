@@ -36,7 +36,7 @@ public class MainFrame extends JFrame implements ActionListener, Runnable{
 		for (int i = 0; i < 400; i++)
 		    market.updateMarket(false); // create initial history for the market, false prevents news
 		
-		user = new User(2000);
+		user = new User(20000);
 		
 		home = new HomeScreen(market, user); // instantiate the home screen
 		stockScreen = new StockScreen(market); // instantiate the stocks screen
@@ -141,6 +141,11 @@ public class MainFrame extends JFrame implements ActionListener, Runnable{
 		// From the stock screens to the view stock screen
 		else if (source.equals(stockScreen.backButton)){
 		    card.show(pane, "stock");
+		}
+
+		// From the stock screen to the home screen
+		else if (source.equals(stockScreen.homeButton)){
+		    card.show(pane, "home");
 		}
 	
 		// Stock screen's purchase/ sale methods
