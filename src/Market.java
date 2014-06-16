@@ -332,9 +332,9 @@ public class Market{
 	Market m = new Market();
 	LinkedList<Stock> tp = m.getAlphabetizedStocks();
 	for (Stock a : tp)
-	    System.out.println(a);
+	    System.out.println(a + "Price: " + a.getPrice());
 	//System.out.println(m.getIndexVal());
-	for (int i = 0; i < 100; i++){
+	/*for (int i = 0; i < 100; i++){
 	    m.updateMarket(false);
 	    
 	}
@@ -348,7 +348,7 @@ public class Market{
 	    System.out.println(a + " Percent change: " + a.getPercentChange());
 	tp = m.getStocks();
 	for (Stock a : tp)
-	    System.out.println(a + "Are they still here: " + a.getPercentChange());
+	System.out.println(a + "Are they still here: " + a.getPercentChange());*/
 	/*tp = m.getStocks();
 	for (Stock a : tp)
 	    System.out.println( "Stocks original order: " + a);
