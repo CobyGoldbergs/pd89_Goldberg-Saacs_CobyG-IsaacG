@@ -66,7 +66,8 @@ public class YahooApi {
     }
 
     public static void main(String[] args) {
-	//getData("GOOG");
+    	YahooApi yo = new YahooApi();
+		System.out.println(yo.getData("GOOG"));
     }
 
 }
