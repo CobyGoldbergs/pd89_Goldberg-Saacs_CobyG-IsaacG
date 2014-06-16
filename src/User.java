@@ -5,16 +5,20 @@ public class User{
 
     private LinkedList<StockPosition> portfolio; // linked list to quickly remove and add, expanding and contracting the list
     private double money; // stores how much money they have not tied up in stocks
+    private final double ORIGINALMONEY;
     private QuickSort qs;
 
     public User(double m){
 	portfolio = new LinkedList<StockPosition>();
 	money = m;
+	ORIGINALMONEY = m;
 	qs = new QuickSort();
     }
     
     public LinkedList<StockPosition> getPortfolio(){return portfolio;}
     public double getMoney(){return  (double)(Math.round(money * 100)) / 100;}
+    public double getOriginalMoney(){return ORIGINALMONEY;}
+    public double getReturns(){return ((double)(Math.round(money * 100)) / 100) - ORIGINALMONEY;}
 
     public String buyStock(Stock st, int numShares){
 	if (money > numShares * st.getPrice()){ // they have enough money

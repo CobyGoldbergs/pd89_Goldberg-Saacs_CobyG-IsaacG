@@ -172,7 +172,9 @@ public class HomeScreen extends JPanel{
 		    value =  (double)(Math.round(value * 100)) / 100;
 		    portText += name + " : " + num + " shares worth $" + value + "<br>";
 		    }
-		portText += "$" + user.getMoney() + " available</h3></html>";
+		portText += "$" + user.getMoney() + " available</h3>";
+		portText += "<h3> You had $" + user.getOriginalMoney() + " originally </html>";
+		
 		myPort.setText(portText);
 
 		// Goldberg and Sacs Index update
