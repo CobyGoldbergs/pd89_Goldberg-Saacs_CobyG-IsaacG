@@ -76,11 +76,6 @@ public class HomeScreen extends JPanel{
 	add(viewStocksButton);
 	viewStocksButton.setBounds(890, 10, 100, 30);
 
-	// Set up button to sell all held stocks
-	sellAll = new JButton("Sell All Stocks");
-	add(sellAll);
-	sellAll.setBounds(665, 460, 330, 30);
-
 	// Set up news label
 	String newsText = "<html><h1 align='center'> NEWS </h1></html>"; // add the text to the news panel
 
@@ -105,13 +100,18 @@ public class HomeScreen extends JPanel{
 	myPort.setBounds(670, 50, 320, 410);
 	myPort.setOpaque(true);
 
+	// Set up button to sell all held stocks
+	sellAll = new JButton("Sell All Stocks");
+	add(sellAll);
+	sellAll.setBounds(665, 470, 330, 30);
+
 	// Set up Goldberg Saacs Index label
 	String gsText = "<html> <h1 align='center'>Goldberg Saacs Index</h1> <h3 align='center'>$" + 
 	market.getIndexVal() + "</h3></html>";
 	gsIndex = new JLabel(gsText, SwingConstants.CENTER);
 	gsIndex.setBorder(BorderFactory.createLoweredBevelBorder());
 	add(gsIndex);
-	gsIndex.setBounds(670, 490, 320, 150);
+	gsIndex.setBounds(670, 510, 320, 130);
 	gsIndex.setOpaque(true);
 
     }
@@ -150,13 +150,13 @@ public class HomeScreen extends JPanel{
 	
 	
 		// News
-		String newsText = "<html><h1 align='center';> NEWS </h1><h3 align='center'>"; // add the text to the news panel
+		String newsText = "<html><h1 align='center';> NEWS </h1>"; // add the text to the news panel
 		LinkedList<News> oldNews = market.getOldNews();
 		for (int i = 0; i < oldNews.size(); i++){
 		    int num = i+1;
-		    newsText += num + ") " + oldNews.get(i).getInfo() + "</h3><h3>";
+		    newsText += "<h3 align='center'>" + num + ") " + oldNews.get(i).getInfo() + "</h3";
 		}
-		newsText += "</h3></html>";
+		newsText += "</html>";
 		news.setText(newsText);
 	
 		// Portfolio
